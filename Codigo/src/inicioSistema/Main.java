@@ -11,7 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
         Sistema sistema;
-
         try {
             try (FileInputStream f = new FileInputStream("Sistema.data")) {
                 sistema = (Sistema) new ObjectInputStream(new BufferedInputStream(f)).readObject();

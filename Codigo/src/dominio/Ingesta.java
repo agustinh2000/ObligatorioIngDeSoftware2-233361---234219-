@@ -2,8 +2,6 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Arrays;
 
 public final class Ingesta implements Serializable {
 
@@ -20,7 +18,11 @@ public final class Ingesta implements Serializable {
     }
 
     public void setFechaDeIngesta(String unaFecha) {
-        this.fechaDeIngesta = unaFecha;
+        if (unaFecha == null || unaFecha.isEmpty()) {
+            this.fechaDeIngesta = "Fecha de ingesta no registrada";
+        } else {
+            this.fechaDeIngesta = unaFecha;
+        }
     }
 
     public ArrayList<Alimento> getListaAlimentosPorFecha() {

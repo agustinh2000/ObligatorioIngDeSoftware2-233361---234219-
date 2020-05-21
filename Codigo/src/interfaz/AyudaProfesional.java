@@ -60,7 +60,7 @@ public class AyudaProfesional extends javax.swing.JDialog {
         lblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreUsuario.setText("Ayuda");
         jPanel1.add(lblNombreUsuario);
-        lblNombreUsuario.setBounds(203, 27, 192, 78);
+        lblNombreUsuario.setBounds(203, 27, 192, 70);
 
         btnIngresarAlimentoIngerido.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresarAlimentoIngerido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Message_70px.png"))); // NOI18N

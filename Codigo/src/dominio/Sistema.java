@@ -1,6 +1,5 @@
 package dominio;
 
-
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,7 +7,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import java.util.Currency;
 import javax.swing.ImageIcon;
 
 public final class Sistema implements Serializable {
@@ -52,8 +50,12 @@ public final class Sistema implements Serializable {
     }
 
     public void setPersonaLogueada(Persona personaLogueada) {
-        personaLogueada = personaLogueada;
-        
+        if (personaLogueada == null) {
+            this.personaLogueada = new Usuario(null, null, null, null, null, null, null, null);
+        } else {
+            this.personaLogueada = personaLogueada;
+        }
+
     }
 
     public ArrayList<Conversacion> getListaConversaciones() {
@@ -280,7 +282,7 @@ public final class Sistema implements Serializable {
     public String[] getListaNombresProfesionalesConversaciones(String nombreUsuarioConversacion) {
         String[] nombresProfesionales = new String[getListaConversaciones().size()];
         ArrayList<String> nombresIngresados = new ArrayList<>();
-        for (int i = 1; i < getListaConversaciones().size(); i++) {
+        for (int i = 0; i < getListaConversaciones().size(); i++) {
             String nombreCompleto = getListaConversaciones().get(i).getProfesional().getNombreCompleto();
             String nombreUsuarioCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();
             if (!nombresIngresados.contains(nombreCompleto)) {
@@ -366,25 +368,26 @@ public final class Sistema implements Serializable {
 
     public boolean agregarIngestaAUsuario(ArrayList<Ingesta> listaIngestasDelUsuario, String fechaIngesta, String nuevoAlimento) {
         boolean ingestaAgregada = false;
-        if (listaIngestasDelUsuario != null) {
-            
-                if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {
-                    for (int i = 0; i < listaIngestasDelUsuario.size(); i++) {
-                        if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {
-                            ArrayList<Alimento> listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();
-                            Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
-                            listaAlimentosActual.add(alimentoAAgregar);
-                        }
+        if (listaIngestasDelUsuario != null 
+                && fechaIngesta != null) {
+
+            if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {
+                for (int i = 0; i < listaIngestasDelUsuario.size(); i++) {
+                    if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {
+                        ArrayList<Alimento> listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();
+                        Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
+                        listaAlimentosActual.add(alimentoAAgregar);
                     }
-                } else {
-                    Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
-                    ArrayList<Alimento> nuevaLista = new ArrayList<>();
-                    nuevaLista.add(alimentoAAgregar);
-                    Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);
-                    listaIngestasDelUsuario.add(nuevaIngesta);
                 }
-                ingestaAgregada = true;
-            
+            } else {
+                Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
+                ArrayList<Alimento> nuevaLista = new ArrayList<>();
+                nuevaLista.add(alimentoAAgregar);
+                Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);
+                listaIngestasDelUsuario.add(nuevaIngesta);
+            }
+            ingestaAgregada = true;
+
         }
         return ingestaAgregada;
     }
@@ -437,7 +440,7 @@ public final class Sistema implements Serializable {
     public boolean agregarPlanSolicitado(Usuario usuario, Profesional profesional) {
         boolean agreguePlan = false;
         if (usuario != null && profesional != null) {
-            PlanAlimentacion planNuevo = new PlanAlimentacion("", usuario, profesional, false, null);
+            PlanAlimentacion planNuevo = new PlanAlimentacion("", usuario, profesional, false, (String[][])null);
             if (!getListaPlanesAlimentacion().contains(planNuevo)) {
                 this.getListaPlanesAlimentacion().add(planNuevo);
                 agreguePlan = true;
