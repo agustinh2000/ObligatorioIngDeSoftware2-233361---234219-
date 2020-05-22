@@ -6,6 +6,7 @@ import dominio.Sistema.Paises;
 import dominio.Sistema.Preferencias;
 import dominio.Sistema.Restricciones;
 import java.util.ArrayList;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,7 +15,6 @@ public class SistemaTest {
     public SistemaTest() {
 
     }
-
 
     @Test
     public void testGetsSetsNullListaAlimentos() {
@@ -548,7 +548,6 @@ public class SistemaTest {
         assertEquals(sistemaATestear.devolverListaIngestasDeLaSemana(), listaEsperada);
     }
 
-
     @Test
     public void testEnumDevolverListaDiasDeLaSemana() {
         Sistema sistemaATestear = new Sistema();
@@ -561,6 +560,52 @@ public class SistemaTest {
         listaEsperada.add("Sabado");
         listaEsperada.add("Domingo");
         assertEquals(sistemaATestear.devolverListaDiasDeLaSemana(), listaEsperada);
+    }
+
+    //NUEVAS PRUEBAS - Mantenimiento
+    @Test
+    public void testCrearProfesional() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = true;
+        boolean result = miSistema.crearProfesional("Jose", "Rodriguez",
+                "10/5/1990", null, "Doctor", "20/2/2020", "Argentina");
+        assertEquals(resultadoEsperado, result);
+    }
+
+    @Test
+    public void testAgregarProfesionalALaListaInvalido() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.agregarProfesionalALaLista(null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testAgregarAlimentoALaListaInvalido() {
+        Sistema miSistema = new Sistema();
+        Alimento alimento = null;
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.agregarAlimentoALaLista(null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testAgregarAlimentoALaLista() {
+        Sistema miSistema = new Sistema();
+        Alimento alimento = new Alimento("lentejas", "legumbre", null, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = miSistema.agregarAlimentoALaLista(alimento);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testCrearAlimento() {
+        Sistema miSistema = new Sistema();
+        miSistema.crearAlimento("lentejas", "legumbre", null, null);
+        Alimento alimento = new Alimento("lentejas", "legumbre", null, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = miSistema.getListaAlimentos().contains(alimento);
+        assertEquals(resultadoEsperado, resultado);
     }
 
 }
