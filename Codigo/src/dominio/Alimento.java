@@ -2,6 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 
 public final class Alimento implements Serializable {
@@ -9,7 +10,7 @@ public final class Alimento implements Serializable {
     private String nombre;
     private String tipoAlimento;
     private ArrayList<ComposicionAlimento> listaNutrientesConProporcion;
-    public ImageIcon fotoDelAlimento;
+    private ImageIcon fotoDelAlimento;
 
     public Alimento(String unNombre,
             String unTipoAlimento,
@@ -81,8 +82,24 @@ public final class Alimento implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
+        if(this.getClass() != obj.getClass()){
+            return false;
+        }
         Alimento otroAlimento = (Alimento) obj;
         return (this.getNombre().equals(otroAlimento.getNombre()));
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.nombre);
+        hash = 79 * hash + Objects.hashCode(this.tipoAlimento);
+        hash = 79 * hash + Objects.hashCode(this.listaNutrientesConProporcion);
+        hash = 79 * hash + Objects.hashCode(this.fotoDelAlimento);
+        return hash;
     }
 
 }

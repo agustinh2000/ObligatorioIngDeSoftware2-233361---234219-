@@ -2,12 +2,13 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public final class Conversacion implements Serializable {
 
     private ArrayList<InformacionMensaje> listaMensajes;
-    public Persona usuario;
-    public Persona profesional;
+    private Persona usuario;
+    private Persona profesional;
     private boolean fueAtendidaConsulta;
 
     public Conversacion(Persona user, Persona pr, ArrayList<InformacionMensaje> lista) {
@@ -73,9 +74,25 @@ public final class Conversacion implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
         Conversacion conversacionParametro = (Conversacion) obj;
         return getProfesional().equals(conversacionParametro.getProfesional())
                 && getUsuario().equals(conversacionParametro.getUsuario());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.listaMensajes);
+        hash = 79 * hash + Objects.hashCode(this.usuario);
+        hash = 79 * hash + Objects.hashCode(this.profesional);
+        hash = 79 * hash + (this.fueAtendidaConsulta ? 1 : 0);
+        return hash;
     }
 
     @Override
