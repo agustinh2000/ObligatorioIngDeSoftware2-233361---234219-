@@ -8,7 +8,7 @@ public final class Usuario extends Persona {
     private String nacionalidad;
     private ArrayList<String> preferencias;
     private ArrayList<String> restricciones;
-    public ArrayList<Ingesta> alimentosIngeridos;
+    private ArrayList<Ingesta> alimentosIngeridos;
 
     public Usuario(String unNombre,
             String unApellido,
