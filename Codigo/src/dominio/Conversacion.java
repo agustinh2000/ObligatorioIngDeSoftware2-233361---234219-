@@ -2,7 +2,6 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public final class Conversacion implements Serializable {
 
@@ -74,7 +73,7 @@ public final class Conversacion implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        final Conversacion conversacionParametro = (Conversacion) obj;
+        Conversacion conversacionParametro = (Conversacion) obj;
         return getProfesional().equals(conversacionParametro.getProfesional())
                 && getUsuario().equals(conversacionParametro.getUsuario());
     }

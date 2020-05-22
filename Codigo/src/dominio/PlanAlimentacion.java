@@ -1,8 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Currency;
 
 public final class PlanAlimentacion implements Serializable {
 
@@ -30,8 +28,11 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setUsuario(Usuario unUsuario) {
-        usuario = unUsuario;
-        
+        if (unUsuario == null) {
+            this.usuario = new Usuario(null, null, null, null, null, null, null, null);
+        } else {
+            this.usuario = unUsuario;
+        }
     }
 
     public Profesional getProfesional() {
@@ -59,7 +60,11 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setPlanDiaADia(String[][] unPlan) {
-        this.planDiaADia = unPlan;
+        if (unPlan == null) {
+            this.planDiaADia = new String[0][0];
+        } else {
+            this.planDiaADia = unPlan;
+        }
     }
 
     public String getNombreDelPlan() {
@@ -67,8 +72,11 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setNombreDelPlan(String unNombreDelPlan) {
-        nombreDelPlan = unNombreDelPlan;
-       
+        if (unNombreDelPlan == null || unNombreDelPlan.isEmpty()) {
+            this.nombreDelPlan = "Plan de alimentación";
+        } else {
+            this.nombreDelPlan = unNombreDelPlan;
+        }
     }
 
     @Override
