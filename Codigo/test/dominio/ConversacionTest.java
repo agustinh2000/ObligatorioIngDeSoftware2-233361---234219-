@@ -48,7 +48,6 @@ public class ConversacionTest {
         assertEquals(conversacionATestear.toString(), "No hay mensajes para mostrar");
     }
 
-
     @Test
     public void testGetSetsDatosVaciosProfesional() {
         Persona usuario = new Usuario(null, null, null, null, null, null, null, null);
@@ -77,5 +76,45 @@ public class ConversacionTest {
         assertEquals(conversacionATestear.toString(), "No hay mensajes para mostrar");
     }
 
+    //NUEVAS PRUEBAS - mantenimiento
+    @Test
+    public void testGetFueAtendidaConsulta() {
+        Conversacion conversacion = new Conversacion(null, null, null);
+        boolean resultadoEsperado = false;
+        boolean resultado = conversacion.getFueAtendidaConsulta();
+        assertEquals(resultadoEsperado, resultado);
+    }
 
+    @Test
+    public void testAgregarMensaje() {
+        Conversacion conversacion = new Conversacion(null, null, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = conversacion.agregarMensaje("", true);
+        assertEquals(resultadoEsperado, resultado);
+    }
+    
+    @Test
+    public void testEquals(){
+        Persona profesional = new Profesional(null, null, null, null, null,
+                null, null);
+        Usuario usuario = new Usuario(null, null, null, null, null, null, 
+                null, null);
+        Conversacion conversacion = new Conversacion(usuario, profesional, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = conversacion.equals(conversacion);
+        assertEquals(resultadoEsperado, resultado);
+    }
+    
+    @Test
+    public void testNotEquals(){
+        Persona profesional = new Profesional("Jose", null, null, null, null,
+                null, null);
+        Usuario usuario = new Usuario("Juan", null, null, null, null, null, 
+                null, null);
+        Conversacion conversacion = new Conversacion(usuario, profesional, null);
+        Conversacion conversacionAComparar = new Conversacion(null, null, null);
+        boolean resultadoEsperado = false;
+        boolean resultado = conversacion.equals(conversacionAComparar);
+        assertEquals(resultadoEsperado, resultado);
+    }
 }
