@@ -68,11 +68,6 @@ public class AyudaUsuario extends javax.swing.JDialog {
         btnIngresarAlimentoIngerido.setBorderPainted(false);
         btnIngresarAlimentoIngerido.setContentAreaFilled(false);
         btnIngresarAlimentoIngerido.setFocusPainted(false);
-        btnIngresarAlimentoIngerido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarAlimentoIngeridoActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnIngresarAlimentoIngerido);
         btnIngresarAlimentoIngerido.setBounds(20, 150, 143, 129);
 
@@ -82,11 +77,6 @@ public class AyudaUsuario extends javax.swing.JDialog {
         btnIngresarAlimentoIngerido1.setBorderPainted(false);
         btnIngresarAlimentoIngerido1.setContentAreaFilled(false);
         btnIngresarAlimentoIngerido1.setFocusPainted(false);
-        btnIngresarAlimentoIngerido1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarAlimentoIngerido1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnIngresarAlimentoIngerido1);
         btnIngresarAlimentoIngerido1.setBounds(18, 431, 143, 119);
 
@@ -96,11 +86,6 @@ public class AyudaUsuario extends javax.swing.JDialog {
         btnIngresarAlimentoIngerido2.setBorderPainted(false);
         btnIngresarAlimentoIngerido2.setContentAreaFilled(false);
         btnIngresarAlimentoIngerido2.setFocusPainted(false);
-        btnIngresarAlimentoIngerido2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarAlimentoIngerido2ActionPerformed(evt);
-            }
-        });
         jPanel1.add(btnIngresarAlimentoIngerido2);
         btnIngresarAlimentoIngerido2.setBounds(18, 273, 143, 129);
 
@@ -156,18 +141,6 @@ public class AyudaUsuario extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnIngresarAlimentoIngeridoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAlimentoIngeridoActionPerformed
-       
-    }//GEN-LAST:event_btnIngresarAlimentoIngeridoActionPerformed
-
-    private void btnIngresarAlimentoIngerido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAlimentoIngerido1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarAlimentoIngerido1ActionPerformed
-
-    private void btnIngresarAlimentoIngerido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAlimentoIngerido2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarAlimentoIngerido2ActionPerformed
 
     private void btnCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSistemaActionPerformed
         this.dispose();

@@ -963,11 +963,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
 
         lblValidarProfesionalPlan.setForeground(new java.awt.Color(255, 255, 255));
         lblValidarProfesionalPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
-        lblValidarProfesionalPlan.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                lblValidarProfesionalPlanFocusGained(evt);
-            }
-        });
 
         lblDatosIncorrectos.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         lblDatosIncorrectos.setForeground(new java.awt.Color(255, 153, 153));
@@ -1270,7 +1265,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private void btnNuevaConversacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaConversacionActionPerformed
         ArrayList listaNombresProfesionalesSinConversacion;
         listaNombresProfesionalesSinConversacion = this.sistema.getNombresProfesionalesSinConversacionConUsuario((sistema.getPersonaLogueada()));
-        if (listaNombresProfesionalesSinConversacion != null && listaNombresProfesionalesSinConversacion.size() > 0) {
+        if (listaNombresProfesionalesSinConversacion != null && !listaNombresProfesionalesSinConversacion.isEmpty()) {
             ocultarPaneles();
             this.listaElegirProfesionales.setListData(listaNombresProfesionalesSinConversacion.toArray());
             this.panelElegirProfesional.setVisible(true);
@@ -1378,10 +1373,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAceptarSolicitudPlanAlimentacionActionPerformed
 
-    private void lblValidarProfesionalPlanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarProfesionalPlanFocusGained
-
-    }//GEN-LAST:event_lblValidarProfesionalPlanFocusGained
-
     private void comboProfesionalesEnSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProfesionalesEnSistemaActionPerformed
         if (!this.primeraVez) {
             String profesionalElegido = (String) this.comboProfesionalesEnSistema.getSelectedItem();
@@ -1431,7 +1422,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private void btnNuevaConversacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaConversacion1ActionPerformed
         ArrayList listaNombresProfesionalesSinConversacion;
         listaNombresProfesionalesSinConversacion = this.sistema.getNombresProfesionalesSinConversacionConUsuario((sistema.getPersonaLogueada()));
-        if (listaNombresProfesionalesSinConversacion != null && listaNombresProfesionalesSinConversacion.size() > 0) {
+        if (listaNombresProfesionalesSinConversacion != null && !listaNombresProfesionalesSinConversacion.isEmpty()) {
             ocultarPaneles();
             this.listaElegirProfesionales.setListData(listaNombresProfesionalesSinConversacion.toArray());
             this.panelElegirProfesional.setVisible(true);

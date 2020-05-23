@@ -68,8 +68,7 @@ public final class Conversacion implements Serializable {
             informacion.intercambiarRemitente();
         }
         listaMensajes.add(informacion);
-        boolean agregueMensaje = true;
-        return agregueMensaje;
+        return true;
     }
 
     @Override

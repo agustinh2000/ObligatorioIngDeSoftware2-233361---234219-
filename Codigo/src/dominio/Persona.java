@@ -10,6 +10,9 @@ public abstract class Persona implements Serializable {
     private String apellido;
     private String fechaNacimiento;
     private ImageIcon fotoDePerfil;
+    
+    static final String NOMBRE_POR_DEFECTO = "Nombre no ingresado";
+    static final String APELLIDO_POR_DEFECTO = "Apellido no ingresado";
 
     public String getNombre() {
         return this.nombre;
@@ -17,7 +20,7 @@ public abstract class Persona implements Serializable {
 
     public void setNombre(String unNombre) {
         if (unNombre == null || unNombre.isEmpty()) {
-            this.nombre = "Nombre no ingresado";
+            this.nombre = NOMBRE_POR_DEFECTO;
         } else {
             this.nombre = unNombre;
         }
@@ -29,7 +32,7 @@ public abstract class Persona implements Serializable {
 
     public void setApellido(String unApellido) {
         if (unApellido == null || unApellido.isEmpty()) {
-            this.apellido = "Apellido no ingresado";
+            this.apellido = APELLIDO_POR_DEFECTO;
         } else {
             this.apellido = unApellido;
         }
@@ -61,11 +64,11 @@ public abstract class Persona implements Serializable {
 
     public String getNombreCompleto() {
         String retorno;
-        if (getNombre().equals("Nombre no ingresado") && getApellido().equals("Apellido no ingresado")) {
-            retorno = "Nombre no ingresado";
-        } else if (getNombre().equals("Nombre no ingresado")) {
+        if (getNombre().equals(NOMBRE_POR_DEFECTO) && getApellido().equals(APELLIDO_POR_DEFECTO)) {
+            retorno = NOMBRE_POR_DEFECTO;
+        } else if (getNombre().equals(NOMBRE_POR_DEFECTO)) {
             retorno = getApellido();
-        } else if (getApellido().equals("Apellido no ingresado")) {
+        } else if (getApellido().equals(APELLIDO_POR_DEFECTO)) {
             retorno = getNombre();
         } else {
             retorno = getNombre() + " " + getApellido();

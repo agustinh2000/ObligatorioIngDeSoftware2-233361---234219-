@@ -6,9 +6,6 @@ import org.junit.Test;
 
 public class ProfesionalTest {
 
-    public ProfesionalTest() {
-    }
-
     @Test
     public void testGetsSetsDatosCorrectosGraduacion() {
         String nombre = "Martin";
