@@ -5,11 +5,11 @@ import dominio.Sistema.IngestasPorDia;
 import dominio.Sistema.Preferencias;
 import dominio.Sistema.Restricciones;
 import java.util.ArrayList;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SistemaTest {
-
     @Test
     public void testGetsSetsNullListaAlimentos() {
         ArrayList<Usuario> listaUsuarios = null;
@@ -542,7 +542,6 @@ public class SistemaTest {
         assertEquals(sistemaATestear.devolverListaIngestasDeLaSemana(), listaEsperada);
     }
 
-
     @Test
     public void testEnumDevolverListaDiasDeLaSemana() {
         Sistema sistemaATestear = new Sistema();
@@ -555,6 +554,115 @@ public class SistemaTest {
         listaEsperada.add("Sabado");
         listaEsperada.add("Domingo");
         assertEquals(sistemaATestear.devolverListaDiasDeLaSemana(), listaEsperada);
+    }
+
+    //NUEVAS PRUEBAS - Mantenimiento
+    @Test
+    public void testCrearProfesional() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = true;
+        boolean result = miSistema.crearProfesional("Jose", "Rodriguez",
+                "10/5/1990", null, "Doctor", "20/2/2020", "Argentina");
+        assertEquals(resultadoEsperado, result);
+    }
+
+    @Test
+    public void testAgregarProfesionalALaListaInvalido() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.agregarProfesionalALaLista(null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testAgregarAlimentoALaListaInvalido() {
+        Sistema miSistema = new Sistema();
+        Alimento alimento = null;
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.agregarAlimentoALaLista(null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testAgregarAlimentoALaLista() {
+        Sistema miSistema = new Sistema();
+        Alimento alimento = new Alimento("lentejas", "legumbre", null, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = miSistema.agregarAlimentoALaLista(alimento);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testCrearAlimento() {
+        Sistema miSistema = new Sistema();
+        miSistema.crearAlimento("lentejas", "legumbre", null, null);
+        Alimento alimento = new Alimento("lentejas", "legumbre", null, null);
+        boolean resultadoEsperado = true;
+        boolean resultado = miSistema.getListaAlimentos().contains(alimento);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testGetConversacion() {
+        Sistema miSistema = new Sistema();
+        String resultadoEsperado = "No hay conversación disponible.";
+        String resultado = miSistema.getConversacion(null, null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testGetListaNombresUsuariosConversacionesPendientes() {
+        Sistema miSistema = new Sistema();
+        String[] resultadoEsperado = new String[0];
+        String[] resultado
+                = miSistema.getListaNombresUsuariosConversacionesPendientes("");
+        assertArrayEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testGetListaNombresProfesionalesConversaciones() {
+        Sistema miSistema = new Sistema();
+        String[] resultadoEsperado = new String[0];
+        String[] resultado
+                = miSistema.getListaNombresProfesionalesConversaciones("");
+        assertArrayEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testEnumPaisesNombre() {
+        String resultadoEsperado = "Argentina";
+        assertEquals(Paises.Argentina.name(), resultadoEsperado);
+    }
+
+    @Test
+    public void testCrearConversacionNoRemitente() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.crearConversacion(null, null, "Hola", 
+                false);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testDevolverListaPaises() {
+        Sistema miSistema = new Sistema();
+        ArrayList<String> listaEsperada = new ArrayList<>();
+        for (Paises pais : Paises.values()) {
+            listaEsperada.add(pais.toString());
+        }
+        ArrayList<String> listaObtenida = miSistema.devolverListaPaises();
+        assertEquals(listaEsperada, listaObtenida);
+    }
+
+    @Test
+    public void testGetNombresProfesionalesSinConversacionConUsuarioNula() {
+        Sistema miSistema = new Sistema();
+        Persona usuario = new Usuario("Juan", "Perez", null, null, null, null,
+                null, null);
+        ArrayList resultadoEsperado = new ArrayList<>();
+        ArrayList resultado = 
+                miSistema.getNombresProfesionalesSinConversacionConUsuario(usuario);
+        assertEquals(resultadoEsperado, resultado);
     }
 
 }
