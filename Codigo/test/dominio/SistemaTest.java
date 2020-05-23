@@ -608,4 +608,67 @@ public class SistemaTest {
         assertEquals(resultadoEsperado, resultado);
     }
 
+    @Test
+    public void testGetConversacion() {
+        Sistema miSistema = new Sistema();
+        String resultadoEsperado = "No hay conversación disponible.";
+        String resultado = miSistema.getConversacion(null, null);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testGetListaNombresUsuariosConversacionesPendientes() {
+        Sistema miSistema = new Sistema();
+        String[] resultadoEsperado = new String[0];
+        String[] resultado
+                = miSistema.getListaNombresUsuariosConversacionesPendientes("");
+        assertArrayEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testGetListaNombresProfesionalesConversaciones() {
+        Sistema miSistema = new Sistema();
+        String[] resultadoEsperado = new String[0];
+        String[] resultado
+                = miSistema.getListaNombresProfesionalesConversaciones("");
+        assertArrayEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testEnumPaisesNombre() {
+        String resultadoEsperado = "Argentina";
+        assertEquals(Paises.Argentina.name(), resultadoEsperado);
+    }
+
+    @Test
+    public void testCrearConversacionNoRemitente() {
+        Sistema miSistema = new Sistema();
+        boolean resultadoEsperado = false;
+        boolean resultado = miSistema.crearConversacion(null, null, "Hola", 
+                false);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testDevolverListaPaises() {
+        Sistema miSistema = new Sistema();
+        ArrayList<String> listaEsperada = new ArrayList<>();
+        for (Paises pais : Paises.values()) {
+            listaEsperada.add(pais.toString());
+        }
+        ArrayList<String> listaObtenida = miSistema.devolverListaPaises();
+        assertEquals(listaEsperada, listaObtenida);
+    }
+
+    @Test
+    public void testGetNombresProfesionalesSinConversacionConUsuarioNula() {
+        Sistema miSistema = new Sistema();
+        Persona usuario = new Usuario("Juan", "Perez", null, null, null, null,
+                null, null);
+        ArrayList resultadoEsperado = new ArrayList<>();
+        ArrayList resultado = 
+                miSistema.getNombresProfesionalesSinConversacionConUsuario(usuario);
+        assertEquals(resultadoEsperado, resultado);
+    }
+
 }
