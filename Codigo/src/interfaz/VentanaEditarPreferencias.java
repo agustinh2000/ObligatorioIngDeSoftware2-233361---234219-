@@ -264,23 +264,10 @@ public class VentanaEditarPreferencias extends javax.swing.JDialog {
         listaPreferencias[2] = Sistema.Preferencias.Frutas;
         listaPreferencias[3] = Sistema.Preferencias.Harinas;
         listaPreferencias[4] = Sistema.Preferencias.Verduras;
-        for (int i = 0; i < listaPreferencias.length; i++) {
-            if (i == 0) {
-                this.rdBtnCarnesRojas.setText("Carnes Rojas");
-            }
-            if (i == 1) {
-                this.rdBtnCarnesBlancas.setText("Carnes Blancas");
-            }
-            if (i == 2) {
-                this.rdBtnFrutas.setText("Frutas");
-            }
-            if (i == 3) {
-                this.rdBtnHarinas.setText("Harinas");
-            }
-            if (i == 4) {
-                this.rdBtnVerduras.setText("Verduras");
-            }
-        }
+        this.rdBtnCarnesRojas.setText("Carnes Rojas");
+        this.rdBtnCarnesBlancas.setText("Carnes Blancas");
+        this.rdBtnFrutas.setText("Frutas");
+        this.rdBtnHarinas.setText("Harinas");
+        this.rdBtnVerduras.setText("Verduras");
     }
-
 }

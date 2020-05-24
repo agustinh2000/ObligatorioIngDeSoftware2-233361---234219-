@@ -1759,7 +1759,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             this.listaPlanesPendientes.setSelectedIndex(0);
             String nombreProfesionalLogueado = sistema.getPersonaLogueada().getNombreCompleto();
             Profesional profesionalLogueado = sistema.getProfesionalPorNombre(nombreProfesionalLogueado);
-            String[] lista = this.sistema.getListaPlanesPendientes(profesionalLogueado);
+            String[] lista = this.sistema.getListaUsuariosConPlanesPendientes(profesionalLogueado);
             if (lista.length > 0) {
                 this.listaPlanesPendientes.setListData(lista);
             } else {
@@ -1998,8 +1998,8 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             for (int i = 0; i < ingeridos.size(); i++) {
                 Ingesta ingestaActual = ingeridos.get(i);
                 ArrayList<Alimento> alimentosActuales = ingestaActual.getListaAlimentosPorFecha();
-                for (int j = 0; j < alimentosActuales.size(); j++) {
-                    listaASetear.add(alimentosActuales.get(i).toString());
+                for (Alimento alimento : alimentosActuales) {
+                    listaASetear.add(alimento.toString());
                 }
             }
             String[] arrayASetear = new String[listaASetear.size()];

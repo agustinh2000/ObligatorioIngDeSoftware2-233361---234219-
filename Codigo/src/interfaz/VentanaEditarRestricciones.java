@@ -221,20 +221,10 @@ public class VentanaEditarRestricciones extends javax.swing.JDialog {
         listaRestricciones[1] = Sistema.Restricciones.Diabetes;
         listaRestricciones[2] = Sistema.Restricciones.IntoleranciaLactosa;
         listaRestricciones[3] = Sistema.Restricciones.Veganismo;
-        for (int i = 0; i < listaRestricciones.length; i++) {
-            if (i == 0) {
-                this.rdBtnCeliaco.setText("Celiaquía");
-            }
-            if (i == 1) {
-                this.rdBtnDiabetes.setText("Diabetes");
-            }
-            if (i == 2) {
-                this.rdBtnIntoleranteLactosa.setText("Intolerante a la lactosa");
-            }
-            if (i == 3) {
-                this.rdBtnVegano.setText("Veganismo");
-            }
-        }
+        this.rdBtnCeliaco.setText("Celiaquía");
+        this.rdBtnDiabetes.setText("Diabetes");
+        this.rdBtnIntoleranteLactosa.setText("Intolerante a la lactosa");
+        this.rdBtnVegano.setText("Veganismo");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPreferencias;

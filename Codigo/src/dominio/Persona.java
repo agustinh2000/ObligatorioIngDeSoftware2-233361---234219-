@@ -51,11 +51,11 @@ public abstract class Persona implements Serializable {
         return this.fotoDePerfil;
     }
 
-    public void setFotoDePerfil(ImageIcon foto) {
-        if (foto == null) {
+    public void setFotoDePerfil(ImageIcon unaFotoDePerfil) {
+        if (unaFotoDePerfil == null) {
             this.fotoDePerfil = new ImageIcon(getClass().getResource("/Imagenes/fotoDeUsuarioStandard.png"));
         } else {
-            this.fotoDePerfil = foto;
+            this.fotoDePerfil = unaFotoDePerfil;
         }
     }
 

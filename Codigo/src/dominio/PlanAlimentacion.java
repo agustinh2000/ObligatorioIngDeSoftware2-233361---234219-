@@ -12,15 +12,15 @@ public final class PlanAlimentacion implements Serializable {
     private boolean fueAtendidoElPlan;
     private String[][] planDiaADia;
 
-    public PlanAlimentacion(String np,
-            Usuario usu,
-            Profesional pro,
+    public PlanAlimentacion(String unNombreDePlan,
+            Usuario unUsuario,
+            Profesional unProfesional,
             boolean fueAtendido,
             String[][] unPlan) {
 
-        setNombreDelPlan(np);
-        setUsuario(usu);
-        setProfesional(pro);
+        setNombreDelPlan(unNombreDePlan);
+        setUsuario(unUsuario);
+        setProfesional(unProfesional);
         setFueAtendidoElPlan(fueAtendido);
         setPlanDiaADia(unPlan);
     }

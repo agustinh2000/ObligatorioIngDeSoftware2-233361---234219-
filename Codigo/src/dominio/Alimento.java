@@ -67,11 +67,11 @@ public final class Alimento implements Serializable {
         return this.fotoDelAlimento;
     }
 
-    public void setFotoDelAlimento(ImageIcon foto) {
-        if (foto == null) {
+    public void setFotoDelAlimento(ImageIcon fotoAlimento) {
+        if (fotoAlimento == null) {
             this.fotoDelAlimento = new ImageIcon(getClass().getResource("/Imagenes/fotoDelAlimentoEstandar.png"));
         } else {
-            this.fotoDelAlimento = foto;
+            this.fotoDelAlimento = fotoAlimento;
         }
     }
 

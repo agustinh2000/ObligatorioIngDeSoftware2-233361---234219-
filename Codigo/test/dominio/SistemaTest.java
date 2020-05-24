@@ -133,7 +133,7 @@ public class SistemaTest {
     public void testUsuarioDevolverPorNombreNull() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
         Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null, null, null);
-        assertEquals(sistemaATestear.getProfesionalPorNombre(null), usuarioEsperado);
+        assertEquals(sistemaATestear.getUsuarioPorNombre(null), usuarioEsperado);
     }
 
     @Test
@@ -162,7 +162,7 @@ public class SistemaTest {
     public void testDevolverUsuarioPorNombreDatosVacios() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
         Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null, null, null);
-        assertEquals(sistemaATestear.getProfesionalPorNombre(""), usuarioEsperado);
+        assertEquals(sistemaATestear.getUsuarioPorNombre(""), usuarioEsperado);
     }
 
     @Test
@@ -171,7 +171,7 @@ public class SistemaTest {
         Usuario usuario = new Usuario("Martin", null, null, null, null, null, null, null);
         sistemaATestear.agregarUsuarioALaLista(usuario);
         Usuario usuario2 = new Usuario(null, null, null, null, null, null, null, null);
-        assertEquals(sistemaATestear.getProfesionalPorNombre("Martin"), usuario2);
+        assertEquals(sistemaATestear.getUsuarioPorNombre("Martin"), usuario);
     }
 
     @Test
@@ -205,7 +205,7 @@ public class SistemaTest {
         Usuario usuario1 = new Usuario("Martin", "Gómez", null, null, null, null, null, null);
         Profesional profesional1 = new Profesional("Sandra", "Pazos", null, null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaPlanesPendientes(profesional1).length, 1);
+        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(profesional1).length, 1);
     }
 
     @Test
@@ -215,7 +215,7 @@ public class SistemaTest {
         Profesional profesional1 = new Profesional("Sandra", "Pazos", null, null, null, null, null);
         Profesional profesional2 = new Profesional("Joaquin", "Bardanca", null, null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaPlanesPendientes(profesional2).length, 0);
+        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(profesional2).length, 0);
     }
 
     @Test
@@ -224,7 +224,7 @@ public class SistemaTest {
         Usuario usuario1 = new Usuario("Martin", "Gómez", null, null, null, null, null, null);
         Profesional profesional1 = new Profesional("Sandra", "Pazos", null, null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaPlanesPendientes(null).length, 0);
+        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(null).length, 0);
     }
 
     @Test

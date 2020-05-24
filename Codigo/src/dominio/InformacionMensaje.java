@@ -8,29 +8,29 @@ public final class InformacionMensaje implements Serializable {
     private String destinatario;
     private String remitente;
 
-    public InformacionMensaje(String elRemitente, String dst, String elMensaje) {
-        setRemitente(elRemitente);
-        setDestinatario(dst);
-        setMensaje(elMensaje);
+    public InformacionMensaje(String unRemitente, String unDestinatario, String unMensaje) {
+        setRemitente(unRemitente);
+        setDestinatario(unDestinatario);
+        setMensaje(unMensaje);
     }
 
     public String getMensaje() {
         return mensaje;
     }
 
-    public void setMensaje(String elMensaje) {
-        mensaje = elMensaje;
+    public void setMensaje(String unMensaje) {
+        mensaje = unMensaje;
     }
 
     public String getDestinatario() {
         return destinatario;
     }
 
-    public void setDestinatario(String elDestinatario) {
-        if (elDestinatario == null || elDestinatario.isEmpty()) {
+    public void setDestinatario(String unDestinatario) {
+        if (unDestinatario == null || unDestinatario.isEmpty()) {
             this.destinatario = "Destinatario no ingresado";
         } else {
-            this.destinatario = elDestinatario;
+            this.destinatario = unDestinatario;
         }
 
     }
@@ -39,11 +39,11 @@ public final class InformacionMensaje implements Serializable {
         return remitente;
     }
 
-    public void setRemitente(String elRemitente) {
-        if (elRemitente == null || elRemitente.isEmpty()) {
+    public void setRemitente(String unRemitente) {
+        if (unRemitente == null || unRemitente.isEmpty()) {
             this.remitente = "Remitente no ingresado";
         } else {
-            this.remitente = elRemitente;
+            this.remitente = unRemitente;
         }
     }
 

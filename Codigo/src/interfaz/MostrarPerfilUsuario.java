@@ -26,8 +26,8 @@ public class MostrarPerfilUsuario extends javax.swing.JDialog {
             for (int i = 0; i < ingeridos.size(); i++) {
                 Ingesta ingestaActual = ingeridos.get(i);
                 ArrayList <Alimento> alimentosActuales = ingestaActual.getListaAlimentosPorFecha();
-                for (int j = 0; j < alimentosActuales.size(); j++) {
-                    listaASetear.add(alimentosActuales.get(i).toString());
+                for (Alimento alimento : alimentosActuales) {
+                    listaASetear.add(alimento.toString());
                 }
             }
             String [] arrayASetear = new String [listaASetear.size()]; 

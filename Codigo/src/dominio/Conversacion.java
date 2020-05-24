@@ -11,10 +11,10 @@ public final class Conversacion implements Serializable {
     private Persona profesional;
     private boolean fueAtendidaConsulta;
 
-    public Conversacion(Persona user, Persona pr, ArrayList<InformacionMensaje> lista) {
-        setUsuario(user);
-        setProfesional(pr);
-        setListaMensajes(lista);
+    public Conversacion(Persona unUsuario, Persona unaPersona, ArrayList<InformacionMensaje> listaDeMensajes) {
+        setUsuario(unUsuario);
+        setProfesional(unaPersona);
+        setListaMensajes(listaDeMensajes);
         setFueAtendidaConsulta(false);
     }
 
@@ -30,11 +30,11 @@ public final class Conversacion implements Serializable {
         return this.listaMensajes;
     }
 
-    public void setListaMensajes(ArrayList<InformacionMensaje> lista) {
-        if (lista == null || lista.isEmpty()) {
+    public void setListaMensajes(ArrayList<InformacionMensaje> unaListaDeMensajes) {
+        if (unaListaDeMensajes == null || unaListaDeMensajes.isEmpty()) {
             this.listaMensajes = new ArrayList<>();
         } else {
-            this.listaMensajes = lista;
+            this.listaMensajes = unaListaDeMensajes;
         }
     }
 
