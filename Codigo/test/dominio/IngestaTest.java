@@ -1,15 +1,11 @@
 package dominio;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class IngestaTest {
 
-    public IngestaTest() {
-
-    }
     @Test
     public void testGetsSetsDatosValidosListaAlimentos() {
         String fechaDeIngesta = "11/02/17";

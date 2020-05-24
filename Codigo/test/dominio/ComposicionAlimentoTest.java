@@ -5,10 +5,6 @@ import static org.junit.Assert.*;
 
 public class ComposicionAlimentoTest {
 
-    public ComposicionAlimentoTest() {
-    }
-
-
     @Test
     public void testGetsSetsNull() {
         ComposicionAlimento composicion = new ComposicionAlimento(null, 0);

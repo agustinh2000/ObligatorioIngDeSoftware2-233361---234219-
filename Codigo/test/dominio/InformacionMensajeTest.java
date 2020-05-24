@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 
 public class InformacionMensajeTest {
 
-    public InformacionMensajeTest() {
-    }
-
     @Test
     public void testGetsSetsNullRemitente() {
         String remitente = null;

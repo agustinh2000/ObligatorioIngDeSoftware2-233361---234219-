@@ -1943,9 +1943,6 @@
                       <Image iconType="3" name="/Imagenes/iconoCampoIncorrecto.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lblValidarProfesionalPlanFocusGained"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDatosIncorrectos">
                   <Properties>

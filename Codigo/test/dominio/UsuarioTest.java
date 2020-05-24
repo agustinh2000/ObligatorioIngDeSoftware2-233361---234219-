@@ -1,16 +1,9 @@
 package dominio;
 
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
-import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UsuarioTest {
-
-    public UsuarioTest() {
-    }
-
     @Test
     public void testGetsSetsVaciosListaAlimentos() {
         Usuario usuario = new Usuario("", "", "", null, "", null, null, null);

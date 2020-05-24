@@ -6,10 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PlanAlimentacionTest {
-
-    public PlanAlimentacionTest() {
-    }
-
     @Test
     public void testGetsSetsNullToString() {
         String nombrePlan = null;
