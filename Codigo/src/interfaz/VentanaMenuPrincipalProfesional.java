@@ -21,6 +21,15 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private String diaDeLaSemanaAnterior;
     private String diaDeLaSemanaActual;
     private final String[][] planAlimentacion;
+    
+    static final String LUNES = "Lunes";
+    
+    static final String DESAYUNO = "Desayuno";
+    
+    static final String ALMUERZO = "Almuerzo";
+    
+    static final String SELECCIONE = "Seleccione...";
+    
 
     public VentanaMenuPrincipalProfesional(Sistema unSistema) {
         initComponents();
@@ -29,9 +38,9 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         ocultarPaneles();
         this.panelVacio.setVisible(true);
         this.nutrientesSeleccionados = new boolean[7];
-        this.diaDeLaSemanaAnterior = "Lunes";
+        this.diaDeLaSemanaAnterior = LUNES;
         this.planAlimentacion = new String[7][3];
-        this.diaDeLaSemanaActual = "Lunes";
+        this.diaDeLaSemanaActual = LUNES;
         this.fotoDeAlimentoActual = new ImageIcon(getClass().getResource("/Imagenes/fotoDelAlimentoEstandar.png"));
         lblValidarTipoAlimento.setVisible(false);
         lblValidarNombre.setVisible(false);
@@ -686,35 +695,10 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 listaDiasDeLaSemanaItemStateChanged(evt);
             }
         });
-        listaDiasDeLaSemana.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                listaDiasDeLaSemanaFocusLost(evt);
-            }
-        });
-        listaDiasDeLaSemana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaDiasDeLaSemanaActionPerformed(evt);
-            }
-        });
         panelElaborarPlan.add(listaDiasDeLaSemana);
         listaDiasDeLaSemana.setBounds(50, 170, 200, 40);
 
         listaComidasPlan.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        listaComidasPlan.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                listaComidasPlanItemStateChanged(evt);
-            }
-        });
-        listaComidasPlan.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                listaComidasPlanFocusLost(evt);
-            }
-        });
-        listaComidasPlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaComidasPlanActionPerformed(evt);
-            }
-        });
         panelElaborarPlan.add(listaComidasPlan);
         listaComidasPlan.setBounds(50, 290, 200, 40);
 
@@ -749,11 +733,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         txtNombrePlan.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNombrePlanFocusLost(evt);
-            }
-        });
-        txtNombrePlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombrePlanActionPerformed(evt);
             }
         });
         panelElaborarPlan.add(txtNombrePlan);
@@ -1224,11 +1203,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 txtNombreFocusLost(evt);
             }
         });
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
 
         lblTipoAlimento.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         lblTipoAlimento.setForeground(new java.awt.Color(255, 255, 255));
@@ -1439,22 +1413,9 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
         lblValidarNombre.setForeground(new java.awt.Color(255, 255, 255));
         lblValidarNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
-        lblValidarNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                lblValidarNombreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                lblValidarNombreFocusLost(evt);
-            }
-        });
 
         lblValidarTipoAlimento.setForeground(new java.awt.Color(255, 255, 255));
         lblValidarTipoAlimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
-        lblValidarTipoAlimento.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                lblValidarTipoAlimentoFocusGained(evt);
-            }
-        });
 
         lblDatosIncorrectos.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         lblDatosIncorrectos.setForeground(new java.awt.Color(255, 153, 153));
@@ -1811,10 +1772,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         this.panelIngresarAlimentoAlSistema.setVisible(true);
     }//GEN-LAST:event_btnIngresarAlimentoActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void btnIngresarFotoAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarFotoAlimentoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png");
@@ -1829,7 +1786,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void listaTipoAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaTipoAlimentosActionPerformed
         String tipoAlimentoIngresado = (String) this.listaTipoAlimentos.getSelectedItem();
-        if (tipoAlimentoIngresado.equals("Seleccione...")) {
+        if (tipoAlimentoIngresado.equals(SELECCIONE)) {
             this.lblValidarTipoAlimento.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarTipoAlimento.setVisible(true);
             this.lblTipoAlimentoVacio.setVisible(true);
@@ -1844,7 +1801,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         String nombre = this.txtNombre.getText();
         String tipoAlimento = (String) this.listaTipoAlimentos.getSelectedItem();
         ArrayList<ComposicionAlimento> listaNutrientesConProporcion = nutrientesSeleccionados();
-        if (nombre.equals("") || tipoAlimento.equals("Seleccione...")) {
+        if (nombre.equals("") || tipoAlimento.equals(SELECCIONE)) {
             this.lblDatosIncorrectos.setVisible(true);
             this.lblDatosIncorrectos2.setVisible(true);
             mostrarErrores(nombre, tipoAlimento);
@@ -1970,21 +1927,9 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtNombreFocusLost
 
-    private void lblValidarNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarNombreFocusGained
-
-    }//GEN-LAST:event_lblValidarNombreFocusGained
-
-    private void lblValidarTipoAlimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarTipoAlimentoFocusGained
-
-    }//GEN-LAST:event_lblValidarTipoAlimentoFocusGained
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         sistema.guardarDatosSistema();
     }//GEN-LAST:event_formWindowClosing
-
-    private void lblValidarNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarNombreFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblValidarNombreFocusLost
 
     private void listaPlanesPendientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPlanesPendientesValueChanged
         this.usuarioSeleccionado = this.listaPlanesPendientes.getSelectedValue();
@@ -2023,7 +1968,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         cargarListaDiasDeLaSemana();
         cargarListaIngestasPorDia();
         this.listaAlimentosEnSistema.setListData(sistema.getListaAlimentos().toArray());
-        this.lblNombreDelDia.setText("Lunes");
+        this.lblNombreDelDia.setText(LUNES);
         this.panelElaborarPlan.setVisible(true);
         this.listaAlimentosEnSistema.setSelectedIndex(0);
     }//GEN-LAST:event_btnElaborarPlanActionPerformed
@@ -2034,7 +1979,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         this.diaDeLaSemanaActual = diaSeleccionado;
         this.lblNombreDelDia.setText(this.diaDeLaSemanaActual);
         switch (this.diaDeLaSemanaActual) {
-            case "Lunes":
+            case LUNES:
                 this.textDesayuno.setText(this.planAlimentacion[0][0]);
                 this.textCena.setText(this.planAlimentacion[0][2]);
                 this.textAlmuerzo.setText(this.planAlimentacion[0][1]);
@@ -2074,26 +2019,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_listaDiasDeLaSemanaItemStateChanged
 
-    private void listaDiasDeLaSemanaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaDiasDeLaSemanaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaDiasDeLaSemanaFocusLost
-
-    private void listaDiasDeLaSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDiasDeLaSemanaActionPerformed
-
-    }//GEN-LAST:event_listaDiasDeLaSemanaActionPerformed
-
-    private void listaComidasPlanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaComidasPlanItemStateChanged
-
-    }//GEN-LAST:event_listaComidasPlanItemStateChanged
-
-    private void listaComidasPlanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaComidasPlanFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaComidasPlanFocusLost
-
-    private void listaComidasPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComidasPlanActionPerformed
-
-    }//GEN-LAST:event_listaComidasPlanActionPerformed
-
     private void listaAlimentosEnSistemaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAlimentosEnSistemaValueChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_listaAlimentosEnSistemaValueChanged
@@ -2111,10 +2036,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtNombrePlanFocusLost
 
-    private void txtNombrePlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePlanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombrePlanActionPerformed
-
     private void btnAgregarAlPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlPlanActionPerformed
         String diaSeleccionado = (String) this.listaDiasDeLaSemana.getSelectedItem();
         this.diaDeLaSemanaAnterior = diaSeleccionado;
@@ -2122,7 +2043,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         String alimentoAgregado = this.listaAlimentosEnSistema.getSelectedValue().toString();
         String textoAnterior = "";
         switch (ingestaSeleccionada) {
-            case "Desayuno":
+            case DESAYUNO:
                 textoAnterior = this.textDesayuno.getText();
                 if (textoAnterior.equals("")) {
                     textoAnterior = alimentoAgregado;
@@ -2131,7 +2052,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 }
                 this.textDesayuno.setText(textoAnterior);
                 break;
-            case "Almuerzo":
+            case ALMUERZO:
                 textoAnterior = this.textAlmuerzo.getText();
                 if (textoAnterior.equals("")) {
                     textoAnterior = alimentoAgregado;
@@ -2162,7 +2083,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         String remplazado = "";
         CharSequence secuencia = "\n";
         switch (ingestaSeleccionada) {
-            case "Desayuno":
+            case DESAYUNO:
                 aRemplazar = this.textDesayuno.getText();
                 if (aRemplazar.contains(secuencia)) {
                     alimentoEliminado += "\n";
@@ -2170,7 +2091,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 remplazado = aRemplazar.replaceFirst(alimentoEliminado, "");
                 this.textDesayuno.setText(remplazado);
                 break;
-            case "Almuerzo":
+            case ALMUERZO:
                 aRemplazar = this.textAlmuerzo.getText();
                 if (aRemplazar.contains(secuencia)) {
                     alimentoEliminado += "\n";
@@ -2213,75 +2134,41 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEliminarDelPlan1ActionPerformed
 
     private void txtHidratosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHidratosKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
+        verifyFormat(evt);
     }//GEN-LAST:event_txtHidratosKeyTyped
 
-    private void txtProteínasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProteínasKeyTyped
-        char ingresado = evt.getKeyChar();
+    private void verifyFormat(java.awt.event.KeyEvent evt){
+       char ingresado = evt.getKeyChar();
         if (ingresado < '0') {
             evt.consume();
         }
         if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
             evt.consume();
-        }
+        } 
+    }
+    private void txtProteínasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProteínasKeyTyped
+        verifyFormat(evt);
 
     }//GEN-LAST:event_txtProteínasKeyTyped
 
     private void txtVitaminasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVitaminasKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
-
+        verifyFormat(evt);
     }//GEN-LAST:event_txtVitaminasKeyTyped
 
     private void txtGlucidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGlucidosKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
+        verifyFormat(evt);
     }//GEN-LAST:event_txtGlucidosKeyTyped
 
     private void txtMineralesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMineralesKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
+        verifyFormat(evt);
     }//GEN-LAST:event_txtMineralesKeyTyped
 
     private void txtFibraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFibraKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
+        verifyFormat(evt);
     }//GEN-LAST:event_txtFibraKeyTyped
 
     private void txtLipidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLipidosKeyTyped
-        char ingresado = evt.getKeyChar();
-        if (ingresado < '0') {
-            evt.consume();
-        }
-        if (ingresado >= 'a' && ingresado <= 'z' || ingresado >= 'A' && ingresado <= 'Z') {
-            evt.consume();
-        }
+        verifyFormat(evt);
     }//GEN-LAST:event_txtLipidosKeyTyped
 
     private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
@@ -2584,7 +2471,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         this.textAlmuerzo.setText("");
         this.textCena.setText("");
         switch (this.diaDeLaSemanaAnterior) {
-            case "Lunes":
+            case LUNES:
                 this.planAlimentacion[0][0] = itemsDesayuno;
                 this.planAlimentacion[0][1] = itemsAlmuerzo;
                 this.planAlimentacion[0][2] = itemsCena;
@@ -2630,7 +2517,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             this.lblValidarNombre.setVisible(true);
             this.lblNombreVacio.setVisible(true);
         }
-        if (tipoAlimento.equals("Seleccione...")) {
+        if (tipoAlimento.equals(SELECCIONE)) {
             this.lblValidarTipoAlimento.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarTipoAlimento.setVisible(true);
             this.lblTipoAlimentoVacio.setVisible(true);

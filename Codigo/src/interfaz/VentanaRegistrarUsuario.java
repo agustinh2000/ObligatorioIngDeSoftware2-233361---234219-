@@ -15,6 +15,8 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
     private Sistema sistema;
     private ImageIcon fotoDePerfilActual;
     private boolean primeraVez;
+    
+    static final String SELECCIONE = "Seleccione...";
 
     public VentanaRegistrarUsuario(Sistema unSistema) {
         initComponents();
@@ -440,7 +442,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
         ArrayList<Ingesta> alimentosIngeridosPorFecha = new ArrayList<>();
         String nacionalidad = (String) this.listaNacionalidad.getSelectedItem();
         String fechaNacimiento = this.dateChooserFechaNacimiento.getText();
-        if (nombre.equals("") || apellido.equals("") || nacionalidad.equals("Seleccione...")) {
+        if (nombre.equals("") || apellido.equals("") || nacionalidad.equals(SELECCIONE)) {
             this.lblDatosIncorrectos.setVisible(true);
             mostrarErrores(nombre, apellido, nacionalidad);
         } else {
@@ -504,7 +506,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
     private void listaNacionalidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaNacionalidadItemStateChanged
         if (!this.primeraVez) {
             String nacionalidadIngresada = (String) listaNacionalidad.getSelectedItem();
-            if (nacionalidadIngresada.equals("Seleccione...")) {
+            if (nacionalidadIngresada.equals(SELECCIONE)) {
                 this.lblValidarNacionalidad.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
                 this.lblValidarNacionalidad.setVisible(true);
                 this.lblPaisVacio.setVisible(true);
@@ -650,7 +652,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         ArrayList<String> nacionalidaesEnSistema = sistema.devolverListaPaises();
         this.listaNacionalidad.setModel(modelo);
-        this.listaNacionalidad.addItem("Seleccione...");
+        this.listaNacionalidad.addItem(SELECCIONE);
         for (int i = 0; i < nacionalidaesEnSistema.size(); i++) {
             this.listaNacionalidad.addItem(nacionalidaesEnSistema.get(i));
         }
@@ -667,7 +669,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
             this.lblValidarApellido.setVisible(true);
             this.lblApellidoVacio.setVisible(true);
         }
-        if (nacionalidad.equals("Seleccione...")) {
+        if (nacionalidad.equals(SELECCIONE)) {
             this.lblValidarNacionalidad.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarNacionalidad.setVisible(true);
             this.lblPaisVacio.setVisible(true);

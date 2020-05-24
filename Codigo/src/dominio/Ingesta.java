@@ -18,11 +18,11 @@ public final class Ingesta implements Serializable {
         return this.fechaDeIngesta;
     }
 
-    public void setFechaDeIngesta(String unaFecha) {
-        if (unaFecha == null || unaFecha.isEmpty()) {
+    public void setFechaDeIngesta(String unaFechaDeIngesta) {
+        if (unaFechaDeIngesta == null || unaFechaDeIngesta.isEmpty()) {
             this.fechaDeIngesta = "Fecha de ingesta no registrada";
         } else {
-            this.fechaDeIngesta = unaFecha;
+            this.fechaDeIngesta = unaFechaDeIngesta;
         }
     }
 
@@ -53,10 +53,10 @@ public final class Ingesta implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null){
+        if (obj == null) {
             return false;
         }
-        if(this.getClass() != obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         Ingesta otraIngesta = (Ingesta) obj;
