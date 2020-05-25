@@ -58,6 +58,31 @@ public final class Usuario extends Persona {
     public ArrayList<String> getRestricciones() {
         return this.restricciones;
     }
+    
+    public Alimento alimentoMasConsumido(){
+        Alimento alimentoRetorno = new Alimento("", "", null, null);
+        ArrayList<Alimento> listaAuxiliar = new ArrayList<>();
+        for (Ingesta ingesta : this.alimentosIngeridos){
+            for (Alimento alimento : ingesta.getListaAlimentosPorFecha()){
+               listaAuxiliar.add(alimento);
+            }
+        }
+        int cont = 0;
+        int max = -1;
+        for (Alimento a: listaAuxiliar){
+            cont = 0;
+            for(Alimento a2: listaAuxiliar){
+                if (a.equals(a2)){
+                    cont ++;
+                }
+            }
+            if(cont > max){
+                max = cont;
+                alimentoRetorno = a;
+            }
+        }
+        return alimentoRetorno;
+    } 
 
     public void setRestricciones(ArrayList<String> listaRestricciones) {
         if (listaRestricciones == null) {

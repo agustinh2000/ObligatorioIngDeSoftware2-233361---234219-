@@ -38,7 +38,19 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         this.primeraIngesta = true;
         Calendar fecha = new GregorianCalendar();
         this.fechaIngestaUsuario.setMaxDate(fecha);
+        cargarAlimentoMasConsumido();
         this.panelVacio.setVisible(true);
+
+    }
+
+    public void cargarAlimentoMasConsumido() {
+
+        String nombreUsuarioLoguedo = this.sistema.getPersonaLogueada().getNombreCompleto();
+        Usuario usuarioLogueado = this.sistema.getUsuarioPorNombre(nombreUsuarioLoguedo);
+        if (!usuarioLogueado.getAlimentosIngeridos().isEmpty()) {
+            lblMasConsumido.setText(usuarioLogueado.alimentoMasConsumido().toString());
+            lblMasConsumido.setVisible(true);
+        }
     }
 
     public Sistema getSistema() {
@@ -172,6 +184,8 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         btnVerPlanesExistentes = new javax.swing.JButton();
         panelVacio = new javax.swing.JPanel();
         btnAyuda = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lblMasConsumido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
@@ -1141,19 +1155,36 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("MAS CONSUMIDO");
+
+        lblMasConsumido.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout panelVacioLayout = new javax.swing.GroupLayout(panelVacio);
         panelVacio.setLayout(panelVacioLayout);
         panelVacioLayout.setHorizontalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(704, Short.MAX_VALUE)
-                .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
+                        .addContainerGap(704, Short.MAX_VALUE)
+                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVacioLayout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelVacioLayout.setVerticalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(708, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 633, Short.MAX_VALUE)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1490,6 +1521,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private datechooser.beans.DateChooserCombo fechaIngestaUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1529,6 +1561,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblFechaAlimentoIngerido;
     private javax.swing.JLabel lblFotoProfesional;
     private javax.swing.JLabel lblIngresarAlimentoIngerido;
+    private javax.swing.JLabel lblMasConsumido;
     private javax.swing.JLabel lblNoHayPlanes;
     private javax.swing.JLabel lblNoHayPlanes1;
     private javax.swing.JLabel lblNohayConsultas;
