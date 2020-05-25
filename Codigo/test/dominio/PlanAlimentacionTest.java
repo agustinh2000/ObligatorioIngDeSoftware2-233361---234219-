@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PlanAlimentacionTest {
+
     @Test
     public void testGetsSetsNullToString() {
         String nombrePlan = null;
@@ -227,4 +228,51 @@ public class PlanAlimentacionTest {
                 fueAtendido, planDiaADia);
         assertNotEquals(planATestear, planAComparar);
     }
+    
+    @Test
+    public void  testEqualsNull(){
+        String nombrePlan = "Plan 2 Dias DOWN";
+        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
+        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        boolean fueAtendido = true;
+        String[][] planDiaADia = new String[2][2];
+         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
+                fueAtendido, planDiaADia);
+         boolean resultadoEsperado = false;
+         assertEquals(planATestear.equals(null), resultadoEsperado);
+    }
+    
+     @Test
+    public void  testEqualsTipoDiferente(){
+        String nombrePlan = "Plan 2 Dias DOWN";
+        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
+        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        boolean fueAtendido = true;
+        String[][] planDiaADia = new String[2][2];
+         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
+                fueAtendido, planDiaADia);
+         boolean resultadoEsperado = false;
+         assertEquals(planATestear.equals(usuario), resultadoEsperado);
+    }
+    
+    @Test
+    public void testHashCode() {
+        String nombrePlan = "Plan 2 Dias DOWN";
+        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
+        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        boolean fueAtendido = true;
+        String[][] planDiaADia = new String[2][2];
+        planDiaADia[0][0] = "Manzana";
+        planDiaADia[0][1] = "Manzana";
+        planDiaADia[1][0] = "Manzana";
+        planDiaADia[1][1] = "Manzana";
+        PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
+                fueAtendido, planDiaADia);
+        PlanAlimentacion planATestear2 = new PlanAlimentacion(nombrePlan, usuario, profesional,
+                fueAtendido, planDiaADia);
+        assertEquals(planATestear.hashCode(), planATestear2.hashCode());
+    }
+    
+  
+    
 }

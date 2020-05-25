@@ -94,4 +94,24 @@ public class AlimentoTest {
         assertFalse(sonIguales);
     }
 
+    @Test
+    public void testEqualsNull() {
+        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        assertFalse(alimentoTest.equals(null));
+    }
+
+    @Test
+    public void testEqualsDiferenteTipo() {
+        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Usuario usuarioTest = new Usuario("Luis", "Diaz", "", null, null, null, null, null);
+        assertFalse(alimentoTest.equals(usuarioTest));
+    }
+
+    @Test
+    public void testHashCode() {
+        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Alimento alimentoTest2 = new Alimento("Papa", "", null, null);
+        assertFalse(alimentoTest.hashCode() == alimentoTest2.hashCode());
+    }
+
 }
