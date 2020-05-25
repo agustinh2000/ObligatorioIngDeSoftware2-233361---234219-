@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import dominio.PlanAlimentacion;
 
 import javax.swing.ImageIcon;
 
@@ -189,7 +188,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarUsuarioALaLista(Usuario usuarioARegistrar) {
         boolean fueAgregadoUsuario = false;
-        if ((usuarioARegistrar != null) && !getListaUsuarios().contains(usuarioARegistrar)) {
+        if (!getListaUsuarios().contains(usuarioARegistrar)) {
             getListaUsuarios().add(usuarioARegistrar);
             fueAgregadoUsuario = true;
         }
@@ -203,7 +202,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarProfesionalALaLista(Profesional profesionalARegistrar) {
         boolean fueAgregadoProfesional = false;
-        if ((profesionalARegistrar != null) && !getListaProfesionales().contains(profesionalARegistrar)) {
+        if (!getListaProfesionales().contains(profesionalARegistrar)) {
             getListaProfesionales().add(profesionalARegistrar);
             fueAgregadoProfesional = true;
         }
@@ -217,7 +216,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarAlimentoALaLista(Alimento alimentoAAgregar) {
         boolean fueAgregadoAlimento = false;
-        if (alimentoAAgregar != null && !getListaAlimentos().contains(alimentoAAgregar)) {
+        if (!getListaAlimentos().contains(alimentoAAgregar)) {
             getListaAlimentos().add(alimentoAAgregar);
             fueAgregadoAlimento = true;
         }
@@ -226,7 +225,6 @@ public final class Sistema implements Serializable {
 
     public boolean crearConversacion(Persona usuario, Persona profesional, String mensaje, boolean usuarioEsRemitente) {
         boolean fueAgregadaConversacion = false;
-        if (usuario != null && profesional != null && mensaje != null && !mensaje.isEmpty()) {
             InformacionMensaje info;
             if (usuarioEsRemitente) {
                 info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);
@@ -239,7 +237,6 @@ public final class Sistema implements Serializable {
                 Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);
                 fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);
             }
-        }
         return fueAgregadaConversacion;
     }
 
@@ -301,17 +298,15 @@ public final class Sistema implements Serializable {
 
     public boolean agregarMensajeConversacion(String remitente, String destinatario, String mensaje, boolean intercambioRemitente, boolean consultaRespondida) {
         boolean pudeAgregarMensaje = false;
-        if (remitente != null && !remitente.isEmpty() && !destinatario.isEmpty() && destinatario != null) {
-            for (int i = 0; getListaConversaciones() != null && i < getListaConversaciones().size(); i++) {
-                Conversacion conversacionActual = getListaConversaciones().get(i);
-                String nombreApellidoProfesional = conversacionActual.getProfesional().getNombreCompleto();
-                String nombreApellidoUsuario = conversacionActual.getUsuario().getNombreCompleto();
-                if (destinatario.equals(nombreApellidoProfesional) && remitente.equals(nombreApellidoUsuario)
-                        || destinatario.equals(nombreApellidoUsuario) && remitente.equals(nombreApellidoProfesional)) {
-                    conversacionActual.agregarMensaje(mensaje, intercambioRemitente);
-                    conversacionActual.setFueAtendidaConsulta(consultaRespondida);
-                    pudeAgregarMensaje = true;
-                }
+        for (int i = 0; i < getListaConversaciones().size(); i++) {
+            Conversacion conversacionActual = getListaConversaciones().get(i);
+            String nombreApellidoProfesional = conversacionActual.getProfesional().getNombreCompleto();
+            String nombreApellidoUsuario = conversacionActual.getUsuario().getNombreCompleto();
+            if (destinatario.equals(nombreApellidoProfesional) && remitente.equals(nombreApellidoUsuario)
+                    || destinatario.equals(nombreApellidoUsuario) && remitente.equals(nombreApellidoProfesional)) {
+                conversacionActual.agregarMensaje(mensaje, intercambioRemitente);
+                conversacionActual.setFueAtendidaConsulta(consultaRespondida);
+                pudeAgregarMensaje = true;
             }
         }
         return pudeAgregarMensaje;
@@ -407,15 +402,12 @@ public final class Sistema implements Serializable {
 
     public boolean agregarPlanSolicitado(Usuario usuario, Profesional profesional) {
         boolean agreguePlan = false;
-        if (usuario != null && profesional != null) {
             PlanAlimentacion planNuevo = new PlanAlimentacion("", usuario, profesional, false, (String[][]) null);
             if (!getListaPlanesAlimentacion().contains(planNuevo)) {
                 this.getListaPlanesAlimentacion().add(planNuevo);
                 agreguePlan = true;
             }
-        }
         return agreguePlan;
-
     }
 
     public boolean atenderSolicitudDelPlan(String[][] planAlimentacion,
@@ -438,8 +430,8 @@ public final class Sistema implements Serializable {
 
     public String[] planesAtendidosDelUsuario(Usuario usuario) {
         ArrayList<String> listaAuxiliar = new ArrayList<>();
-        for(PlanAlimentacion plan : this.listaPlanesAlimentacion){
-            if(plan.getUsuario().equals(usuario) && plan.getFueAtendidoElPlan()){
+        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {
+            if (plan.getUsuario().equals(usuario) && plan.getFueAtendidoElPlan()) {
                 listaAuxiliar.add(plan.getNombreDelPlan());
             }
         }
@@ -448,11 +440,9 @@ public final class Sistema implements Serializable {
 
     public PlanAlimentacion devolverPlanDadoNombre(String nombreDelPlan) {
         PlanAlimentacion planRetorno = new PlanAlimentacion(null, null, null, false, null);
-        if (nombreDelPlan != null) {
-            for (PlanAlimentacion plan : this.listaPlanesAlimentacion){
-                if(plan.getNombreDelPlan().equals(nombreDelPlan)){
-                    planRetorno = plan;
-                }
+        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {
+            if (plan.getNombreDelPlan().equals(nombreDelPlan)) {
+                planRetorno = plan;
             }
         }
         return planRetorno;
@@ -468,16 +458,14 @@ public final class Sistema implements Serializable {
 
     public String[] getListaUsuariosConPlanesPendientes(Profesional profesional) {
         String[] resultadoPlanesPendientes = new String[0];
-        if (profesional != null) {
-            ArrayList<String> planesPendientes = new ArrayList<>();
-            for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {
-                if (plan.getProfesional().equals(profesional) && !plan.getFueAtendidoElPlan()) {
-                    String nombreUsuario = plan.getUsuario().getNombreCompleto();
-                    planesPendientes.add(nombreUsuario);
-                }
+        ArrayList<String> planesPendientes = new ArrayList<>();
+        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {
+            if (plan.getProfesional().equals(profesional) && !plan.getFueAtendidoElPlan()) {
+                String nombreUsuario = plan.getUsuario().getNombreCompleto();
+                planesPendientes.add(nombreUsuario);
             }
-            resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);
         }
+        resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);
         return resultadoPlanesPendientes;
     }
 }

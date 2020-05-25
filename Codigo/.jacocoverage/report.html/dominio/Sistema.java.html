@@ -189,7 +189,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarUsuarioALaLista(Usuario usuarioARegistrar) {
 <span class="fc" id="L191">        boolean fueAgregadoUsuario = false;</span>
-<span class="pc bpc" id="L192" title="2 of 4 branches missed.">        if ((usuarioARegistrar != null) &amp;&amp; !getListaUsuarios().contains(usuarioARegistrar)) {</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">        if (!getListaUsuarios().contains(usuarioARegistrar)) {</span>
 <span class="fc" id="L193">            getListaUsuarios().add(usuarioARegistrar);</span>
 <span class="fc" id="L194">            fueAgregadoUsuario = true;</span>
         }
@@ -203,7 +203,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarProfesionalALaLista(Profesional profesionalARegistrar) {
 <span class="fc" id="L205">        boolean fueAgregadoProfesional = false;</span>
-<span class="pc bpc" id="L206" title="1 of 4 branches missed.">        if ((profesionalARegistrar != null) &amp;&amp; !getListaProfesionales().contains(profesionalARegistrar)) {</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        if (!getListaProfesionales().contains(profesionalARegistrar)) {</span>
 <span class="fc" id="L207">            getListaProfesionales().add(profesionalARegistrar);</span>
 <span class="fc" id="L208">            fueAgregadoProfesional = true;</span>
         }
@@ -217,7 +217,7 @@ public final class Sistema implements Serializable {
 
     public boolean agregarAlimentoALaLista(Alimento alimentoAAgregar) {
 <span class="fc" id="L219">        boolean fueAgregadoAlimento = false;</span>
-<span class="pc bpc" id="L220" title="1 of 4 branches missed.">        if (alimentoAAgregar != null &amp;&amp; !getListaAlimentos().contains(alimentoAAgregar)) {</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">        if (!getListaAlimentos().contains(alimentoAAgregar)) {</span>
 <span class="fc" id="L221">            getListaAlimentos().add(alimentoAAgregar);</span>
 <span class="fc" id="L222">            fueAgregadoAlimento = true;</span>
         }
@@ -226,259 +226,248 @@ public final class Sistema implements Serializable {
 
     public boolean crearConversacion(Persona usuario, Persona profesional, String mensaje, boolean usuarioEsRemitente) {
 <span class="fc" id="L228">        boolean fueAgregadaConversacion = false;</span>
-<span class="pc bpc" id="L229" title="3 of 8 branches missed.">        if (usuario != null &amp;&amp; profesional != null &amp;&amp; mensaje != null &amp;&amp; !mensaje.isEmpty()) {</span>
             InformacionMensaje info;
-<span class="pc bpc" id="L231" title="1 of 2 branches missed.">            if (usuarioEsRemitente) {</span>
-<span class="fc" id="L232">                info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">            if (usuarioEsRemitente) {</span>
+<span class="fc" id="L231">                info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);</span>
             } else {
-<span class="nc" id="L234">                info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);</span>
+<span class="fc" id="L233">                info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);</span>
             }
-<span class="pc bpc" id="L236" title="3 of 4 branches missed.">            if (listaUsuarios.contains((Usuario) usuario) &amp;&amp; listaProfesionales.contains((Profesional) profesional)) {</span>
-<span class="nc" id="L237">                ArrayList&lt;InformacionMensaje&gt; listaMensajes = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L238">                listaMensajes.add(info);</span>
-<span class="nc" id="L239">                Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);</span>
-<span class="nc" id="L240">                fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);</span>
+<span class="pc bpc" id="L235" title="3 of 4 branches missed.">            if (listaUsuarios.contains((Usuario) usuario) &amp;&amp; listaProfesionales.contains((Profesional) profesional)) {</span>
+<span class="nc" id="L236">                ArrayList&lt;InformacionMensaje&gt; listaMensajes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L237">                listaMensajes.add(info);</span>
+<span class="nc" id="L238">                Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);</span>
+<span class="nc" id="L239">                fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);</span>
             }
-        }
-<span class="fc" id="L243">        return fueAgregadaConversacion;</span>
+<span class="fc" id="L241">        return fueAgregadaConversacion;</span>
     }
 
     private boolean agregarConversacionALaLista(Conversacion nuevaConversacion) {
-<span class="nc" id="L247">        boolean fueAgregadaConversacion = false;</span>
-<span class="nc bnc" id="L248" title="All 2 branches missed.">        if (!getListaConversaciones().contains(nuevaConversacion)) {</span>
-<span class="nc" id="L249">            getListaConversaciones().add(nuevaConversacion);</span>
-<span class="nc" id="L250">            fueAgregadaConversacion = true;</span>
+<span class="nc" id="L245">        boolean fueAgregadaConversacion = false;</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">        if (!getListaConversaciones().contains(nuevaConversacion)) {</span>
+<span class="nc" id="L247">            getListaConversaciones().add(nuevaConversacion);</span>
+<span class="nc" id="L248">            fueAgregadaConversacion = true;</span>
         }
-<span class="nc" id="L252">        return fueAgregadaConversacion;</span>
+<span class="nc" id="L250">        return fueAgregadaConversacion;</span>
     }
 
     public String[] getListaNombresProfesionalesConversaciones(String nombreUsuarioConversacion) {
-<span class="fc" id="L256">        String[] nombresProfesionales = new String[getListaConversaciones().size()];</span>
-<span class="fc" id="L257">        ArrayList&lt;String&gt; nombresIngresados = new ArrayList&lt;&gt;();</span>
-<span class="pc bpc" id="L258" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
-<span class="nc" id="L259">            String nombreCompleto = getListaConversaciones().get(i).getProfesional().getNombreCompleto();</span>
-<span class="nc" id="L260">            String nombreUsuarioCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();</span>
-<span class="nc bnc" id="L261" title="All 4 branches missed.">            if (!nombresIngresados.contains(nombreCompleto) &amp;&amp; nombreUsuarioCompleto.equals(nombreUsuarioConversacion)) {</span>
-<span class="nc" id="L262">                nombresProfesionales[i] = nombreCompleto;</span>
-<span class="nc" id="L263">                nombresIngresados.add(nombreCompleto);</span>
+<span class="fc" id="L254">        String[] nombresProfesionales = new String[getListaConversaciones().size()];</span>
+<span class="fc" id="L255">        ArrayList&lt;String&gt; nombresIngresados = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L256" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
+<span class="nc" id="L257">            String nombreCompleto = getListaConversaciones().get(i).getProfesional().getNombreCompleto();</span>
+<span class="nc" id="L258">            String nombreUsuarioCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();</span>
+<span class="nc bnc" id="L259" title="All 4 branches missed.">            if (!nombresIngresados.contains(nombreCompleto) &amp;&amp; nombreUsuarioCompleto.equals(nombreUsuarioConversacion)) {</span>
+<span class="nc" id="L260">                nombresProfesionales[i] = nombreCompleto;</span>
+<span class="nc" id="L261">                nombresIngresados.add(nombreCompleto);</span>
             }
         }
-<span class="fc" id="L266">        return nombresProfesionales;</span>
+<span class="fc" id="L264">        return nombresProfesionales;</span>
     }
 
     public String[] getListaNombresUsuariosConversacionesPendientes(String profesional) {
-<span class="fc" id="L270">        ArrayList&lt;String&gt; nombresIngresados = new ArrayList&lt;&gt;();</span>
-<span class="pc bpc" id="L271" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
-<span class="nc" id="L272">            String nombreCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();</span>
-<span class="nc" id="L273">            String nombreProfesional = getListaConversaciones().get(i).getProfesional().getNombreCompleto();</span>
-<span class="nc bnc" id="L274" title="All 2 branches missed.">            if (!nombresIngresados.contains(nombreCompleto)) {</span>
-<span class="nc bnc" id="L275" title="All 2 branches missed.">                if (profesional.equals(nombreProfesional)) {</span>
-<span class="nc bnc" id="L276" title="All 2 branches missed.">                    if (!getListaConversaciones().get(i).getFueAtendidaConsulta()) {</span>
-<span class="nc" id="L277">                        nombresIngresados.add(nombreCompleto);</span>
+<span class="fc" id="L268">        ArrayList&lt;String&gt; nombresIngresados = new ArrayList&lt;&gt;();</span>
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
+<span class="nc" id="L270">            String nombreCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();</span>
+<span class="nc" id="L271">            String nombreProfesional = getListaConversaciones().get(i).getProfesional().getNombreCompleto();</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">            if (!nombresIngresados.contains(nombreCompleto)) {</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">                if (profesional.equals(nombreProfesional)) {</span>
+<span class="nc bnc" id="L274" title="All 2 branches missed.">                    if (!getListaConversaciones().get(i).getFueAtendidaConsulta()) {</span>
+<span class="nc" id="L275">                        nombresIngresados.add(nombreCompleto);</span>
                     }
                 }
             }
         }
-<span class="fc" id="L282">        String[] nombreUsuarios = new String[nombresIngresados.size()];</span>
-<span class="pc bpc" id="L283" title="1 of 2 branches missed.">        for (int i = 0; i &lt; nombreUsuarios.length; i++) {</span>
-<span class="nc" id="L284">            nombreUsuarios[i] = nombresIngresados.get(i);</span>
+<span class="fc" id="L280">        String[] nombreUsuarios = new String[nombresIngresados.size()];</span>
+<span class="pc bpc" id="L281" title="1 of 2 branches missed.">        for (int i = 0; i &lt; nombreUsuarios.length; i++) {</span>
+<span class="nc" id="L282">            nombreUsuarios[i] = nombresIngresados.get(i);</span>
         }
-<span class="fc" id="L286">        return nombreUsuarios;</span>
+<span class="fc" id="L284">        return nombreUsuarios;</span>
     }
 
     public String getConversacion(String nombreCompletoProfesional, String nombreCompletoUsuario) {
-<span class="fc" id="L290">        String retorno = &quot;No hay conversación disponible.&quot;;</span>
-<span class="pc bpc" id="L291" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
-<span class="nc" id="L292">            Conversacion conversacionActual = getListaConversaciones().get(i);</span>
-<span class="nc" id="L293">            String nombreCompletoProfesionalActual = conversacionActual.getProfesional().getNombreCompleto();</span>
-<span class="nc" id="L294">            String nombreUsuarioActual = conversacionActual.getUsuario().getNombreCompleto();</span>
-<span class="nc bnc" id="L295" title="All 4 branches missed.">            if (nombreCompletoProfesionalActual.equals(nombreCompletoProfesional) &amp;&amp; nombreUsuarioActual.equals(nombreCompletoUsuario)) {</span>
-<span class="nc" id="L296">                return conversacionActual.toString();</span>
+<span class="fc" id="L288">        String retorno = &quot;No hay conversación disponible.&quot;;</span>
+<span class="pc bpc" id="L289" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
+<span class="nc" id="L290">            Conversacion conversacionActual = getListaConversaciones().get(i);</span>
+<span class="nc" id="L291">            String nombreCompletoProfesionalActual = conversacionActual.getProfesional().getNombreCompleto();</span>
+<span class="nc" id="L292">            String nombreUsuarioActual = conversacionActual.getUsuario().getNombreCompleto();</span>
+<span class="nc bnc" id="L293" title="All 4 branches missed.">            if (nombreCompletoProfesionalActual.equals(nombreCompletoProfesional) &amp;&amp; nombreUsuarioActual.equals(nombreCompletoUsuario)) {</span>
+<span class="nc" id="L294">                return conversacionActual.toString();</span>
             }
         }
-<span class="fc" id="L299">        return retorno;</span>
+<span class="fc" id="L297">        return retorno;</span>
     }
 
     public boolean agregarMensajeConversacion(String remitente, String destinatario, String mensaje, boolean intercambioRemitente, boolean consultaRespondida) {
-<span class="fc" id="L303">        boolean pudeAgregarMensaje = false;</span>
-<span class="pc bpc" id="L304" title="3 of 8 branches missed.">        if (remitente != null &amp;&amp; !remitente.isEmpty() &amp;&amp; !destinatario.isEmpty() &amp;&amp; destinatario != null) {</span>
-<span class="pc bpc" id="L305" title="2 of 4 branches missed.">            for (int i = 0; getListaConversaciones() != null &amp;&amp; i &lt; getListaConversaciones().size(); i++) {</span>
-<span class="nc" id="L306">                Conversacion conversacionActual = getListaConversaciones().get(i);</span>
-<span class="nc" id="L307">                String nombreApellidoProfesional = conversacionActual.getProfesional().getNombreCompleto();</span>
-<span class="nc" id="L308">                String nombreApellidoUsuario = conversacionActual.getUsuario().getNombreCompleto();</span>
-<span class="nc bnc" id="L309" title="All 4 branches missed.">                if (destinatario.equals(nombreApellidoProfesional) &amp;&amp; remitente.equals(nombreApellidoUsuario)</span>
-<span class="nc bnc" id="L310" title="All 4 branches missed.">                        || destinatario.equals(nombreApellidoUsuario) &amp;&amp; remitente.equals(nombreApellidoProfesional)) {</span>
-<span class="nc" id="L311">                    conversacionActual.agregarMensaje(mensaje, intercambioRemitente);</span>
-<span class="nc" id="L312">                    conversacionActual.setFueAtendidaConsulta(consultaRespondida);</span>
-<span class="nc" id="L313">                    pudeAgregarMensaje = true;</span>
-                }
+<span class="fc" id="L301">        boolean pudeAgregarMensaje = false;</span>
+<span class="pc bpc" id="L302" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
+<span class="nc" id="L303">            Conversacion conversacionActual = getListaConversaciones().get(i);</span>
+<span class="nc" id="L304">            String nombreApellidoProfesional = conversacionActual.getProfesional().getNombreCompleto();</span>
+<span class="nc" id="L305">            String nombreApellidoUsuario = conversacionActual.getUsuario().getNombreCompleto();</span>
+<span class="nc bnc" id="L306" title="All 4 branches missed.">            if (destinatario.equals(nombreApellidoProfesional) &amp;&amp; remitente.equals(nombreApellidoUsuario)</span>
+<span class="nc bnc" id="L307" title="All 4 branches missed.">                    || destinatario.equals(nombreApellidoUsuario) &amp;&amp; remitente.equals(nombreApellidoProfesional)) {</span>
+<span class="nc" id="L308">                conversacionActual.agregarMensaje(mensaje, intercambioRemitente);</span>
+<span class="nc" id="L309">                conversacionActual.setFueAtendidaConsulta(consultaRespondida);</span>
+<span class="nc" id="L310">                pudeAgregarMensaje = true;</span>
             }
         }
-<span class="fc" id="L317">        return pudeAgregarMensaje;</span>
+<span class="fc" id="L313">        return pudeAgregarMensaje;</span>
     }
 
     public ArrayList getNombresProfesionalesSinConversacionConUsuario(Persona personaLogueada) {
-<span class="fc" id="L321">        ArrayList retorno = copiarLista(getListaProfesionales());</span>
-<span class="pc bpc" id="L322" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
-<span class="nc" id="L323">            Profesional profActual = (Profesional) getListaConversaciones().get(i).getProfesional();</span>
-<span class="nc" id="L324">            Persona usuarioActual = getListaConversaciones().get(i).getUsuario();</span>
-<span class="nc bnc" id="L325" title="All 2 branches missed.">            if (usuarioActual.equals(personaLogueada)) {</span>
-<span class="nc" id="L326">                retorno.remove(profActual);</span>
+<span class="fc" id="L317">        ArrayList retorno = copiarLista(getListaProfesionales());</span>
+<span class="pc bpc" id="L318" title="1 of 2 branches missed.">        for (int i = 0; i &lt; getListaConversaciones().size(); i++) {</span>
+<span class="nc" id="L319">            Profesional profActual = (Profesional) getListaConversaciones().get(i).getProfesional();</span>
+<span class="nc" id="L320">            Persona usuarioActual = getListaConversaciones().get(i).getUsuario();</span>
+<span class="nc bnc" id="L321" title="All 2 branches missed.">            if (usuarioActual.equals(personaLogueada)) {</span>
+<span class="nc" id="L322">                retorno.remove(profActual);</span>
             }
         }
-<span class="fc" id="L329">        return retorno;</span>
+<span class="fc" id="L325">        return retorno;</span>
     }
 
     private ArrayList copiarLista(ArrayList lista) {
-<span class="fc" id="L333">        ArrayList nueva = new ArrayList();</span>
-<span class="pc bpc" id="L334" title="1 of 2 branches missed.">        for (int i = 0; i &lt; lista.size(); i++) {</span>
-<span class="nc" id="L335">            nueva.add(lista.get(i));</span>
+<span class="fc" id="L329">        ArrayList nueva = new ArrayList();</span>
+<span class="pc bpc" id="L330" title="1 of 2 branches missed.">        for (int i = 0; i &lt; lista.size(); i++) {</span>
+<span class="nc" id="L331">            nueva.add(lista.get(i));</span>
         }
-<span class="fc" id="L337">        return nueva;</span>
+<span class="fc" id="L333">        return nueva;</span>
     }
 
     public boolean agregarIngestaAUsuario(ArrayList&lt;Ingesta&gt; listaIngestasDelUsuario, String fechaIngesta, String nuevoAlimento) {
-<span class="fc" id="L341">        boolean ingestaAgregada = false;</span>
-<span class="pc bpc" id="L342" title="1 of 4 branches missed.">        if (listaIngestasDelUsuario != null &amp;&amp; fechaIngesta != null) {</span>
-<span class="fc bfc" id="L343" title="All 2 branches covered.">            if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {</span>
-<span class="fc bfc" id="L344" title="All 2 branches covered.">                for (int i = 0; i &lt; listaIngestasDelUsuario.size(); i++) {</span>
-<span class="pc bpc" id="L345" title="1 of 2 branches missed.">                    if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {</span>
-<span class="fc" id="L346">                        ArrayList&lt;Alimento&gt; listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();</span>
-<span class="fc" id="L347">                        Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);</span>
-<span class="fc" id="L348">                        listaAlimentosActual.add(alimentoAAgregar);</span>
+<span class="fc" id="L337">        boolean ingestaAgregada = false;</span>
+<span class="pc bpc" id="L338" title="1 of 4 branches missed.">        if (listaIngestasDelUsuario != null &amp;&amp; fechaIngesta != null) {</span>
+<span class="fc bfc" id="L339" title="All 2 branches covered.">            if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {</span>
+<span class="fc bfc" id="L340" title="All 2 branches covered.">                for (int i = 0; i &lt; listaIngestasDelUsuario.size(); i++) {</span>
+<span class="pc bpc" id="L341" title="1 of 2 branches missed.">                    if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {</span>
+<span class="fc" id="L342">                        ArrayList&lt;Alimento&gt; listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();</span>
+<span class="fc" id="L343">                        Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);</span>
+<span class="fc" id="L344">                        listaAlimentosActual.add(alimentoAAgregar);</span>
                     }
                 }
             } else {
-<span class="fc" id="L352">                Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);</span>
-<span class="fc" id="L353">                ArrayList&lt;Alimento&gt; nuevaLista = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L354">                nuevaLista.add(alimentoAAgregar);</span>
-<span class="fc" id="L355">                Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);</span>
-<span class="fc" id="L356">                listaIngestasDelUsuario.add(nuevaIngesta);</span>
+<span class="fc" id="L348">                Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);</span>
+<span class="fc" id="L349">                ArrayList&lt;Alimento&gt; nuevaLista = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L350">                nuevaLista.add(alimentoAAgregar);</span>
+<span class="fc" id="L351">                Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);</span>
+<span class="fc" id="L352">                listaIngestasDelUsuario.add(nuevaIngesta);</span>
             }
-<span class="fc" id="L358">            ingestaAgregada = true;</span>
+<span class="fc" id="L354">            ingestaAgregada = true;</span>
         }
-<span class="fc" id="L360">        return ingestaAgregada;</span>
+<span class="fc" id="L356">        return ingestaAgregada;</span>
     }
 
     private boolean yaExisteIngestaEnEsaFecha(ArrayList&lt;Ingesta&gt; listaIngestasDelUsuario, String fechaIngesta) {
-<span class="fc" id="L364">        boolean existe = false;</span>
-<span class="pc bpc" id="L365" title="1 of 2 branches missed.">        if (listaIngestasDelUsuario != null) {</span>
-<span class="fc bfc" id="L366" title="All 2 branches covered.">            for (int i = 0; i &lt; listaIngestasDelUsuario.size(); i++) {</span>
-<span class="fc bfc" id="L367" title="All 2 branches covered.">                if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {</span>
-<span class="fc" id="L368">                    existe = true;</span>
+<span class="fc" id="L360">        boolean existe = false;</span>
+<span class="pc bpc" id="L361" title="1 of 2 branches missed.">        if (listaIngestasDelUsuario != null) {</span>
+<span class="fc bfc" id="L362" title="All 2 branches covered.">            for (int i = 0; i &lt; listaIngestasDelUsuario.size(); i++) {</span>
+<span class="fc bfc" id="L363" title="All 2 branches covered.">                if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {</span>
+<span class="fc" id="L364">                    existe = true;</span>
                 }
             }
         }
-<span class="fc" id="L372">        return existe;</span>
+<span class="fc" id="L368">        return existe;</span>
     }
 
     public Alimento devolverAlimentoDadoNombre(String nuevoAlimento) {
-<span class="fc" id="L376">        Alimento alimentoRetorno = new Alimento(null, null, null, null);</span>
-<span class="fc bfc" id="L377" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaAlimentos.size(); i++) {</span>
-<span class="fc" id="L378">            String alimentoActual = this.listaAlimentos.get(i).getNombre();</span>
-<span class="fc bfc" id="L379" title="All 2 branches covered.">            if (alimentoActual.equals(nuevoAlimento)) {</span>
-<span class="fc" id="L380">                alimentoRetorno = this.listaAlimentos.get(i);</span>
+<span class="fc" id="L372">        Alimento alimentoRetorno = new Alimento(null, null, null, null);</span>
+<span class="fc bfc" id="L373" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaAlimentos.size(); i++) {</span>
+<span class="fc" id="L374">            String alimentoActual = this.listaAlimentos.get(i).getNombre();</span>
+<span class="fc bfc" id="L375" title="All 2 branches covered.">            if (alimentoActual.equals(nuevoAlimento)) {</span>
+<span class="fc" id="L376">                alimentoRetorno = this.listaAlimentos.get(i);</span>
             }
         }
-<span class="fc" id="L383">        return alimentoRetorno;</span>
+<span class="fc" id="L379">        return alimentoRetorno;</span>
     }
 
     public Usuario getUsuarioPorNombre(String nombreCompleto) {
-<span class="fc" id="L387">        Usuario usuarioRetorno = new Usuario(null, null, null, null, null, null, null, null);</span>
-<span class="fc bfc" id="L388" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaUsuarios.size(); i++) {</span>
-<span class="fc" id="L389">            String nombreActual = this.listaUsuarios.get(i).getNombreCompleto();</span>
-<span class="pc bpc" id="L390" title="1 of 2 branches missed.">            if (nombreActual.equals(nombreCompleto)) {</span>
-<span class="fc" id="L391">                usuarioRetorno = this.listaUsuarios.get(i);</span>
+<span class="fc" id="L383">        Usuario usuarioRetorno = new Usuario(null, null, null, null, null, null, null, null);</span>
+<span class="fc bfc" id="L384" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaUsuarios.size(); i++) {</span>
+<span class="fc" id="L385">            String nombreActual = this.listaUsuarios.get(i).getNombreCompleto();</span>
+<span class="pc bpc" id="L386" title="1 of 2 branches missed.">            if (nombreActual.equals(nombreCompleto)) {</span>
+<span class="fc" id="L387">                usuarioRetorno = this.listaUsuarios.get(i);</span>
             }
         }
-<span class="fc" id="L394">        return usuarioRetorno;</span>
+<span class="fc" id="L390">        return usuarioRetorno;</span>
     }
 
     public Profesional getProfesionalPorNombre(String nombreCompleto) {
-<span class="fc" id="L398">        Profesional profesionalRetorno = new Profesional(null, null, null, null, null, null, null);</span>
-<span class="fc bfc" id="L399" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaProfesionales.size(); i++) {</span>
-<span class="fc" id="L400">            String nombreActual = this.listaProfesionales.get(i).getNombreCompleto();</span>
-<span class="pc bpc" id="L401" title="1 of 2 branches missed.">            if (nombreActual.equals(nombreCompleto)) {</span>
-<span class="fc" id="L402">                profesionalRetorno = this.listaProfesionales.get(i);</span>
+<span class="fc" id="L394">        Profesional profesionalRetorno = new Profesional(null, null, null, null, null, null, null);</span>
+<span class="fc bfc" id="L395" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaProfesionales.size(); i++) {</span>
+<span class="fc" id="L396">            String nombreActual = this.listaProfesionales.get(i).getNombreCompleto();</span>
+<span class="pc bpc" id="L397" title="1 of 2 branches missed.">            if (nombreActual.equals(nombreCompleto)) {</span>
+<span class="fc" id="L398">                profesionalRetorno = this.listaProfesionales.get(i);</span>
             }
         }
-<span class="fc" id="L405">        return profesionalRetorno;</span>
+<span class="fc" id="L401">        return profesionalRetorno;</span>
     }
 
     public boolean agregarPlanSolicitado(Usuario usuario, Profesional profesional) {
-<span class="fc" id="L409">        boolean agreguePlan = false;</span>
-<span class="fc bfc" id="L410" title="All 4 branches covered.">        if (usuario != null &amp;&amp; profesional != null) {</span>
-<span class="fc" id="L411">            PlanAlimentacion planNuevo = new PlanAlimentacion(&quot;&quot;, usuario, profesional, false, (String[][]) null);</span>
-<span class="fc bfc" id="L412" title="All 2 branches covered.">            if (!getListaPlanesAlimentacion().contains(planNuevo)) {</span>
-<span class="fc" id="L413">                this.getListaPlanesAlimentacion().add(planNuevo);</span>
-<span class="fc" id="L414">                agreguePlan = true;</span>
+<span class="fc" id="L405">        boolean agreguePlan = false;</span>
+<span class="fc" id="L406">            PlanAlimentacion planNuevo = new PlanAlimentacion(&quot;&quot;, usuario, profesional, false, (String[][]) null);</span>
+<span class="fc bfc" id="L407" title="All 2 branches covered.">            if (!getListaPlanesAlimentacion().contains(planNuevo)) {</span>
+<span class="fc" id="L408">                this.getListaPlanesAlimentacion().add(planNuevo);</span>
+<span class="fc" id="L409">                agreguePlan = true;</span>
             }
-        }
-<span class="fc" id="L417">        return agreguePlan;</span>
-
+<span class="fc" id="L411">        return agreguePlan;</span>
     }
 
     public boolean atenderSolicitudDelPlan(String[][] planAlimentacion,
             Profesional profesional,
             Usuario usuario,
             String nombrePlan) {
-<span class="fc" id="L425">        boolean fueAtendido = false;</span>
-<span class="fc bfc" id="L426" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaPlanesAlimentacion.size(); i++) {</span>
-<span class="fc" id="L427">            PlanAlimentacion actual = this.listaPlanesAlimentacion.get(i);</span>
-<span class="fc bfc" id="L428" title="All 4 branches covered.">            if (actual.getProfesional().equals(profesional) &amp;&amp; actual.getUsuario().equals(usuario)</span>
-<span class="fc bfc" id="L429" title="All 2 branches covered.">                    &amp;&amp; !actual.getFueAtendidoElPlan()) {</span>
-<span class="fc" id="L430">                actual.setNombreDelPlan(nombrePlan);</span>
-<span class="fc" id="L431">                actual.setPlanDiaADia(planAlimentacion);</span>
-<span class="fc" id="L432">                actual.setFueAtendidoElPlan(true);</span>
-<span class="fc" id="L433">                fueAtendido = true;</span>
+<span class="fc" id="L418">        boolean fueAtendido = false;</span>
+<span class="fc bfc" id="L419" title="All 2 branches covered.">        for (int i = 0; i &lt; this.listaPlanesAlimentacion.size(); i++) {</span>
+<span class="fc" id="L420">            PlanAlimentacion actual = this.listaPlanesAlimentacion.get(i);</span>
+<span class="fc bfc" id="L421" title="All 4 branches covered.">            if (actual.getProfesional().equals(profesional) &amp;&amp; actual.getUsuario().equals(usuario)</span>
+<span class="fc bfc" id="L422" title="All 2 branches covered.">                    &amp;&amp; !actual.getFueAtendidoElPlan()) {</span>
+<span class="fc" id="L423">                actual.setNombreDelPlan(nombrePlan);</span>
+<span class="fc" id="L424">                actual.setPlanDiaADia(planAlimentacion);</span>
+<span class="fc" id="L425">                actual.setFueAtendidoElPlan(true);</span>
+<span class="fc" id="L426">                fueAtendido = true;</span>
             }
         }
-<span class="fc" id="L436">        return fueAtendido;</span>
+<span class="fc" id="L429">        return fueAtendido;</span>
     }
 
     public String[] planesAtendidosDelUsuario(Usuario usuario) {
-<span class="fc" id="L440">        ArrayList&lt;String&gt; listaAuxiliar = new ArrayList&lt;&gt;();</span>
-<span class="fc bfc" id="L441" title="All 2 branches covered.">        for(PlanAlimentacion plan : this.listaPlanesAlimentacion){</span>
-<span class="pc bpc" id="L442" title="2 of 4 branches missed.">            if(plan.getUsuario().equals(usuario) &amp;&amp; plan.getFueAtendidoElPlan()){</span>
-<span class="fc" id="L443">                listaAuxiliar.add(plan.getNombreDelPlan());</span>
+<span class="fc" id="L433">        ArrayList&lt;String&gt; listaAuxiliar = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L434" title="All 2 branches covered.">        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {</span>
+<span class="pc bpc" id="L435" title="2 of 4 branches missed.">            if (plan.getUsuario().equals(usuario) &amp;&amp; plan.getFueAtendidoElPlan()) {</span>
+<span class="fc" id="L436">                listaAuxiliar.add(plan.getNombreDelPlan());</span>
             }
-<span class="fc" id="L445">        }</span>
-<span class="fc" id="L446">        return obtenerUsuariosDePlanes(listaAuxiliar);</span>
+<span class="fc" id="L438">        }</span>
+<span class="fc" id="L439">        return obtenerUsuariosDePlanes(listaAuxiliar);</span>
     }
 
     public PlanAlimentacion devolverPlanDadoNombre(String nombreDelPlan) {
-<span class="fc" id="L450">        PlanAlimentacion planRetorno = new PlanAlimentacion(null, null, null, false, null);</span>
-<span class="fc bfc" id="L451" title="All 2 branches covered.">        if (nombreDelPlan != null) {</span>
-<span class="fc bfc" id="L452" title="All 2 branches covered.">            for (PlanAlimentacion plan : this.listaPlanesAlimentacion){</span>
-<span class="pc bpc" id="L453" title="1 of 2 branches missed.">                if(plan.getNombreDelPlan().equals(nombreDelPlan)){</span>
-<span class="fc" id="L454">                    planRetorno = plan;</span>
-                }
-<span class="fc" id="L456">            }</span>
-        }
-<span class="fc" id="L458">        return planRetorno;</span>
+<span class="fc" id="L443">        PlanAlimentacion planRetorno = new PlanAlimentacion(null, null, null, false, null);</span>
+<span class="fc bfc" id="L444" title="All 2 branches covered.">        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {</span>
+<span class="pc bpc" id="L445" title="1 of 2 branches missed.">            if (plan.getNombreDelPlan().equals(nombreDelPlan)) {</span>
+<span class="fc" id="L446">                planRetorno = plan;</span>
+            }
+<span class="fc" id="L448">        }</span>
+<span class="fc" id="L449">        return planRetorno;</span>
     }
 
     private String[] obtenerUsuariosDePlanes(ArrayList&lt;String&gt; listaDePlanes) {
-<span class="fc" id="L462">        String[] nombreUsuarios = new String[listaDePlanes.size()];</span>
-<span class="fc bfc" id="L463" title="All 2 branches covered.">        for (int i = 0; i &lt; nombreUsuarios.length; i++) {</span>
-<span class="fc" id="L464">            nombreUsuarios[i] = listaDePlanes.get(i);</span>
+<span class="fc" id="L453">        String[] nombreUsuarios = new String[listaDePlanes.size()];</span>
+<span class="fc bfc" id="L454" title="All 2 branches covered.">        for (int i = 0; i &lt; nombreUsuarios.length; i++) {</span>
+<span class="fc" id="L455">            nombreUsuarios[i] = listaDePlanes.get(i);</span>
         }
-<span class="fc" id="L466">        return nombreUsuarios;</span>
+<span class="fc" id="L457">        return nombreUsuarios;</span>
     }
 
     public String[] getListaUsuariosConPlanesPendientes(Profesional profesional) {
-<span class="fc" id="L470">        String[] resultadoPlanesPendientes = new String[0];</span>
-<span class="fc bfc" id="L471" title="All 2 branches covered.">        if (profesional != null) {</span>
-<span class="fc" id="L472">            ArrayList&lt;String&gt; planesPendientes = new ArrayList&lt;&gt;();</span>
-<span class="fc bfc" id="L473" title="All 2 branches covered.">            for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {</span>
-<span class="pc bpc" id="L474" title="1 of 4 branches missed.">                if (plan.getProfesional().equals(profesional) &amp;&amp; !plan.getFueAtendidoElPlan()) {</span>
-<span class="fc" id="L475">                    String nombreUsuario = plan.getUsuario().getNombreCompleto();</span>
-<span class="fc" id="L476">                    planesPendientes.add(nombreUsuario);</span>
-                }
-<span class="fc" id="L478">            }</span>
-<span class="fc" id="L479">            resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);</span>
-        }
-<span class="fc" id="L481">        return resultadoPlanesPendientes;</span>
+<span class="fc" id="L461">        String[] resultadoPlanesPendientes = new String[0];</span>
+<span class="fc" id="L462">        ArrayList&lt;String&gt; planesPendientes = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L463" title="All 2 branches covered.">        for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {</span>
+<span class="pc bpc" id="L464" title="1 of 4 branches missed.">            if (plan.getProfesional().equals(profesional) &amp;&amp; !plan.getFueAtendidoElPlan()) {</span>
+<span class="fc" id="L465">                String nombreUsuario = plan.getUsuario().getNombreCompleto();</span>
+<span class="fc" id="L466">                planesPendientes.add(nombreUsuario);</span>
+            }
+<span class="fc" id="L468">        }</span>
+<span class="fc" id="L469">        resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);</span>
+<span class="fc" id="L470">        return resultadoPlanesPendientes;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
