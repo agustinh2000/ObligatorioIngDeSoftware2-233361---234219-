@@ -735,6 +735,11 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 txtNombrePlanFocusLost(evt);
             }
         });
+        txtNombrePlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombrePlanActionPerformed(evt);
+            }
+        });
         panelElaborarPlan.add(txtNombrePlan);
         txtNombrePlan.setBounds(260, 370, 181, 38);
 
@@ -2175,6 +2180,10 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         AyudaProfesional ayuda = new AyudaProfesional(sistema);
         ayuda.setVisible(true);
     }//GEN-LAST:event_btnAyudaActionPerformed
+
+    private void txtNombrePlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePlanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombrePlanActionPerformed
 
     private void ocultarPaneles() {
         this.btnConsultasPendientes.setEnabled(true);
