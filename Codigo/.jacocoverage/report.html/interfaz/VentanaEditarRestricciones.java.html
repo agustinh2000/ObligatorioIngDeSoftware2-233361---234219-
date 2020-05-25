@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaEditarRestricciones.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AlimentacionSaludable&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaEditarRestricciones.java</span></div><h1>VentanaEditarRestricciones.java</h1><pre class="source lang-java linenums">package interfaz;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaEditarRestricciones.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AlimentacionSaludable&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaEditarRestricciones.java</span></div><h1>VentanaEditarRestricciones.java</h1><pre class="source lang-java linenums">package interfaz;
 
 import dominio.Sistema;
 import dominio.Usuario;
@@ -82,7 +82,7 @@ public class VentanaEditarRestricciones extends javax.swing.JDialog {
 <span class="nc" id="L82">        lblEditar.setForeground(new java.awt.Color(255, 255, 255));</span>
 <span class="nc" id="L83">        lblEditar.setText(&quot;Editar&quot;);</span>
 <span class="nc" id="L84">        panelEditarRestricciones.add(lblEditar);</span>
-<span class="nc" id="L85">        lblEditar.setBounds(110, 20, 137, 71);</span>
+<span class="nc" id="L85">        lblEditar.setBounds(110, 20, 132, 64);</span>
 
 <span class="nc" id="L87">        lblTxtRestricciones.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 0, 30)); // NOI18N</span>
 <span class="nc" id="L88">        lblTxtRestricciones.setForeground(new java.awt.Color(255, 255, 255));</span>
@@ -108,134 +108,115 @@ public class VentanaEditarRestricciones extends javax.swing.JDialog {
 <span class="nc" id="L108">        rdBtnVegano.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 0, 20)); // NOI18N</span>
 <span class="nc" id="L109">        rdBtnVegano.setForeground(new java.awt.Color(255, 255, 255));</span>
 <span class="nc" id="L110">        rdBtnVegano.setText(&quot;Restriccion 2&quot;);</span>
-<span class="nc" id="L111">        rdBtnVegano.addActionListener(new java.awt.event.ActionListener() {</span>
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L113">                rdBtnVeganoActionPerformed(evt);</span>
-<span class="nc" id="L114">            }</span>
-        });
-<span class="nc" id="L116">        panelEditarRestricciones.add(rdBtnVegano);</span>
-<span class="nc" id="L117">        rdBtnVegano.setBounds(80, 190, 250, 35);</span>
+<span class="nc" id="L111">        panelEditarRestricciones.add(rdBtnVegano);</span>
+<span class="nc" id="L112">        rdBtnVegano.setBounds(80, 190, 250, 35);</span>
+<span class="nc" id="L113"></span>
+<span class="nc" id="L114">        rdBtnIntoleranteLactosa.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L115">        rdBtnIntoleranteLactosa.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 0, 20)); // NOI18N</span>
+<span class="nc" id="L116">        rdBtnIntoleranteLactosa.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L117">        rdBtnIntoleranteLactosa.setText(&quot;Restriccion 3&quot;);</span>
+<span class="nc" id="L118">        rdBtnIntoleranteLactosa.setActionCommand(&quot;&quot;);</span>
+<span class="nc" id="L119">        panelEditarRestricciones.add(rdBtnIntoleranteLactosa);</span>
+<span class="nc" id="L120">        rdBtnIntoleranteLactosa.setBounds(80, 230, 290, 35);</span>
 
-<span class="nc" id="L119">        rdBtnIntoleranteLactosa.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L120">        rdBtnIntoleranteLactosa.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 0, 20)); // NOI18N</span>
-<span class="nc" id="L121">        rdBtnIntoleranteLactosa.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L122">        rdBtnIntoleranteLactosa.setText(&quot;Restriccion 3&quot;);</span>
-<span class="nc" id="L123">        rdBtnIntoleranteLactosa.setActionCommand(&quot;&quot;);</span>
-<span class="nc" id="L124">        panelEditarRestricciones.add(rdBtnIntoleranteLactosa);</span>
-<span class="nc" id="L125">        rdBtnIntoleranteLactosa.setBounds(80, 230, 290, 35);</span>
+<span class="nc" id="L122">        lblEditarRestricciones.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/iconoEditarRestricciones.png&quot;))); // NOI18N</span>
+<span class="nc" id="L123">        panelEditarRestricciones.add(lblEditarRestricciones);</span>
+<span class="nc" id="L124">        lblEditarRestricciones.setBounds(40, 20, 60, 60);</span>
 
-<span class="nc" id="L127">        lblEditarRestricciones.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/iconoEditarRestricciones.png&quot;))); // NOI18N</span>
-<span class="nc" id="L128">        panelEditarRestricciones.add(lblEditarRestricciones);</span>
-<span class="nc" id="L129">        lblEditarRestricciones.setBounds(40, 20, 60, 60);</span>
+<span class="nc" id="L126">        panelListo.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L127">        panelListo.setMaximumSize(new java.awt.Dimension(508, 390));</span>
+<span class="nc" id="L128">        panelListo.setMinimumSize(new java.awt.Dimension(508, 390));</span>
+<span class="nc" id="L129">        panelListo.setPreferredSize(new java.awt.Dimension(508, 390));</span>
 
-<span class="nc" id="L131">        panelListo.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L132">        panelListo.setMaximumSize(new java.awt.Dimension(508, 390));</span>
-<span class="nc" id="L133">        panelListo.setMinimumSize(new java.awt.Dimension(508, 390));</span>
-<span class="nc" id="L134">        panelListo.setPreferredSize(new java.awt.Dimension(508, 390));</span>
+<span class="nc" id="L131">        lblListo.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 1, 40)); // NOI18N</span>
+<span class="nc" id="L132">        lblListo.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L133">        lblListo.setText(&quot;Listo!&quot;);</span>
 
-<span class="nc" id="L136">        lblListo.setFont(new java.awt.Font(&quot;Century Gothic&quot;, 1, 40)); // NOI18N</span>
-<span class="nc" id="L137">        lblListo.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L138">        lblListo.setText(&quot;Listo!&quot;);</span>
+<span class="nc" id="L135">        lblIconoListo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/iconoOK.png&quot;))); // NOI18N</span>
 
-<span class="nc" id="L140">        lblIconoListo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/Imagenes/iconoOK.png&quot;))); // NOI18N</span>
-
-<span class="nc" id="L142">        javax.swing.GroupLayout panelListoLayout = new javax.swing.GroupLayout(panelListo);</span>
-<span class="nc" id="L143">        panelListo.setLayout(panelListoLayout);</span>
-<span class="nc" id="L144">        panelListoLayout.setHorizontalGroup(</span>
-<span class="nc" id="L145">            panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L146">            .addGroup(panelListoLayout.createSequentialGroup()</span>
-<span class="nc" id="L147">                .addGap(196, 196, 196)</span>
-<span class="nc" id="L148">                .addGroup(panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L149">                    .addComponent(lblListo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L150">                    .addComponent(lblIconoListo))</span>
-<span class="nc" id="L151">                .addContainerGap(172, Short.MAX_VALUE))</span>
+<span class="nc" id="L137">        javax.swing.GroupLayout panelListoLayout = new javax.swing.GroupLayout(panelListo);</span>
+<span class="nc" id="L138">        panelListo.setLayout(panelListoLayout);</span>
+<span class="nc" id="L139">        panelListoLayout.setHorizontalGroup(</span>
+<span class="nc" id="L140">            panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L141">            .addGroup(panelListoLayout.createSequentialGroup()</span>
+<span class="nc" id="L142">                .addGap(196, 196, 196)</span>
+<span class="nc" id="L143">                .addGroup(panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L144">                    .addComponent(lblListo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L145">                    .addComponent(lblIconoListo))</span>
+<span class="nc" id="L146">                .addContainerGap(172, Short.MAX_VALUE))</span>
         );
-<span class="nc" id="L153">        panelListoLayout.setVerticalGroup(</span>
-<span class="nc" id="L154">            panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L155">            .addGroup(panelListoLayout.createSequentialGroup()</span>
-<span class="nc" id="L156">                .addGap(92, 92, 92)</span>
-<span class="nc" id="L157">                .addComponent(lblIconoListo)</span>
-<span class="nc" id="L158">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L159">                .addComponent(lblListo)</span>
-<span class="nc" id="L160">                .addContainerGap(133, Short.MAX_VALUE))</span>
+<span class="nc" id="L148">        panelListoLayout.setVerticalGroup(</span>
+<span class="nc" id="L149">            panelListoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L150">            .addGroup(panelListoLayout.createSequentialGroup()</span>
+<span class="nc" id="L151">                .addGap(92, 92, 92)</span>
+<span class="nc" id="L152">                .addComponent(lblIconoListo)</span>
+<span class="nc" id="L153">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L154">                .addComponent(lblListo)</span>
+<span class="nc" id="L155">                .addContainerGap(133, Short.MAX_VALUE))</span>
         );
 
-<span class="nc" id="L163">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L164">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L165">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L166">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L167">            .addComponent(panelEditarRestricciones, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L168">            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L169">                .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L170">                    .addGap(0, 0, Short.MAX_VALUE)</span>
-<span class="nc" id="L171">                    .addComponent(panelListo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L172">                    .addGap(0, 0, Short.MAX_VALUE)))</span>
+<span class="nc" id="L158">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L159">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L160">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L161">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L162">            .addComponent(panelEditarRestricciones, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L163">            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L164">                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L165">                    .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L166">                    .addComponent(panelListo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L167">                    .addGap(0, 0, Short.MAX_VALUE)))</span>
         );
-<span class="nc" id="L174">        layout.setVerticalGroup(</span>
-<span class="nc" id="L175">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L176">            .addComponent(panelEditarRestricciones, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L177">            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L178">                .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L179">                    .addGap(0, 0, Short.MAX_VALUE)</span>
-<span class="nc" id="L180">                    .addComponent(panelListo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L181">                    .addGap(0, 0, Short.MAX_VALUE)))</span>
+<span class="nc" id="L169">        layout.setVerticalGroup(</span>
+<span class="nc" id="L170">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L171">            .addComponent(panelEditarRestricciones, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L172">            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L173">                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L174">                    .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="nc" id="L175">                    .addComponent(panelListo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L176">                    .addGap(0, 0, Short.MAX_VALUE)))</span>
         );
 
-<span class="nc" id="L184">        pack();</span>
-<span class="nc" id="L185">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L179">        pack();</span>
+<span class="nc" id="L180">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void btnEditarPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPreferenciasActionPerformed
-<span class="nc" id="L188">        ArrayList&lt;String&gt; restricciones = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L189">        agregarRestriccionesUsuario(restricciones);</span>
-<span class="nc" id="L190">        this.usuarioActual.actualizarRestriccionesUsuario(usuarioActual, restricciones);</span>
-<span class="nc" id="L191">        this.panelEditarRestricciones.setVisible(false);</span>
-<span class="nc" id="L192">        this.panelListo.setVisible(true);</span>
-<span class="nc" id="L193">    }//GEN-LAST:event_btnEditarPreferenciasActionPerformed</span>
-
-    private void rdBtnVeganoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBtnVeganoActionPerformed
-        // TODO add your handling code here:
-<span class="nc" id="L197">    }//GEN-LAST:event_rdBtnVeganoActionPerformed</span>
+<span class="nc" id="L183">        ArrayList&lt;String&gt; restricciones = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L184">        agregarRestriccionesUsuario(restricciones);</span>
+<span class="nc" id="L185">        this.usuarioActual.actualizarRestriccionesUsuario(usuarioActual, restricciones);</span>
+<span class="nc" id="L186">        this.panelEditarRestricciones.setVisible(false);</span>
+<span class="nc" id="L187">        this.panelListo.setVisible(true);</span>
+<span class="nc" id="L188">    }//GEN-LAST:event_btnEditarPreferenciasActionPerformed</span>
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-<span class="nc" id="L200">        this.sistema.guardarDatosSistema();</span>
-<span class="nc" id="L201">    }//GEN-LAST:event_formWindowClosing</span>
+<span class="nc" id="L191">        this.sistema.guardarDatosSistema();</span>
+<span class="nc" id="L192">    }//GEN-LAST:event_formWindowClosing</span>
 
     void agregarRestriccionesUsuario(ArrayList&lt;String&gt; restricciones) {
-<span class="nc bnc" id="L204" title="All 2 branches missed.">        if (this.rdBtnCeliaco.isSelected()) {</span>
-<span class="nc" id="L205">            restricciones.add(&quot;Celíaco&quot;);</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        if (this.rdBtnCeliaco.isSelected()) {</span>
+<span class="nc" id="L196">            restricciones.add(&quot;Celíaco&quot;);</span>
         }
-<span class="nc bnc" id="L207" title="All 2 branches missed.">        if (this.rdBtnDiabetes.isSelected()) {</span>
-<span class="nc" id="L208">            restricciones.add(&quot;Diabético&quot;);</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">        if (this.rdBtnDiabetes.isSelected()) {</span>
+<span class="nc" id="L199">            restricciones.add(&quot;Diabético&quot;);</span>
         }
-<span class="nc bnc" id="L210" title="All 2 branches missed.">        if (this.rdBtnVegano.isSelected()) {</span>
-<span class="nc" id="L211">            restricciones.add(&quot;Veganismo&quot;);</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        if (this.rdBtnVegano.isSelected()) {</span>
+<span class="nc" id="L202">            restricciones.add(&quot;Veganismo&quot;);</span>
         }
-<span class="nc bnc" id="L213" title="All 2 branches missed.">        if (this.rdBtnIntoleranteLactosa.isSelected()) {</span>
-<span class="nc" id="L214">            restricciones.add(&quot;Intolerancia a la lactosa&quot;);</span>
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        if (this.rdBtnIntoleranteLactosa.isSelected()) {</span>
+<span class="nc" id="L205">            restricciones.add(&quot;Intolerancia a la lactosa&quot;);</span>
         }
-<span class="nc" id="L216">    }</span>
+<span class="nc" id="L207">    }</span>
 
     private void cargarListaRestricciones() {
-<span class="nc" id="L219">        Sistema.Restricciones[] listaRestricciones = new Sistema.Restricciones[4];</span>
-<span class="nc" id="L220">        listaRestricciones[0] = Sistema.Restricciones.Celiaquia;</span>
-<span class="nc" id="L221">        listaRestricciones[1] = Sistema.Restricciones.Diabetes;</span>
-<span class="nc" id="L222">        listaRestricciones[2] = Sistema.Restricciones.IntoleranciaLactosa;</span>
-<span class="nc" id="L223">        listaRestricciones[3] = Sistema.Restricciones.Veganismo;</span>
-<span class="nc bnc" id="L224" title="All 2 branches missed.">        for (int i = 0; i &lt; listaRestricciones.length; i++) {</span>
-<span class="nc bnc" id="L225" title="All 2 branches missed.">            if (i == 0) {</span>
-<span class="nc" id="L226">                this.rdBtnCeliaco.setText(&quot;Celiaquía&quot;);</span>
-            }
-<span class="nc bnc" id="L228" title="All 2 branches missed.">            if (i == 1) {</span>
-<span class="nc" id="L229">                this.rdBtnDiabetes.setText(&quot;Diabetes&quot;);</span>
-            }
-<span class="nc bnc" id="L231" title="All 2 branches missed.">            if (i == 2) {</span>
-<span class="nc" id="L232">                this.rdBtnIntoleranteLactosa.setText(&quot;Intolerante a la lactosa&quot;);</span>
-            }
-<span class="nc bnc" id="L234" title="All 2 branches missed.">            if (i == 3) {</span>
-<span class="nc" id="L235">                this.rdBtnVegano.setText(&quot;Veganismo&quot;);</span>
-            }
-        }
-<span class="nc" id="L238">    }</span>
+<span class="nc" id="L210">        Sistema.Restricciones[] listaRestricciones = new Sistema.Restricciones[4];</span>
+<span class="nc" id="L211">        listaRestricciones[0] = Sistema.Restricciones.Celiaquia;</span>
+<span class="nc" id="L212">        listaRestricciones[1] = Sistema.Restricciones.Diabetes;</span>
+<span class="nc" id="L213">        listaRestricciones[2] = Sistema.Restricciones.IntoleranciaLactosa;</span>
+<span class="nc" id="L214">        listaRestricciones[3] = Sistema.Restricciones.Veganismo;</span>
+<span class="nc" id="L215">        this.rdBtnCeliaco.setText(&quot;Celiaquía&quot;);</span>
+<span class="nc" id="L216">        this.rdBtnDiabetes.setText(&quot;Diabetes&quot;);</span>
+<span class="nc" id="L217">        this.rdBtnIntoleranteLactosa.setText(&quot;Intolerante a la lactosa&quot;);</span>
+<span class="nc" id="L218">        this.rdBtnVegano.setText(&quot;Veganismo&quot;);</span>
+<span class="nc" id="L219">    }</span>
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarPreferencias;
     private javax.swing.JLabel lblEditar;

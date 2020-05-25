@@ -113,4 +113,40 @@ public class ConversacionTest {
         boolean resultado = conversacion.equals(conversacionAComparar);
         assertEquals(resultadoEsperado, resultado);
     }
+    
+    @Test
+    public void testEqualsNull(){
+         Persona profesional = new Profesional("Jose", null, null, null, null,
+                null, null);
+        Usuario usuario = new Usuario("Juan", null, null, null, null, null, 
+                null, null);
+        Conversacion conversacion = new Conversacion(usuario, profesional, null);
+        boolean resultadoEsperado = false;
+        boolean resultado = conversacion.equals(null);
+        assertEquals(resultado, resultadoEsperado);
+    }
+    
+     @Test
+    public void testEqualsTipoDiferente(){
+         Persona profesional = new Profesional("Jose", null, null, null, null,
+                null, null);
+        Usuario usuario = new Usuario("Juan", null, null, null, null, null, 
+                null, null);
+        Conversacion conversacion = new Conversacion(usuario, profesional, null);
+        boolean resultadoEsperado = false;
+        boolean resultado = conversacion.equals(usuario);
+        assertEquals(resultado, resultadoEsperado);
+    }
+    
+    @Test
+    public void testHashCode(){
+         Persona profesional = new Profesional("Jose", null, null, null, null,
+                null, null);
+        Usuario usuario = new Usuario("Juan", null, null, null, null, null, 
+                null, null);
+        Conversacion conversacion = new Conversacion(usuario, profesional, null);
+        Conversacion conversacion2 = new Conversacion(usuario, profesional, null);
+        assertEquals(conversacion.hashCode(), conversacion2.hashCode());
+    }
+    
 }

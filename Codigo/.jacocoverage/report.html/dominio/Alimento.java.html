@@ -1,87 +1,105 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Alimento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AlimentacionSaludable&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">Alimento.java</span></div><h1>Alimento.java</h1><pre class="source lang-java linenums">package dominio;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Alimento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;AlimentacionSaludable&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">Alimento.java</span></div><h1>Alimento.java</h1><pre class="source lang-java linenums">package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.ImageIcon;
-import java.util.Currency;
 
 public final class Alimento implements Serializable {
 
     private String nombre;
     private String tipoAlimento;
     private ArrayList&lt;ComposicionAlimento&gt; listaNutrientesConProporcion;
-    public ImageIcon fotoDelAlimento;
+    private ImageIcon fotoDelAlimento;
 
     public Alimento(String unNombre,
             String unTipoAlimento,
             ArrayList&lt;ComposicionAlimento&gt; listaNutrientes,
-<span class="fc" id="L19">            ImageIcon foto) {</span>
+<span class="fc" id="L18">            ImageIcon foto) {</span>
 
-<span class="fc" id="L21">        this.setNombre(unNombre);</span>
-<span class="fc" id="L22">        this.setTipoAlimento(unTipoAlimento);</span>
-<span class="fc" id="L23">        this.setListaNutrientesConProporcion(listaNutrientes);</span>
-<span class="fc" id="L24">        this.setFotoDelAlimento(foto);</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L20">        this.setNombre(unNombre);</span>
+<span class="fc" id="L21">        this.setTipoAlimento(unTipoAlimento);</span>
+<span class="fc" id="L22">        this.setListaNutrientesConProporcion(listaNutrientes);</span>
+<span class="fc" id="L23">        this.setFotoDelAlimento(foto);</span>
+<span class="fc" id="L24">    }</span>
 
     public String getNombre() {
-<span class="fc" id="L28">        return this.nombre;</span>
+<span class="fc" id="L27">        return this.nombre;</span>
     }
 
     public void setNombre(String unNombre) {
-<span class="fc bfc" id="L32" title="All 4 branches covered.">        if (unNombre == null || unNombre.isEmpty()) {</span>
-<span class="fc" id="L33">            this.nombre = &quot;Nombre de alimento no ingresado&quot;;</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">        if (unNombre == null || unNombre.isEmpty()) {</span>
+<span class="fc" id="L32">            this.nombre = &quot;Nombre de alimento no ingresado&quot;;</span>
         } else {
-<span class="fc" id="L35">            this.nombre = unNombre;</span>
+<span class="fc" id="L34">            this.nombre = unNombre;</span>
         }
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L36">    }</span>
 
     public String getTipoAlimento() {
-<span class="fc" id="L40">        return this.tipoAlimento;</span>
+<span class="fc" id="L39">        return this.tipoAlimento;</span>
     }
 
-    public void setTipoAlimento(String TA) {
-<span class="fc" id="L44">        tipoAlimento = TA;</span>
-        
-<span class="fc" id="L46">    }</span>
+    public void setTipoAlimento(String unTipoAlimento) {
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        if (unTipoAlimento == null || unTipoAlimento.isEmpty()) {</span>
+<span class="fc" id="L44">            this.tipoAlimento = &quot;No definido&quot;;</span>
+        } else {
+<span class="fc" id="L46">            this.tipoAlimento = unTipoAlimento;</span>
+        }
+<span class="fc" id="L48">    }</span>
 
     public ArrayList&lt;ComposicionAlimento&gt; getListaNutrientesConProporcion() {
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (this.listaNutrientesConProporcion.isEmpty()) {</span>
-<span class="fc" id="L50">            return new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (this.listaNutrientesConProporcion.isEmpty()) {</span>
+<span class="fc" id="L52">            return new ArrayList&lt;&gt;();</span>
         } else {
-<span class="fc" id="L52">            return this.listaNutrientesConProporcion;</span>
+<span class="fc" id="L54">            return this.listaNutrientesConProporcion;</span>
         }
     }
 
     public void setListaNutrientesConProporcion(ArrayList&lt;ComposicionAlimento&gt; listaNutrientes) {
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (listaNutrientes == null) {</span>
-<span class="fc" id="L58">            this.listaNutrientesConProporcion = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (listaNutrientes == null) {</span>
+<span class="fc" id="L60">            this.listaNutrientesConProporcion = new ArrayList&lt;&gt;();</span>
         } else {
-<span class="fc" id="L60">            this.listaNutrientesConProporcion = listaNutrientes;</span>
+<span class="fc" id="L62">            this.listaNutrientesConProporcion = listaNutrientes;</span>
         }
-<span class="fc" id="L62">    }</span>
+<span class="fc" id="L64">    }</span>
 
     public ImageIcon getFotoDelAlimento() {
-<span class="nc" id="L65">        return this.fotoDelAlimento;</span>
+<span class="nc" id="L67">        return this.fotoDelAlimento;</span>
     }
 
-    public void setFotoDelAlimento(ImageIcon foto) {
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">        if (foto == null) {</span>
-<span class="fc" id="L70">            this.fotoDelAlimento = new ImageIcon(getClass().getResource(&quot;/Imagenes/fotoDelAlimentoEstandar.png&quot;));</span>
+    public void setFotoDelAlimento(ImageIcon fotoAlimento) {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if (fotoAlimento == null) {</span>
+<span class="fc" id="L72">            this.fotoDelAlimento = new ImageIcon(getClass().getResource(&quot;/Imagenes/fotoDelAlimentoEstandar.png&quot;));</span>
         } else {
-<span class="nc" id="L72">            this.fotoDelAlimento = foto;</span>
+<span class="nc" id="L74">            this.fotoDelAlimento = fotoAlimento;</span>
         }
-<span class="fc" id="L74">    }</span>
+<span class="fc" id="L76">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L78">        return this.getNombre();</span>
+<span class="fc" id="L80">        return this.getNombre();</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="fc" id="L83">        Alimento otroAlimento = (Alimento) obj;</span>
-<span class="fc" id="L84">        return (this.getNombre().equals(otroAlimento.getNombre()));</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if(obj == null){</span>
+<span class="fc" id="L86">            return false;</span>
+        }
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if(this.getClass() != obj.getClass()){</span>
+<span class="fc" id="L89">            return false;</span>
+        }
+<span class="fc" id="L91">        Alimento otroAlimento = (Alimento) obj;</span>
+<span class="fc" id="L92">        return (this.getNombre().equals(otroAlimento.getNombre()));</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L97">        int hash = 7;</span>
+<span class="fc" id="L98">        hash = 79 * hash + Objects.hashCode(this.nombre);</span>
+<span class="fc" id="L99">        hash = 79 * hash + Objects.hashCode(this.tipoAlimento);</span>
+<span class="fc" id="L100">        hash = 79 * hash + Objects.hashCode(this.listaNutrientesConProporcion);</span>
+<span class="fc" id="L101">        hash = 79 * hash + Objects.hashCode(this.fotoDelAlimento);</span>
+<span class="fc" id="L102">        return hash;</span>
     }
 
 }

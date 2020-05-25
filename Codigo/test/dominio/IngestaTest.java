@@ -58,6 +58,43 @@ public class IngestaTest {
         boolean resultadoEquals = ingestaATestear.equals(ingestaAComparar);
         assertFalse(resultadoEquals);
     }
+    
+    @Test
+    public void testEqualsNull(){
+        String fechaDeIngesta = "11/02/17";
+        ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
+        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
+        Alimento alimento1 = new Alimento("Papa", "Verdura", listaComposicion, null);
+        ArrayList<Alimento> listaAlimentosPorFecha = new ArrayList<>();
+        listaAlimentosPorFecha.add(alimento1);
+        Ingesta ingestaATestear = new Ingesta(fechaDeIngesta, listaAlimentosPorFecha);
+        assertFalse(ingestaATestear.equals(null));
+    }
+    
+     @Test
+    public void testEqualsDiferenteTipo(){
+        String fechaDeIngesta = "11/02/17";
+        ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
+        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
+        Alimento alimento1 = new Alimento("Papa", "Verdura", listaComposicion, null);
+        ArrayList<Alimento> listaAlimentosPorFecha = new ArrayList<>();
+        listaAlimentosPorFecha.add(alimento1);
+        Ingesta ingestaATestear = new Ingesta(fechaDeIngesta, listaAlimentosPorFecha);
+        assertFalse(ingestaATestear.equals(alimento1));
+    }
+    
+    public void testHashCode(){
+         String fechaDeIngesta = "11/02/17";
+        ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
+        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
+        Alimento alimento1 = new Alimento("Papa", "Verdura", listaComposicion, null);
+        ArrayList<Alimento> listaAlimentosPorFecha = new ArrayList<>();
+        listaAlimentosPorFecha.add(alimento1);
+        Ingesta ingestaATestear = new Ingesta(fechaDeIngesta, listaAlimentosPorFecha);
+        Ingesta ingestaATestear2 = new Ingesta(fechaDeIngesta, listaAlimentosPorFecha);
+        assertEquals(ingestaATestear.hashCode(), ingestaATestear2.hashCode());
+
+    }
 
 
 }
