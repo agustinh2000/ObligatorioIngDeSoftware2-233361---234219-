@@ -456,6 +456,40 @@ public final class Sistema implements Serializable {
         return nombreUsuarios;
     }
 
+    public ArrayList<Profesional> profesionalesDelMismoPais(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        for (Profesional profesional : this.listaProfesionales) {
+            if (!profesional.equals(unProfesional) && profesional.getPaisGraduacion().equals(unProfesional.getPaisGraduacion())) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
+    public ArrayList<Profesional> profesionalesConElMismoTitulo(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        for (Profesional profesional : this.listaProfesionales) {
+            if (!profesional.equals(unProfesional) && profesional.getTituloProfesional().equals(unProfesional.getTituloProfesional())) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
+    public ArrayList<Profesional> profesionalesMismoAnioGraduacion(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        String[] fechaNacimiento = unProfesional.getFechaGraduacion().split("/");
+        String anioNacimiento = fechaNacimiento[2];
+        for (Profesional profesional : this.listaProfesionales) {
+            String[] fechaNacimientoActual = profesional.getFechaGraduacion().split("/");
+            String anioNacimientoActual = fechaNacimientoActual[2];
+            if (!profesional.equals(unProfesional) && anioNacimiento.equals(anioNacimientoActual)) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
     public String[] getListaUsuariosConPlanesPendientes(Profesional profesional) {
         String[] resultadoPlanesPendientes = new String[0];
         ArrayList<String> planesPendientes = new ArrayList<>();
