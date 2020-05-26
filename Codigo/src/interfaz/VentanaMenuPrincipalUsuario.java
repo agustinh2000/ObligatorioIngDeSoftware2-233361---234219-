@@ -49,14 +49,14 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         Usuario usuarioLogueado = this.sistema.getUsuarioPorNombre(nombreUsuarioLoguedo);
         Alimento alimento = usuarioLogueado.alimentoMasConsumido();
         String composicion = "";
-        if (usuarioLogueado.getAlimentosIngeridos().size() == 0) {
+        if (usuarioLogueado.getAlimentosIngeridos().isEmpty()) {
             this.lblMasConsumido.setVisible(false);
             this.lblMasConsumidoInfo.setVisible(false);
-            this.lblCualFue.setVisible(false);
+            this.lblProfesionalTitulo.setVisible(false);
         } else {
             this.lblMasConsumido.setVisible(true);
             this.lblMasConsumidoInfo.setVisible(true);
-            this.lblCualFue.setVisible(true);
+            this.lblProfesionalTitulo.setVisible(true);
 
             if (alimento.getListaNutrientesConProporcion().isEmpty()) {
                 composicion = "<html><body> No se tiene info. sobre su <br>composición. </body></html>";
@@ -231,9 +231,9 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         btnVerPlanesExistentes = new javax.swing.JButton();
         panelVacio = new javax.swing.JPanel();
         btnAyuda = new javax.swing.JButton();
-        lblMasConsumidoInfo = new javax.swing.JLabel();
-        lblMasConsumido = new javax.swing.JLabel();
         lblCualFue = new javax.swing.JLabel();
+        lblMasConsumido = new javax.swing.JLabel();
+        lblMasConsumidoInfo = new javax.swing.JLabel();
         lblProfesionalTitulo = new javax.swing.JLabel();
         lblProfesionalMasContactado = new javax.swing.JLabel();
 
@@ -1192,6 +1192,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelVacio.setBackground(new java.awt.Color(51, 51, 51));
         panelVacio.setMaximumSize(new java.awt.Dimension(800, 800));
         panelVacio.setMinimumSize(new java.awt.Dimension(800, 800));
+        panelVacio.setPreferredSize(new java.awt.Dimension(800, 800));
 
         btnAyuda.setForeground(new java.awt.Color(255, 255, 255));
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Question_Mark_64px.png"))); // NOI18N
@@ -1205,69 +1206,56 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         });
 
-        lblMasConsumidoInfo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lblMasConsumidoInfo.setForeground(new java.awt.Color(255, 255, 255));
+        lblCualFue.setText("¿Cuál fue el alimento que más cunsumió?");
 
-        lblMasConsumido.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lblMasConsumido.setForeground(new java.awt.Color(255, 255, 255));
+        lblMasConsumido.setText("jLabel4");
 
-        lblCualFue.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        lblCualFue.setForeground(new java.awt.Color(164, 211, 249));
-        lblCualFue.setText("¿Cuál fue el alimento que más consumió?");
+        lblMasConsumidoInfo.setText("jLabel5");
 
-        lblProfesionalTitulo.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        lblProfesionalTitulo.setForeground(new java.awt.Color(164, 211, 249));
-        lblProfesionalTitulo.setText("El profesional más consultado es...");
+        lblProfesionalTitulo.setText("¿Quién es el profesional más contactado?");
 
-        lblProfesionalMasContactado.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lblProfesionalMasContactado.setForeground(new java.awt.Color(255, 255, 255));
-        lblProfesionalMasContactado.setText("jLabel3");
+        lblProfesionalMasContactado.setText("jLabel7");
 
         javax.swing.GroupLayout panelVacioLayout = new javax.swing.GroupLayout(panelVacio);
         panelVacio.setLayout(panelVacioLayout);
         panelVacioLayout.setHorizontalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVacioLayout.createSequentialGroup()
-                .addContainerGap(442, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                        .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))))
-            .addGroup(panelVacioLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelVacioLayout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(437, Short.MAX_VALUE)))
+                    .addGroup(panelVacioLayout.createSequentialGroup()
+                        .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVacioLayout.createSequentialGroup()
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelVacioLayout.createSequentialGroup()
+                                .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)
+                                .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 70, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelVacioLayout.setVerticalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelVacioLayout.createSequentialGroup()
-                    .addGap(129, 129, 129)
-                    .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(820, Short.MAX_VALUE)))
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(105, 105, 105)
+                .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelDerecho.add(panelVacio, "card7");

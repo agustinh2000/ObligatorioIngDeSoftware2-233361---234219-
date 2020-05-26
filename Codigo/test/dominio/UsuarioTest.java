@@ -122,4 +122,22 @@ public class UsuarioTest {
         ArrayList resultado = usuario.getPreferencias();
         assertEquals(resultadoEsperado, resultado);
     }
+    
+     @Test
+    public void testAlimentoMasConsumido() {
+        ArrayList<Ingesta> listaIngesta = new ArrayList<>();
+        ArrayList <Alimento> alimentos = new ArrayList<>();
+        ArrayList <ComposicionAlimento> composicionAlimento = new ArrayList<>();
+        ComposicionAlimento composicion = new ComposicionAlimento("",0);
+        composicionAlimento.add(composicion);
+        Alimento alimento = new Alimento("Banana", "Fruta", composicionAlimento, null);
+        alimentos.add(alimento);
+        Ingesta ingesta = new Ingesta("04/5/2020", alimentos);
+        listaIngesta.add(ingesta);
+        Usuario usuario = new Usuario("Juan", "Perez", null, null, null, null,
+                null, listaIngesta);
+        
+        assertEquals(alimento, usuario.alimentoMasConsumido());
+    }
+
 }

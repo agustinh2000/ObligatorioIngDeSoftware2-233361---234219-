@@ -553,7 +553,6 @@ public class SistemaTest {
         assertEquals(sistemaATestear.devolverListaDiasDeLaSemana(), listaEsperada);
     }
 
-    //NUEVAS PRUEBAS - Mantenimiento
     @Test
     public void testCrearProfesional() {
         Sistema miSistema = new Sistema();
@@ -571,7 +570,7 @@ public class SistemaTest {
         boolean resultado = miSistema.agregarProfesionalALaLista(unProfesional);
         assertEquals(resultadoEsperado, resultado);
     }
-    
+
     @Test
     public void testAgregarProfesionalALaListaYaContenido() {
         Sistema miSistema = new Sistema();
@@ -584,11 +583,11 @@ public class SistemaTest {
 
     @Test
     public void testAgregarAlimentoALaListaYaContenido() {
-      Sistema miSistema = new Sistema();
+        Sistema miSistema = new Sistema();
         Alimento alimento = new Alimento("lentejas", "legumbre", null, null);
         miSistema.agregarAlimentoALaLista(alimento);
         boolean resultado = miSistema.agregarAlimentoALaLista(alimento);
-        boolean resultadoEsperado = false ;
+        boolean resultadoEsperado = false;
         assertEquals(resultadoEsperado, resultado);
     }
 
@@ -674,6 +673,75 @@ public class SistemaTest {
         ArrayList resultado
                 = miSistema.getNombresProfesionalesSinConversacionConUsuario(usuario);
         assertEquals(resultadoEsperado, resultado);
+    }
+
+    @Test
+    public void testProfesionalesDelMismoPais() {
+        Sistema miSistema = new Sistema();
+
+        Profesional profesionalA = new Profesional("Marcos", "Rodriguez",
+                "1/5/1988", null, "", "7/8/2018", "Uruguay");
+        miSistema.agregarProfesionalALaLista(profesionalA);
+
+        Profesional profesionalB = new Profesional("Maria", "Diaz", "1/5/1998",
+                null, "", "7/8/2018", "Argentina");
+        miSistema.agregarProfesionalALaLista(profesionalB);
+
+        Profesional profesional = new Profesional("Jose", "Perez", "1/5/1978",
+                null, "", "7/8/2018", "Uruguay");
+
+        ArrayList<Profesional> listaEsperada = new ArrayList<>();
+        listaEsperada.add(profesionalA);
+
+        ArrayList<Profesional> listaRetorno = miSistema.profesionalesDelMismoPais(profesional);
+
+        assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
+    }
+
+    @Test
+    public void testProfesionalesConElMismoTitulo() {
+        Sistema miSistema = new Sistema();
+
+        Profesional profesionalA = new Profesional("Marcos", "Rodriguez",
+                "1/5/1988", null, "nutricionista", "7/8/2018", "Perú");
+        miSistema.agregarProfesionalALaLista(profesionalA);
+
+        Profesional profesionalB = new Profesional("Maria", "Diaz", "1/5/1998",
+                null, "medico", "7/8/2018", "Argentina");
+        miSistema.agregarProfesionalALaLista(profesionalB);
+
+        Profesional profesional = new Profesional("Jose", "Perez", "1/5/1978",
+                null, "nutricionista", "7/8/2018", "Uruguay");
+
+        ArrayList<Profesional> listaEsperada = new ArrayList<>();
+        listaEsperada.add(profesionalA);
+
+        ArrayList<Profesional> listaRetorno = miSistema.profesionalesConElMismoTitulo(profesional);
+
+        assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
+    }
+
+    @Test
+    public void testProfesionalesMismoAnioGraduacion() {
+        Sistema miSistema = new Sistema();
+
+        Profesional profesionalA = new Profesional("Marcos", "Rodriguez",
+                "1/5/1988", null, "nutricionista", "7/8/2018", "Perú");
+        miSistema.agregarProfesionalALaLista(profesionalA);
+
+        Profesional profesionalB = new Profesional("Maria", "Diaz", "1/5/1998",
+                null, "medico", "7/8/2004", "Argentina");
+        miSistema.agregarProfesionalALaLista(profesionalB);
+
+        Profesional profesional = new Profesional("Jose", "Perez", "1/5/1978",
+                null, "nutricionista", "7/8/2018", "Uruguay");
+
+        ArrayList<Profesional> listaEsperada = new ArrayList<>();
+        listaEsperada.add(profesionalA);
+
+        ArrayList<Profesional> listaRetorno = miSistema.profesionalesMismoAnioGraduacion(profesional);
+
+        assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
     }
 
 }
