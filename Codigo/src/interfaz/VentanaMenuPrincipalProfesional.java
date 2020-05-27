@@ -21,6 +21,8 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private String diaDeLaSemanaAnterior;
     private String diaDeLaSemanaActual;
     private final String[][] planAlimentacion;
+    
+   
 
     static final String LUNES = "Lunes";
 
