@@ -2140,7 +2140,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
                 Ingesta ingestaActual = ingeridos.get(i);
                 ArrayList<Alimento> alimentosActuales = ingestaActual.getListaAlimentosPorFecha();
                 for (Alimento alimento : alimentosActuales) {
-                    listaASetear.add(alimento.toString());
+                    listaASetear.add("Alimento: " + alimento.toString() + "-" + " Ingerido el dia: " + ingestaActual.getFechaDeIngesta());
                 }
             }
             String[] arrayASetear = new String[listaASetear.size()];

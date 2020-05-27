@@ -38,7 +38,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         this.primeraVez = true;
         this.primeraIngesta = true;
         Calendar fecha = new GregorianCalendar();
-        this.fechaIngestaUsuario.setMaxDate(fecha);
         cargarProfesionalMasContactado();
         cargarAlimentoMasConsumido();
         this.panelVacio.setVisible(true);
@@ -198,10 +197,8 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         lblNohayConsultas1 = new javax.swing.JLabel();
         lblNohayConsultasTexto1 = new javax.swing.JLabel();
         panelAlimentoIngerido = new javax.swing.JPanel();
-        fechaIngestaUsuario = new datechooser.beans.DateChooserCombo();
         lblAlimentoIngerido = new javax.swing.JLabel();
         lblAlimentoIngerido2 = new javax.swing.JLabel();
-        lblFechaAlimentoIngerido = new javax.swing.JLabel();
         lblAlimentoIngeridoSeleccionado = new javax.swing.JLabel();
         comboAlimentosEnSistema = new javax.swing.JComboBox<>();
         lblNuevoAlimentoIngerido = new javax.swing.JLabel();
@@ -793,10 +790,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelAlimentoIngerido.setMinimumSize(new java.awt.Dimension(800, 800));
         panelAlimentoIngerido.setLayout(null);
 
-        fechaIngestaUsuario.setFieldFont(new java.awt.Font("Century Gothic", java.awt.Font.PLAIN, 17));
-        panelAlimentoIngerido.add(fechaIngestaUsuario);
-        fechaIngestaUsuario.setBounds(49, 477, 178, 38);
-
         lblAlimentoIngerido.setFont(new java.awt.Font("Levenim MT", 0, 50)); // NOI18N
         lblAlimentoIngerido.setForeground(new java.awt.Color(255, 255, 255));
         lblAlimentoIngerido.setText("ingerido");
@@ -808,12 +801,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         lblAlimentoIngerido2.setText("Datos sobre el alimento");
         panelAlimentoIngerido.add(lblAlimentoIngerido2);
         lblAlimentoIngerido2.setBounds(160, 40, 596, 62);
-
-        lblFechaAlimentoIngerido.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
-        lblFechaAlimentoIngerido.setForeground(new java.awt.Color(255, 255, 255));
-        lblFechaAlimentoIngerido.setText("Ingrese la fecha de ingesta");
-        panelAlimentoIngerido.add(lblFechaAlimentoIngerido);
-        lblFechaAlimentoIngerido.setBounds(49, 410, 624, 38);
 
         lblAlimentoIngeridoSeleccionado.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         lblAlimentoIngeridoSeleccionado.setForeground(new java.awt.Color(255, 255, 255));
@@ -1413,7 +1400,9 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         String nombreUsuarioLoguedo = this.sistema.getPersonaLogueada().getNombreCompleto();
         Usuario usuarioLogueado = this.sistema.getUsuarioPorNombre(nombreUsuarioLoguedo);
         ArrayList<Ingesta> listaIngestasDelUsuario = usuarioLogueado.getAlimentosIngeridos();
-        String fechaIngesta = this.fechaIngestaUsuario.getText();
+        Calendar fecha = new GregorianCalendar();
+        int mes = fecha.get(Calendar.MONTH);
+        String fechaIngesta = fecha.get(Calendar.DAY_OF_MONTH) + "/" + (mes + 1) + "/" + fecha.get(Calendar.YEAR);
         String nuevoAlimento = this.comboAlimentosEnSistema.getSelectedItem().toString();
         if (nuevoAlimento.equals("Seleccione...")) {
             this.lblDatosIncorrectos2.setVisible(true);
@@ -1615,7 +1604,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnVerPlanesExistentes;
     private javax.swing.JComboBox<String> comboAlimentosEnSistema;
     private javax.swing.JComboBox<String> comboProfesionalesEnSistema;
-    private datechooser.beans.DateChooserCombo fechaIngestaUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1656,7 +1644,6 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblDatosIncorrectos;
     private javax.swing.JLabel lblDatosIncorrectos1;
     private javax.swing.JLabel lblDatosIncorrectos2;
-    private javax.swing.JLabel lblFechaAlimentoIngerido;
     private javax.swing.JLabel lblFotoProfesional;
     private javax.swing.JLabel lblIngresarAlimentoIngerido;
     private javax.swing.JLabel lblMasConsumido;
