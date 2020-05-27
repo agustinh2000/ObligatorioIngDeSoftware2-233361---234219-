@@ -15,7 +15,6 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.sistema = unSistema;
         cargarComponentes();
-        this.listaProfesionalesVentana.setListData(sistema.getListaProfesionales().toArray());
     }
     
     public void cargarComponentes(){
@@ -42,7 +41,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
             lblTituloProfesional.setVisible(true);
             lblNoHayProfesionales.setVisible(false);
             lblCaraTristeProfesional.setVisible(false);
-            this.listaUsuariosVentana.setListData(sistema.getListaProfesionales().toArray());
+            this.listaProfesionalesVentana.setListData(sistema.getListaProfesionales().toArray());
             panelProfesionales.setVisible(true);
         }
     }

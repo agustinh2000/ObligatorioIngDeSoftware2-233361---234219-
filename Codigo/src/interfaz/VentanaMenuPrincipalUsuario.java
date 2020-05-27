@@ -2,6 +2,7 @@ package interfaz;
 
 import dominio.Alimento;
 import dominio.Ingesta;
+import dominio.Persona;
 import dominio.PlanAlimentacion;
 import dominio.Profesional;
 import dominio.Sistema;
@@ -38,7 +39,75 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         this.primeraIngesta = true;
         Calendar fecha = new GregorianCalendar();
         this.fechaIngestaUsuario.setMaxDate(fecha);
+        cargarProfesionalMasContactado();
+        cargarAlimentoMasConsumido();
         this.panelVacio.setVisible(true);
+    }
+
+    public void cargarAlimentoMasConsumido() {
+        String nombreUsuarioLoguedo
+                = this.sistema.getPersonaLogueada().getNombreCompleto();
+        Usuario usuarioLogueado
+                = this.sistema.getUsuarioPorNombre(nombreUsuarioLoguedo);
+        Alimento alimento = usuarioLogueado.alimentoMasConsumido();
+        String composicion = "";
+
+        if (usuarioLogueado.getAlimentosIngeridos().isEmpty()) {
+            this.lblMasConsumido.setVisible(true);
+            this.lblMasConsumidoInfo.setVisible(false);
+            this.lblMasConsumido.setText("No ha consumido ningún alimento aún.");
+            //this.lblProfesionalTitulo.setVisible(false);
+        } else {
+            this.lblMasConsumido.setVisible(true);
+            this.lblMasConsumidoInfo.setVisible(true);
+            this.lblProfesionalTitulo.setVisible(true);
+
+            if (alimento.getListaNutrientesConProporcion().isEmpty()) {
+                composicion = "<html><body> No se tiene info. sobre su "
+                        + "<br>composición. </body></html>";
+            } else {
+                composicion = "<html><body><br>Su composición es: ";
+                for (int i = 0; i < alimento.getListaNutrientesConProporcion().size(); i++) {
+                    composicion = composicion + " "
+                            + alimento.getListaNutrientesConProporcion().get(i).getNutriente()
+                            + "<br></html></body>";
+                }
+            }
+            if (!usuarioLogueado.getAlimentosIngeridos().isEmpty()) {
+                lblMasConsumido.setText("<html><body>" + usuarioLogueado.toString()
+                        + ":<br> su alimento más consumido es <br>"
+                        + alimento.toString() + "</body></html>");
+
+                lblMasConsumidoInfo.setText("<html><body>El alimento "
+                        + alimento.getNombre() + "es de tipo <br>"
+                        + alimento.getTipoAlimento() + ". <br>" + composicion
+                        + "</html></body>");
+            }
+        }
+    }
+
+    public void cargarProfesionalMasContactado() {
+        Persona profMasContactado = sistema.profesionalMasContactado();
+        if (this.sistema.getListaProfesionales().isEmpty()) {
+            this.lblProfesionalTitulo.setVisible(true);
+            this.lblProfesionalMasContactado.setText("No hay profesionales en "
+                    + "el sistema");
+        } else if (profMasContactado.getNombre().length() == 0
+                || sistema.getListaConversaciones().isEmpty()) {
+            this.lblProfesionalMasContactado.setText("<html><body>Ningún "
+                    + "profesional ha sido contactado aún. <br> Para ser el "
+                    + "primero en contactar"
+                    + "a alguno, <br>diríjase a la opción del menú 'Consulta con"
+                    + "<un profesional>'</html></body>");
+        } else {
+            this.lblProfesionalTitulo.setVisible(true);
+            this.lblProfesionalMasContactado.setVisible(true);
+            this.lblProfesionalMasContactado.setText("<html><body>El profesional "
+                    + "más contactado es: " + profMasContactado.getNombreCompleto()
+                    + ". <br>" + "Para comunicarse con él, diríjase a la opción "
+                    + "del menú <br>'Consulta con un profesional'"
+                    + "</html></body>");
+        }
     }
 
     public Sistema getSistema() {
@@ -172,6 +241,12 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         btnVerPlanesExistentes = new javax.swing.JButton();
         panelVacio = new javax.swing.JPanel();
         btnAyuda = new javax.swing.JButton();
+        lblCualFue = new javax.swing.JLabel();
+        lblMasConsumido = new javax.swing.JLabel();
+        lblMasConsumidoInfo = new javax.swing.JLabel();
+        lblProfesionalTitulo = new javax.swing.JLabel();
+        lblProfesionalMasContactado = new javax.swing.JLabel();
+        lblDatosDeInteres = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
@@ -1128,6 +1203,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelVacio.setBackground(new java.awt.Color(51, 51, 51));
         panelVacio.setMaximumSize(new java.awt.Dimension(800, 800));
         panelVacio.setMinimumSize(new java.awt.Dimension(800, 800));
+        panelVacio.setPreferredSize(new java.awt.Dimension(800, 800));
 
         btnAyuda.setForeground(new java.awt.Color(255, 255, 255));
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Question_Mark_64px.png"))); // NOI18N
@@ -1141,21 +1217,73 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         });
 
+        lblCualFue.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        lblCualFue.setForeground(new java.awt.Color(164, 211, 249));
+        lblCualFue.setText("¿Cuál fue el alimento que más cunsumió?");
+
+        lblMasConsumido.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lblMasConsumido.setForeground(new java.awt.Color(255, 255, 255));
+        lblMasConsumido.setText("jLabel4");
+
+        lblMasConsumidoInfo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lblMasConsumidoInfo.setForeground(new java.awt.Color(255, 255, 255));
+        lblMasConsumidoInfo.setText("jLabel5");
+
+        lblProfesionalTitulo.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        lblProfesionalTitulo.setForeground(new java.awt.Color(164, 211, 249));
+        lblProfesionalTitulo.setText("¿Quién es el profesional más contactado?");
+
+        lblProfesionalMasContactado.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lblProfesionalMasContactado.setForeground(new java.awt.Color(255, 255, 255));
+        lblProfesionalMasContactado.setText("jLabel7");
+
+        lblDatosDeInteres.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        lblDatosDeInteres.setForeground(new java.awt.Color(164, 211, 249));
+        lblDatosDeInteres.setText("Datos de interés");
+
         javax.swing.GroupLayout panelVacioLayout = new javax.swing.GroupLayout(panelVacio);
         panelVacio.setLayout(panelVacioLayout);
         panelVacioLayout.setHorizontalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(704, Short.MAX_VALUE)
-                .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelVacioLayout.createSequentialGroup()
+                        .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelVacioLayout.createSequentialGroup()
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDatosDeInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelVacioLayout.createSequentialGroup()
+                                .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69)
+                                .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 70, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelVacioLayout.setVerticalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(708, Short.MAX_VALUE)
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(lblDatosDeInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(lblCualFue, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMasConsumido, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMasConsumidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(105, 105, 105)
+                .addComponent(lblProfesionalTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblProfesionalMasContactado, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         panelDerecho.add(panelVacio, "card7");
@@ -1523,12 +1651,16 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblCambiarPreferencias6;
     private javax.swing.JLabel lblConsultaConProfesional;
     private javax.swing.JLabel lblCrearConv;
+    private javax.swing.JLabel lblCualFue;
+    private javax.swing.JLabel lblDatosDeInteres;
     private javax.swing.JLabel lblDatosIncorrectos;
     private javax.swing.JLabel lblDatosIncorrectos1;
     private javax.swing.JLabel lblDatosIncorrectos2;
     private javax.swing.JLabel lblFechaAlimentoIngerido;
     private javax.swing.JLabel lblFotoProfesional;
     private javax.swing.JLabel lblIngresarAlimentoIngerido;
+    private javax.swing.JLabel lblMasConsumido;
+    private javax.swing.JLabel lblMasConsumidoInfo;
     private javax.swing.JLabel lblNoHayPlanes;
     private javax.swing.JLabel lblNoHayPlanes1;
     private javax.swing.JLabel lblNohayConsultas;
@@ -1548,6 +1680,8 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblPlanSolicitado;
     private javax.swing.JLabel lblPlanSolicitadoCorrectamente;
     private javax.swing.JLabel lblPlanSolicitadoCorrectamente1;
+    private javax.swing.JLabel lblProfesionalMasContactado;
+    private javax.swing.JLabel lblProfesionalTitulo;
     private javax.swing.JLabel lblSeleccioneProfesional1;
     private javax.swing.JLabel lblSeleccioneProfesional2;
     private javax.swing.JLabel lblSolicitarPlanAlimentacion;

@@ -225,18 +225,18 @@ public final class Sistema implements Serializable {
 
     public boolean crearConversacion(Persona usuario, Persona profesional, String mensaje, boolean usuarioEsRemitente) {
         boolean fueAgregadaConversacion = false;
-            InformacionMensaje info;
-            if (usuarioEsRemitente) {
-                info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);
-            } else {
-                info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);
-            }
-            if (listaUsuarios.contains((Usuario) usuario) && listaProfesionales.contains((Profesional) profesional)) {
-                ArrayList<InformacionMensaje> listaMensajes = new ArrayList<>();
-                listaMensajes.add(info);
-                Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);
-                fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);
-            }
+        InformacionMensaje info;
+        if (usuarioEsRemitente) {
+            info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);
+        } else {
+            info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);
+        }
+        if (listaUsuarios.contains((Usuario) usuario) && listaProfesionales.contains((Profesional) profesional)) {
+            ArrayList<InformacionMensaje> listaMensajes = new ArrayList<>();
+            listaMensajes.add(info);
+            Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);
+            fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);
+        }
         return fueAgregadaConversacion;
     }
 
@@ -402,11 +402,11 @@ public final class Sistema implements Serializable {
 
     public boolean agregarPlanSolicitado(Usuario usuario, Profesional profesional) {
         boolean agreguePlan = false;
-            PlanAlimentacion planNuevo = new PlanAlimentacion("", usuario, profesional, false, (String[][]) null);
-            if (!getListaPlanesAlimentacion().contains(planNuevo)) {
-                this.getListaPlanesAlimentacion().add(planNuevo);
-                agreguePlan = true;
-            }
+        PlanAlimentacion planNuevo = new PlanAlimentacion("", usuario, profesional, false, (String[][]) null);
+        if (!getListaPlanesAlimentacion().contains(planNuevo)) {
+            this.getListaPlanesAlimentacion().add(planNuevo);
+            agreguePlan = true;
+        }
         return agreguePlan;
     }
 
@@ -456,6 +456,40 @@ public final class Sistema implements Serializable {
         return nombreUsuarios;
     }
 
+    public ArrayList<Profesional> profesionalesDelMismoPais(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        for (Profesional profesional : this.listaProfesionales) {
+            if (!profesional.equals(unProfesional) && profesional.getPaisGraduacion().equals(unProfesional.getPaisGraduacion())) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
+    public ArrayList<Profesional> profesionalesConElMismoTitulo(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        for (Profesional profesional : this.listaProfesionales) {
+            if (!profesional.equals(unProfesional) && profesional.getTituloProfesional().equals(unProfesional.getTituloProfesional())) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
+    public ArrayList<Profesional> profesionalesMismoAnioGraduacion(Profesional unProfesional) {
+        ArrayList<Profesional> listaRetorno = new ArrayList<>();
+        String[] fechaNacimiento = unProfesional.getFechaGraduacion().split("/");
+        String anioNacimiento = fechaNacimiento[2];
+        for (Profesional profesional : this.listaProfesionales) {
+            String[] fechaNacimientoActual = profesional.getFechaGraduacion().split("/");
+            String anioNacimientoActual = fechaNacimientoActual[2];
+            if (!profesional.equals(unProfesional) && anioNacimiento.equals(anioNacimientoActual)) {
+                listaRetorno.add(profesional);
+            }
+        }
+        return listaRetorno;
+    }
+
     public String[] getListaUsuariosConPlanesPendientes(Profesional profesional) {
         String[] resultadoPlanesPendientes = new String[0];
         ArrayList<String> planesPendientes = new ArrayList<>();
@@ -467,5 +501,29 @@ public final class Sistema implements Serializable {
         }
         resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);
         return resultadoPlanesPendientes;
+    }
+
+    public Persona profesionalMasContactado() {
+        Persona profesionalRetorno = new Profesional("", "", "", null, "", "", "");
+        ArrayList<Persona> listaAuxiliar = new ArrayList<>();
+        for (Conversacion conver : this.listaConversaciones) {
+            listaAuxiliar.add(conver.getProfesional());
+
+        }
+        int cont = 0;
+        int max = -1;
+        for (Persona prof : listaAuxiliar) {
+            cont = 0;
+            for (Persona profAComparar : listaAuxiliar) {
+                if (prof.equals(profAComparar)) {
+                    cont++;
+                }
+            }
+            if (cont > max) {
+                max = cont;
+                profesionalRetorno = prof;
+            }
+        }
+        return profesionalRetorno;
     }
 }
