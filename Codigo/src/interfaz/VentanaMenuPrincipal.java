@@ -42,7 +42,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
             lblTituloProfesional.setVisible(true);
             lblNoHayProfesionales.setVisible(false);
             lblCaraTristeProfesional.setVisible(false);
-            this.listaUsuariosVentana.setListData(sistema.getListaProfesionales().toArray());
+            this.listaProfesionalesVentana.setListData(sistema.getListaProfesionales().toArray());
             panelProfesionales.setVisible(true);
         }
     }
