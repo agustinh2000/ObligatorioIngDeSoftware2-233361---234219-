@@ -79,13 +79,18 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             this.listaMismoPais.setListData(sistema.profesionalesDelMismoPais(profesionalLogueado).toArray());
             panelMismoPais.setVisible(true);
         } else {
-            lblPais1.setVisible(false);
-            lblMismoPais.setVisible(false);
-            panelMismoPais.setVisible(false);
+            lblPais1.setText(profesionalLogueado.getPaisGraduacion());
+            lblPais1.setVisible(true);
+            lblMismoPais.setVisible(true);
+            panelMismoPais.setVisible(true);
+            String[] arrayVacio = new String[1];
+            arrayVacio[0] = "No hay profesionales con el mismo país.";
+            this.listaMismoPais.setListData(arrayVacio);
+            panelMismoPais.setVisible(true);
         }
     }
-    
-    public void cargarListaProfMismoTitulo(){
+
+    public void cargarListaProfMismoTitulo() {
         String nombreProfesionalLogueado = sistema.getPersonaLogueada().getNombreCompleto();
         Profesional profesionalLogueado = sistema.getProfesionalPorNombre(nombreProfesionalLogueado);
         ArrayList<Profesional> listaResultado = sistema.profesionalesConElMismoTitulo(profesionalLogueado);
@@ -96,18 +101,23 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             this.listaMismoTitulo.setListData(sistema.profesionalesConElMismoTitulo(profesionalLogueado).toArray());
             panelMismoTitulo.setVisible(true);
         } else {
-            lblTitulo.setVisible(false);
-            lblMismoTitulo.setVisible(false);
-            panelMismoTitulo.setVisible(false);
+            lblTitulo.setText(profesionalLogueado.getTituloProfesional());
+            lblTitulo.setVisible(true);
+            lblMismoTitulo.setVisible(true);
+            panelMismoTitulo.setVisible(true);
+            String[] arrayVacio = new String[1];
+            arrayVacio[0] = "No hay profesionales con el mismo título.";
+            this.listaMismoTitulo.setListData(arrayVacio);
+            panelMismoTitulo.setVisible(true);
         }
     }
-    
-     public void cargarListaProfMismoAnio(){
+
+    public void cargarListaProfMismoAnio() {
         String nombreProfesionalLogueado = sistema.getPersonaLogueada().getNombreCompleto();
         Profesional profesionalLogueado = sistema.getProfesionalPorNombre(nombreProfesionalLogueado);
-        String [] fechaNacimiento = profesionalLogueado.getFechaGraduacion().split("/");
+        String[] fechaNacimiento = profesionalLogueado.getFechaGraduacion().split("/");
         String anioNacimiento = fechaNacimiento[2];
-        ArrayList<Profesional> listaResultado = sistema.profesionalesConElMismoTitulo(profesionalLogueado);
+        ArrayList<Profesional> listaResultado = sistema.profesionalesMismoAnioGraduacion(profesionalLogueado);
         if (!listaResultado.isEmpty()) {
             lblAnio.setText(anioNacimiento);
             lblAnio.setVisible(true);
@@ -115,13 +125,16 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             this.listaMismoAnio.setListData(sistema.profesionalesMismoAnioGraduacion(profesionalLogueado).toArray());
             panelMismoAnio.setVisible(true);
         } else {
-            lblAnio.setVisible(false);
-            lblMismoAnio.setVisible(false);
-            panelMismoAnio.setVisible(false);
+            lblAnio.setText(anioNacimiento);
+            lblAnio.setVisible(true);
+            lblMismoAnio.setVisible(true);
+            panelMismoAnio.setVisible(true);
+            String[] arrayVacio = new String[1];
+            arrayVacio[0] = "No hay profesionales graduados en el mismo año.";
+            this.listaMismoAnio.setListData(arrayVacio);
+            panelMismoAnio.setVisible(true);
         }
     }
-     
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -1731,10 +1744,10 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("Nutricion");
 
         lblMismoTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblMismoTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblMismoTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMismoTitulo.setText("con su mismo título en");
 
         lblMismoPais.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -1745,7 +1758,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblPais1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblPais1.setForeground(new java.awt.Color(255, 255, 255));
         lblPais1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPais1.setText("Argentina");
 
         listaMismoTitulo.setBackground(new java.awt.Color(51, 51, 51));
         listaMismoTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -1761,12 +1773,13 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
         lblMismoAnio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblMismoAnio.setForeground(new java.awt.Color(255, 255, 255));
-        lblMismoAnio.setText("nacidos en su país");
+        lblMismoAnio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMismoAnio.setText("graduados en su mismo año");
+        lblMismoAnio.setToolTipText("");
 
         lblAnio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblAnio.setForeground(new java.awt.Color(255, 255, 255));
         lblAnio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAnio.setText("1111");
 
         lblDatosDe.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         lblDatosDe.setForeground(new java.awt.Color(164, 211, 249));
@@ -1779,39 +1792,37 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
                 .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelVacioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelVacioLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(lblPais1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelVacioLayout.createSequentialGroup()
-                            .addGap(467, 467, 467)
-                            .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelVacioLayout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(lblMismoAnio)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMismoTitulo)
-                            .addGap(19, 19, 19)))
+                        .addComponent(panelMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelVacioLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(lblAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelVacioLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblPais1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMismoAnio, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblAnio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56)
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMismoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
+                        .addGap(0, 458, Short.MAX_VALUE)
+                        .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
                         .addComponent(panelMismoAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
+                        .addGap(61, 61, 61)
                         .addComponent(panelMismoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
                         .addComponent(lblDatosDe, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(215, 215, 215))))
@@ -1819,26 +1830,31 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         panelVacioLayout.setVerticalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addComponent(lblDatosDe, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblPais1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelVacioLayout.createSequentialGroup()
-                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMismoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMismoAnio)
-                            .addComponent(lblMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAnio)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelMismoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                    .addComponent(panelMismoAnio, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelMismoPais, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(189, 189, 189)
+                        .addComponent(lblDatosDe, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelVacioLayout.createSequentialGroup()
+                                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMismoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMismoAnio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPais1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelVacioLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(panelMismoPais, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelMismoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(panelMismoAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(148, 148, 148)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
