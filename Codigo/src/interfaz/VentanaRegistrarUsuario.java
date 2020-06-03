@@ -440,7 +440,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
 
     private void btnIngresarFotoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarFotoPerfilActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png", "jpg", "JPG", "jpeg", "JPEG");
         fileChooser.setFileFilter(file);
         fileChooser.setAcceptAllFileFilterUsed(false);
         int imagen = fileChooser.showOpenDialog(this);
