@@ -210,7 +210,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
             }
         });
         panel2.add(btnIngresarProfesionalASistema);
-        btnIngresarProfesionalASistema.setBounds(630, 650, 115, 94);
+        btnIngresarProfesionalASistema.setBounds(640, 650, 115, 94);
 
         lblPaisGraduacion.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         lblPaisGraduacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -278,7 +278,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         lblValidarPaisGraduacion.setForeground(new java.awt.Color(255, 255, 255));
         lblValidarPaisGraduacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
         panel2.add(lblValidarPaisGraduacion);
-        lblValidarPaisGraduacion.setBounds(490, 660, 32, 44);
+        lblValidarPaisGraduacion.setBounds(480, 660, 32, 44);
 
         lblDatosIncorrectos.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         lblDatosIncorrectos.setForeground(new java.awt.Color(255, 153, 153));
@@ -288,27 +288,27 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
 
         lblNombreVacio.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblNombreVacio.setForeground(new java.awt.Color(240, 128, 128));
-        lblNombreVacio.setText("Dato vacío");
+        lblNombreVacio.setText("Dato incorrecto");
         panel2.add(lblNombreVacio);
-        lblNombreVacio.setBounds(460, 180, 134, 38);
+        lblNombreVacio.setBounds(460, 180, 150, 38);
 
         lblFechaGraduacionInvalida.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblFechaGraduacionInvalida.setForeground(new java.awt.Color(240, 128, 128));
-        lblFechaGraduacionInvalida.setText("Dato invalido");
+        lblFechaGraduacionInvalida.setText("Dato incorrecto");
         panel2.add(lblFechaGraduacionInvalida);
-        lblFechaGraduacionInvalida.setBounds(230, 550, 134, 38);
+        lblFechaGraduacionInvalida.setBounds(230, 550, 150, 38);
 
         lblPaisVacio.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblPaisVacio.setForeground(new java.awt.Color(240, 128, 128));
-        lblPaisVacio.setText("Dato vacío");
+        lblPaisVacio.setText("Dato incorrecto");
         panel2.add(lblPaisVacio);
-        lblPaisVacio.setBounds(530, 660, 120, 38);
+        lblPaisVacio.setBounds(520, 660, 150, 38);
 
         lblApellidoVacio.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblApellidoVacio.setForeground(new java.awt.Color(240, 128, 128));
-        lblApellidoVacio.setText("Dato vacío");
+        lblApellidoVacio.setText("Dato incorrecto");
         panel2.add(lblApellidoVacio);
-        lblApellidoVacio.setBounds(460, 220, 134, 38);
+        lblApellidoVacio.setBounds(460, 220, 150, 38);
         panel2.add(jdcFechaNacimiento);
         jdcFechaNacimiento.setBounds(390, 300, 140, 30);
         panel2.add(jdcFechaGraduacion);
@@ -321,15 +321,15 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
 
         lblFechaNacimientoInvalida.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblFechaNacimientoInvalida.setForeground(new java.awt.Color(240, 128, 128));
-        lblFechaNacimientoInvalida.setText("Dato vacío");
+        lblFechaNacimientoInvalida.setText("Dato incorrecto");
         panel2.add(lblFechaNacimientoInvalida);
-        lblFechaNacimientoInvalida.setBounds(590, 300, 110, 38);
+        lblFechaNacimientoInvalida.setBounds(590, 300, 150, 38);
 
         lblTituloVacio.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblTituloVacio.setForeground(new java.awt.Color(240, 128, 128));
-        lblTituloVacio.setText("Dato vacío");
+        lblTituloVacio.setText("Dato incorrecto");
         panel2.add(lblTituloVacio);
-        lblTituloVacio.setBounds(530, 410, 134, 38);
+        lblTituloVacio.setBounds(530, 410, 150, 38);
 
         lblValidarTituloProfesional.setForeground(new java.awt.Color(255, 255, 255));
         lblValidarTituloProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
@@ -378,17 +378,18 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
     public void setPrimeraVezEnSistema(boolean primera) {
         this.primeraVez = primera;
     }
-    
-   
+
 
     private void btnIngresarProfesionalASistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProfesionalASistemaActionPerformed
         String nombre = this.txtNombre.getText();
+        String nombreSinEspacio = nombre.replaceAll(" ", "");
         String apellido = this.txtApellido.getText();
+        String apellidoSinEspacio = apellido.replaceAll(" ", "");
         String tituloProfesional = (String) this.listaTituloProfesional.getSelectedItem();
         String paisGraduacion = (String) this.listaPaisGraduacion.getSelectedItem();
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         boolean errorFormatoFechaNacimiento = false;
-        boolean errorFormatoFechaGraduacion= false;
+        boolean errorFormatoFechaGraduacion = false;
         String fechaGraduacion = "";
         String fechaNacimiento = "";
         try {
@@ -407,10 +408,11 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         } catch (Exception e) {
             errorFormatoFechaGraduacion = true;
         }
-        if (nombre.equals("") || apellido.equals("") || tituloProfesional.equals("Seleccione...") || paisGraduacion.equals("Seleccione...")
-                || errorFormatoFechaGraduacion || errorFormatoFechaNacimiento) {
+        if (nombre.trim().equals("") || apellido.trim().equals("") || tituloProfesional.equals("Seleccione...") || paisGraduacion.equals("Seleccione...")
+                || errorFormatoFechaGraduacion || errorFormatoFechaNacimiento || !esFormatoCorrecto(nombreSinEspacio)
+                || !esFormatoCorrecto(apellidoSinEspacio)) {
             this.lblDatosIncorrectos.setVisible(true);
-            mostrarErrores(nombre, apellido, tituloProfesional, paisGraduacion, errorFormatoFechaGraduacion,errorFormatoFechaNacimiento);
+            mostrarErrores(nombre, apellido, tituloProfesional, paisGraduacion, errorFormatoFechaGraduacion, errorFormatoFechaNacimiento);
         } else {
             this.lblDatosIncorrectos.setVisible(false);
             boolean seAgregoProfesional = this.getSistema().crearProfesional(nombre, apellido, fechaNacimiento, this.fotoDePerfilActual, tituloProfesional, fechaGraduacion, paisGraduacion);
@@ -444,8 +446,8 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnIngresarFotoPerfilActionPerformed
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        String nombreIngresado = this.txtNombre.getText();
-        if (nombreIngresado.equals("")) {
+        String nombreIngresado = this.txtNombre.getText().replaceAll(" ", "");
+        if (nombreIngresado.trim().equals("") || !esFormatoCorrecto(nombreIngresado)) {
             this.lblValidarNombre.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarNombre.setVisible(true);
             this.lblNombreVacio.setVisible(true);
@@ -457,8 +459,8 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNombreFocusLost
 
     private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
-        String apellidoIngresado = this.txtApellido.getText();
-        if (apellidoIngresado.equals("")) {
+        String apellidoIngresado = this.txtApellido.getText().replaceAll(" ", "");
+        if (apellidoIngresado.trim().equals("") || !esFormatoCorrecto(apellidoIngresado)) {
             this.lblValidarApellido.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarApellido.setVisible(true);
             this.lblApellidoVacio.setVisible(true);
@@ -468,6 +470,10 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
             this.lblApellidoVacio.setVisible(false);
         }
     }//GEN-LAST:event_txtApellidoFocusLost
+
+    private boolean esFormatoCorrecto(String cadena) {
+        return !cadena.matches(".*[^A-Za-z].*");
+    }
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.sistema.guardarDatosSistema();
@@ -553,8 +559,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         this.lblFechaNacimientoInvalida.setVisible(false);
         this.lblValidarFechaNacimiento.setVisible(false);
         this.lblValidarFechaGraduacion.setVisible(false);
-        
-        
+
     }
 
     private void cargarListaPaisesGraduacion() {
@@ -589,12 +594,12 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
             this.lblValidarPaisGraduacion.setVisible(true);
             this.lblPaisVacio.setVisible(true);
         }
-        if(errorFechaGraduacion){
+        if (errorFechaGraduacion) {
             this.lblValidarFechaGraduacion.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarFechaGraduacion.setVisible(true);
             this.lblFechaGraduacionInvalida.setVisible(true);
         }
-         if(errorFechaNacimiento){
+        if (errorFechaNacimiento) {
             this.lblValidarFechaNacimiento.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarFechaNacimiento.setVisible(true);
             this.lblFechaNacimientoInvalida.setVisible(true);
