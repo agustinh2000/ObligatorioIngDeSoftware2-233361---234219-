@@ -288,7 +288,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
 
     private void btnCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSistemaActionPerformed
         this.sistema.guardarDatosSistema();
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnCerrarSistemaActionPerformed
 
 

@@ -102,6 +102,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
         jdcFecha = new com.toedter.calendar.JDateChooser();
         lblPaisVacio1 = new javax.swing.JLabel();
         lblValidarNacionalidad1 = new javax.swing.JLabel();
+        btnCerrarSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
@@ -393,6 +394,20 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
         panel2.add(lblValidarNacionalidad1);
         lblValidarNacionalidad1.setBounds(540, 280, 32, 44);
 
+        btnCerrarSistema.setBackground(new java.awt.Color(51, 51, 51));
+        btnCerrarSistema.setForeground(new java.awt.Color(51, 51, 51));
+        btnCerrarSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Close_Window_48px.png"))); // NOI18N
+        btnCerrarSistema.setBorderPainted(false);
+        btnCerrarSistema.setContentAreaFilled(false);
+        btnCerrarSistema.setFocusPainted(false);
+        btnCerrarSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSistemaActionPerformed(evt);
+            }
+        });
+        panel2.add(btnCerrarSistema);
+        btnCerrarSistema.setBounds(720, 10, 50, 50);
+
         getContentPane().add(panel2);
         panel2.setBounds(275, 0, 950, 800);
 
@@ -500,6 +515,11 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_listaNacionalidadItemStateChanged
 
+    private void btnCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSistemaActionPerformed
+        this.sistema.guardarDatosSistema();
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarSistemaActionPerformed
+
     /**/
     void agregarRestriccionesUsuario(ArrayList<String> restricciones) {
         if (this.rdBtnCeliaco.isSelected()) {
@@ -535,6 +555,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSistema;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnIngresarFotoPerfil;
     private javax.swing.JButton btnIngresarUsuarioASistema;

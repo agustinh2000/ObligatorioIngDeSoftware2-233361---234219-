@@ -72,6 +72,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         lblFechaNacimientoInvalida = new javax.swing.JLabel();
         lblTituloVacio = new javax.swing.JLabel();
         lblValidarTituloProfesional = new javax.swing.JLabel();
+        btnCerrarSistema = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -154,7 +155,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         lblNuevoProfesional.setForeground(new java.awt.Color(255, 255, 255));
         lblNuevoProfesional.setText("Nuevo Profesional");
         panel2.add(lblNuevoProfesional);
-        lblNuevoProfesional.setBounds(149, 27, 530, 91);
+        lblNuevoProfesional.setBounds(140, 30, 530, 91);
 
         lblIconoNuevoProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fotoDeUsuarioStandard.png"))); // NOI18N
         panel2.add(lblIconoNuevoProfesional);
@@ -336,6 +337,20 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         panel2.add(lblValidarTituloProfesional);
         lblValidarTituloProfesional.setBounds(490, 410, 32, 44);
 
+        btnCerrarSistema.setBackground(new java.awt.Color(51, 51, 51));
+        btnCerrarSistema.setForeground(new java.awt.Color(51, 51, 51));
+        btnCerrarSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Close_Window_48px.png"))); // NOI18N
+        btnCerrarSistema.setBorderPainted(false);
+        btnCerrarSistema.setContentAreaFilled(false);
+        btnCerrarSistema.setFocusPainted(false);
+        btnCerrarSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSistemaActionPerformed(evt);
+            }
+        });
+        panel2.add(btnCerrarSistema);
+        btnCerrarSistema.setBounds(730, 10, 50, 50);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -507,8 +522,14 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_listaPaisGraduacionItemStateChanged
 
+    private void btnCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSistemaActionPerformed
+        this.sistema.guardarDatosSistema();
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarSistemaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSistema;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnIngresarFotoPerfil;
     private javax.swing.JButton btnIngresarProfesionalASistema;
