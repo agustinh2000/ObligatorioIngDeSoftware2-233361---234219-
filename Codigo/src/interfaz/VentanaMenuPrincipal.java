@@ -208,7 +208,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
             }
         });
         panel2.add(btnCerrarSistema);
-        btnCerrarSistema.setBounds(730, 10, 50, 50);
+        btnCerrarSistema.setBounds(730, 0, 60, 50);
 
         lblNoHayProfesionales.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         lblNoHayProfesionales.setForeground(new java.awt.Color(255, 255, 255));

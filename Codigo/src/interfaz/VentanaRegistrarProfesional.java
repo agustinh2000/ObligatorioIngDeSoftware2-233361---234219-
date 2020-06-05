@@ -349,7 +349,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
             }
         });
         panel2.add(btnCerrarSistema);
-        btnCerrarSistema.setBounds(730, 10, 50, 50);
+        btnCerrarSistema.setBounds(750, 0, 50, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

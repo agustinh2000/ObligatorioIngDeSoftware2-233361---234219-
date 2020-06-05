@@ -406,7 +406,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
             }
         });
         panel2.add(btnCerrarSistema);
-        btnCerrarSistema.setBounds(720, 10, 50, 50);
+        btnCerrarSistema.setBounds(730, 0, 50, 50);
 
         getContentPane().add(panel2);
         panel2.setBounds(275, 0, 950, 800);

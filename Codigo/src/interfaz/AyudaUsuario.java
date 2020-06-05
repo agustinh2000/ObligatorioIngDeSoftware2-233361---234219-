@@ -134,7 +134,7 @@ public class AyudaUsuario extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnCerrarSistema);
-        btnCerrarSistema.setBounds(540, 10, 50, 50);
+        btnCerrarSistema.setBounds(550, 0, 50, 50);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 600, 600);
