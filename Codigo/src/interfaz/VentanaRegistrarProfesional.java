@@ -415,6 +415,7 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
         } catch (Exception e) {
             errorFormatoFechaNacimiento = true;
         }
+        
         try {
             fechaGraduacion = formato.format(jdcFechaGraduacion.getDate());
             this.lblValidarFechaGraduacion.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoCorrecto.png")));
@@ -422,6 +423,17 @@ public class VentanaRegistrarProfesional extends javax.swing.JDialog {
             this.lblFechaGraduacionInvalida.setVisible(false);
         } catch (Exception e) {
             errorFormatoFechaGraduacion = true;
+        }
+        Calendar fechaHoy = new GregorianCalendar();
+        if(!errorFormatoFechaNacimiento){
+            if(jdcFechaNacimiento.getDate().after(fechaHoy.getTime())){
+                errorFormatoFechaNacimiento=true;
+            }
+        }
+        if(!errorFormatoFechaGraduacion){
+            if(jdcFechaGraduacion.getDate().after(fechaHoy.getTime())){
+                errorFormatoFechaGraduacion=true;
+            }
         }
         if (nombre.trim().equals("") || apellido.trim().equals("") || tituloProfesional.equals("Seleccione...") || paisGraduacion.equals("Seleccione...")
                 || errorFormatoFechaGraduacion || errorFormatoFechaNacimiento || !esFormatoCorrecto(nombreSinEspacio)

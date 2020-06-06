@@ -437,6 +437,12 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
         } catch (Exception e) {
             errorFormatoFecha = true;
         }
+        Calendar fechaHoy = new GregorianCalendar();
+        if(!errorFormatoFecha){
+            if(jdcFecha.getDate().after(fechaHoy.getTime())){
+                errorFormatoFecha=true;
+            }
+        }
         if (nombre.trim().equals("") || apellido.trim().equals("") || nacionalidad.equals(SELECCIONE) || errorFormatoFecha
                 || !esFormatoCorrecto(nombreSinEspacios) || !esFormatoCorrecto(apellidoSinEspacios)) {
             this.lblDatosIncorrectos.setVisible(true);
