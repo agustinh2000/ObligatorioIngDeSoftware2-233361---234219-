@@ -226,16 +226,18 @@ public final class Sistema implements Serializable {
     public boolean crearConversacion(Persona usuario, Persona profesional, String mensaje, boolean usuarioEsRemitente) {
         boolean fueAgregadaConversacion = false;
         InformacionMensaje info;
-        if (usuarioEsRemitente) {
-            info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);
-        } else {
-            info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);
-        }
-        if (listaUsuarios.contains((Usuario) usuario) && listaProfesionales.contains((Profesional) profesional)) {
-            ArrayList<InformacionMensaje> listaMensajes = new ArrayList<>();
-            listaMensajes.add(info);
-            Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);
-            fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);
+        if (usuario != null && profesional != null) {
+            if (usuarioEsRemitente) {
+                info = new InformacionMensaje(usuario.getNombreCompleto(), profesional.getNombreCompleto(), mensaje);
+            } else {
+                info = new InformacionMensaje(profesional.getNombreCompleto(), usuario.getNombreCompleto(), mensaje);
+            }
+            if (listaUsuarios.contains((Usuario) usuario) && listaProfesionales.contains((Profesional) profesional)) {
+                ArrayList<InformacionMensaje> listaMensajes = new ArrayList<>();
+                listaMensajes.add(info);
+                Conversacion nuevaConversacion = new Conversacion(usuario, profesional, listaMensajes);
+                fueAgregadaConversacion = agregarConversacionALaLista(nuevaConversacion);
+            }
         }
         return fueAgregadaConversacion;
     }
