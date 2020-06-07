@@ -4,6 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class InformacionMensajeTest {
+    
+    final String remitenteNoIngresado = "Remitente no ingresado";
 
     @Test
     public void testGetsSetsNullRemitente() {
@@ -29,7 +31,7 @@ public class InformacionMensajeTest {
         String destinatario = null;
         String mensaje = null;
         InformacionMensaje info = new InformacionMensaje(remitente, destinatario, mensaje);
-        String esperadoToString = "Remitente no ingresado" + ": \n" + mensaje;
+        String esperadoToString = remitenteNoIngresado + ": \n" + mensaje;
         assertEquals(info.toString(), esperadoToString);
     }
 
@@ -39,7 +41,7 @@ public class InformacionMensajeTest {
         String destinatario = "";
         String mensaje = "";
         InformacionMensaje info = new InformacionMensaje(remitente, destinatario, mensaje);
-        assertEquals(info.getRemitente(), "Remitente no ingresado");
+        assertEquals(info.getRemitente(), remitenteNoIngresado);
     }
 
     @Test
@@ -66,7 +68,7 @@ public class InformacionMensajeTest {
         String destinatario = "";
         String mensaje = "";
         InformacionMensaje info = new InformacionMensaje(remitente, destinatario, mensaje);
-        String esperadoToString = "Remitente no ingresado" + ": \n" + mensaje;
+        String esperadoToString = remitenteNoIngresado + ": \n" + mensaje;
         assertEquals(info.toString(), esperadoToString);
     }
 

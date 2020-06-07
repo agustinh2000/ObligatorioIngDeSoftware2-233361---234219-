@@ -207,11 +207,6 @@ public class VentanaEditarRestricciones extends javax.swing.JDialog {
     }
 
     private void cargarListaRestricciones() {
-        Sistema.Restricciones[] listaRestricciones = new Sistema.Restricciones[4];
-        listaRestricciones[0] = Sistema.Restricciones.Celiaquia;
-        listaRestricciones[1] = Sistema.Restricciones.Diabetes;
-        listaRestricciones[2] = Sistema.Restricciones.IntoleranciaLactosa;
-        listaRestricciones[3] = Sistema.Restricciones.Veganismo;
         this.rdBtnCeliaco.setText("Celiaquía");
         this.rdBtnDiabetes.setText("Diabetes");
         this.rdBtnIntoleranteLactosa.setText("Intolerante a la lactosa");

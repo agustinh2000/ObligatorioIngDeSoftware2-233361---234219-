@@ -7,6 +7,17 @@ import static org.junit.Assert.*;
 
 public class PlanAlimentacionTest {
 
+    final String planAlimentacion = "Plan de alimentación";
+    final String planDown = "Plan 2 Dias DOWN";
+    final String fotoUsuario = "Imagenes/fotoDeUsuarioStandard.png";
+    final String nacionalidadUruguay = "Uruguayo";
+    final String nombreMartin = "Martin";
+    final String nombreAlejandro = "Alejandro";
+    final String fechaNacimiento = "11/02/98";
+    final String apellidoGomez = "Gómez";
+    final String apellidoFernandez = "Fernandez";
+    final String alimento = "Manzana";
+    
     @Test
     public void testGetsSetsNullToString() {
         String nombrePlan = null;
@@ -16,7 +27,7 @@ public class PlanAlimentacionTest {
         String[][] planDiaADia = null;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
-        assertEquals(planATestear.toString(), "Plan de alimentación");
+        assertEquals(planATestear.toString(), planAlimentacion);
     }
 
     @Test
@@ -28,7 +39,7 @@ public class PlanAlimentacionTest {
         String[][] planDiaADia = new String[0][0];
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
-        assertEquals(planATestear.getNombreDelPlan(), "Plan de alimentación");
+        assertEquals(planATestear.getNombreDelPlan(), planAlimentacion);
     }
 
     @Test
@@ -91,20 +102,20 @@ public class PlanAlimentacionTest {
         String[][] planDiaADia = new String[0][0];
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
-        assertEquals(planATestear.toString(), "Plan de alimentación");
+        assertEquals(planATestear.toString(), planAlimentacion);
     }
 
     @Test
     public void testGetsSetsDatosCorrectosNombre() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         assertEquals(planATestear.getNombreDelPlan(), nombrePlan);
@@ -112,32 +123,32 @@ public class PlanAlimentacionTest {
 
     @Test
     public void testGetsSetsDatosCorrectosProfesional() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
-        Profesional profesionalEsperado = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        Profesional profesionalEsperado = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         assertEquals(planATestear.getProfesional(), profesionalEsperado);
     }
 
     @Test
     public void testGetsSetsDatosCorrectosFueAtendido() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         assertEquals(planATestear.getFueAtendidoElPlan(), fueAtendido);
@@ -145,32 +156,32 @@ public class PlanAlimentacionTest {
 
     @Test
     public void testGetsSetsDatosCorrectosUsuario() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
-        Usuario usuarioEsperado = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
+        Usuario usuarioEsperado = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
         assertEquals(planATestear.getUsuario(), usuarioEsperado);
     }
 
     @Test
     public void testGetsSetsDatosCorrectosPlanDiaADia() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         Assert.assertArrayEquals(planATestear.getPlanDiaADia(), planDiaADia);
@@ -178,15 +189,15 @@ public class PlanAlimentacionTest {
 
     @Test
     public void testGetsSetsDatosCorrectosToString() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         assertEquals(planATestear.toString(), nombrePlan);
@@ -194,15 +205,15 @@ public class PlanAlimentacionTest {
 
     @Test
     public void testEqualsIguales() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         PlanAlimentacion planAComparar = new PlanAlimentacion(nombrePlan, usuario, profesional,
@@ -212,15 +223,15 @@ public class PlanAlimentacionTest {
 
     @Test
     public void testEqualsDiferentes() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         String nombrePlan2 = "Plan 2 Dias UP";
@@ -231,9 +242,9 @@ public class PlanAlimentacionTest {
     
     @Test
     public void  testEqualsNull(){
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
          PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
@@ -244,9 +255,9 @@ public class PlanAlimentacionTest {
     
      @Test
     public void  testEqualsTipoDiferente(){
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
          PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
@@ -257,15 +268,15 @@ public class PlanAlimentacionTest {
     
     @Test
     public void testHashCode() {
-        String nombrePlan = "Plan 2 Dias DOWN";
-        Usuario usuario = new Usuario("Martin", "Gómez", "11/02/98", new ImageIcon("Imagenes/fotoDeUsuarioStandard.png"), "Uruguayo", null, null, null);
-        Profesional profesional = new Profesional("Alejandro", "Fernandez", null, null, null, null, null);
+        String nombrePlan = planDown;
+        Usuario usuario = new Usuario(nombreMartin, apellidoGomez, fechaNacimiento, new ImageIcon(fotoUsuario), nacionalidadUruguay, null, null, null);
+        Profesional profesional = new Profesional(nombreAlejandro, apellidoFernandez, null, null, null, null, null);
         boolean fueAtendido = true;
         String[][] planDiaADia = new String[2][2];
-        planDiaADia[0][0] = "Manzana";
-        planDiaADia[0][1] = "Manzana";
-        planDiaADia[1][0] = "Manzana";
-        planDiaADia[1][1] = "Manzana";
+        planDiaADia[0][0] = alimento;
+        planDiaADia[0][1] = alimento;
+        planDiaADia[1][0] = alimento;
+        planDiaADia[1][1] = alimento;
         PlanAlimentacion planATestear = new PlanAlimentacion(nombrePlan, usuario, profesional,
                 fueAtendido, planDiaADia);
         PlanAlimentacion planATestear2 = new PlanAlimentacion(nombrePlan, usuario, profesional,

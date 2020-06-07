@@ -7,6 +7,11 @@ import org.junit.Test;
 
 public class AlimentoTest {
 
+    final String lipidos = "lipidos";
+    final String verdura = "verdura";
+    final String rabanito = "rabanito";
+    final String nombrePorDefecto = "Nombre de alimento no ingresado";
+
     @Test
     public void testSetsGetsNullTipo() {
         Alimento alimentoTest = new Alimento(null, null, null, null);
@@ -22,24 +27,24 @@ public class AlimentoTest {
     @Test
     public void testSetsGetsDatosCorrectosNombre() {
         ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
-        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
-        Alimento alimentoTest = new Alimento("Papa", "Verdura", listaComposicion, null);
+        listaComposicion.add(new ComposicionAlimento(lipidos, 2));
+        Alimento alimentoTest = new Alimento("Papa", verdura, listaComposicion, null);
         assertEquals(alimentoTest.getNombre(), "Papa");
     }
 
     @Test
     public void testSetsGetsDatosCorrectosTipo() {
         ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
-        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
-        Alimento alimentoTest = new Alimento("Papa", "Verdura", listaComposicion, null);
-        assertEquals(alimentoTest.getTipoAlimento(), "Verdura");
+        listaComposicion.add(new ComposicionAlimento(lipidos, 2));
+        Alimento alimentoTest = new Alimento("Papa", verdura, listaComposicion, null);
+        assertEquals(alimentoTest.getTipoAlimento(), verdura);
     }
 
     @Test
     public void testSetsGetsDatosCorrectosNutrientes() {
         ArrayList<ComposicionAlimento> listaComposicion = new ArrayList<>();
-        listaComposicion.add(new ComposicionAlimento("Lipidos", 2));
-        Alimento alimentoTest = new Alimento("Papa", "Verdura", listaComposicion, null);
+        listaComposicion.add(new ComposicionAlimento(lipidos, 2));
+        Alimento alimentoTest = new Alimento("Papa", verdura, listaComposicion, null);
         assertEquals(alimentoTest.getListaNutrientesConProporcion(), listaComposicion);
     }
 
@@ -52,7 +57,7 @@ public class AlimentoTest {
     @Test
     public void testSetsGetsNombreDatosVacios() {
         Alimento alimentoTest = new Alimento("", "", null, null);
-        assertEquals(alimentoTest.getNombre(), "Nombre de alimento no ingresado");
+        assertEquals(alimentoTest.getNombre(), nombrePorDefecto);
     }
 
     @Test
@@ -64,13 +69,13 @@ public class AlimentoTest {
     @Test
     public void testToStringNullNombre() {
         Alimento alimentoTest = new Alimento("", "", null, null);
-        assertEquals(alimentoTest.getNombre(), "Nombre de alimento no ingresado");
+        assertEquals(alimentoTest.getNombre(), nombrePorDefecto);
     }
 
     @Test
     public void testToStringNull() {
         Alimento alimentoTest = new Alimento("", "", null, null);
-        assertEquals(alimentoTest.toString(), "Nombre de alimento no ingresado");
+        assertEquals(alimentoTest.toString(), nombrePorDefecto);
     }
 
     @Test
@@ -88,7 +93,7 @@ public class AlimentoTest {
 
     @Test
     public void testEqualsDiferentes() {
-        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Alimento alimentoTest = new Alimento(rabanito, "", null, null);
         Alimento alimentoTest2 = new Alimento("Papa", "", null, null);
         boolean sonIguales = alimentoTest.equals(alimentoTest2);
         assertFalse(sonIguales);
@@ -96,20 +101,20 @@ public class AlimentoTest {
 
     @Test
     public void testEqualsNull() {
-        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Alimento alimentoTest = new Alimento(rabanito, "", null, null);
         assertFalse(alimentoTest.equals(null));
     }
 
     @Test
     public void testEqualsDiferenteTipo() {
-        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Alimento alimentoTest = new Alimento(rabanito, "", null, null);
         Usuario usuarioTest = new Usuario("Luis", "Diaz", "", null, null, null, null, null);
         assertFalse(alimentoTest.equals(usuarioTest));
     }
 
     @Test
     public void testHashCode() {
-        Alimento alimentoTest = new Alimento("Rabanito", "", null, null);
+        Alimento alimentoTest = new Alimento(rabanito, "", null, null);
         Alimento alimentoTest2 = new Alimento("Papa", "", null, null);
         assertFalse(alimentoTest.hashCode() == alimentoTest2.hashCode());
     }

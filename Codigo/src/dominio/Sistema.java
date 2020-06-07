@@ -129,7 +129,7 @@ public final class Sistema implements Serializable {
     public enum Paises {
         Argentina, Bolivia, Brasil, Chile, Colombia, CostaRica, Cuba, Ecuador, ElSalvador,
         GuayanaFrancesa, Granada, Guatemala, Guayana, Haiti, Honduras, Jamaica,
-        Mexico, Nicaragua, Paraguay, Panama, Perú, PuertoRico, RepublicaDominicana, Surinam, Uruguay, Venezuela;
+        Mexico, Nicaragua, Paraguay, Panama, Peru, PuertoRico, RepublicaDominicana, Surinam, Uruguay, Venezuela;
     }
 
     public enum DiasDeLaSemana {
@@ -169,15 +169,13 @@ public final class Sistema implements Serializable {
     }
 
     public void guardarDatosSistema() {
-        try {
-            FileOutputStream archivo = new FileOutputStream("Sistema.data");
-            BufferedOutputStream buffer = new BufferedOutputStream(archivo);
-            try (ObjectOutputStream objetoASerializar = new ObjectOutputStream(buffer)) {
-                objetoASerializar.writeObject(this);
-                objetoASerializar.flush();
-            }
+        try (FileOutputStream archivo = new FileOutputStream("Sistema.data");
+                BufferedOutputStream buffer = new BufferedOutputStream(archivo);
+                ObjectOutputStream objetoASerializar = new ObjectOutputStream(buffer)) {
+            objetoASerializar.writeObject(this);
+            objetoASerializar.flush();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println("Error al guardar los datos");
         }
     }
 
@@ -270,12 +268,9 @@ public final class Sistema implements Serializable {
         for (int i = 0; i < getListaConversaciones().size(); i++) {
             String nombreCompleto = getListaConversaciones().get(i).getUsuario().getNombreCompleto();
             String nombreProfesional = getListaConversaciones().get(i).getProfesional().getNombreCompleto();
-            if (!nombresIngresados.contains(nombreCompleto)) {
-                if (profesional.equals(nombreProfesional)) {
-                    if (!getListaConversaciones().get(i).getFueAtendidaConsulta()) {
-                        nombresIngresados.add(nombreCompleto);
-                    }
-                }
+            if (!nombresIngresados.contains(nombreCompleto) && profesional.equals(nombreProfesional)
+                    && !getListaConversaciones().get(i).getFueAtendidaConsulta()) {
+                nombresIngresados.add(nombreCompleto);
             }
         }
         String[] nombreUsuarios = new String[nombresIngresados.size()];
@@ -493,7 +488,6 @@ public final class Sistema implements Serializable {
     }
 
     public String[] getListaUsuariosConPlanesPendientes(Profesional profesional) {
-        String[] resultadoPlanesPendientes = new String[0];
         ArrayList<String> planesPendientes = new ArrayList<>();
         for (PlanAlimentacion plan : this.listaPlanesAlimentacion) {
             if (plan.getProfesional().equals(profesional) && !plan.getFueAtendidoElPlan()) {
@@ -501,7 +495,7 @@ public final class Sistema implements Serializable {
                 planesPendientes.add(nombreUsuario);
             }
         }
-        resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);
+        String[] resultadoPlanesPendientes = obtenerUsuariosDePlanes(planesPendientes);
         return resultadoPlanesPendientes;
     }
 

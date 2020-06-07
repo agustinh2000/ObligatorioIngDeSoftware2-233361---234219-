@@ -2169,7 +2169,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="checkProteínas" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkProteinas" min="-2" max="-2" attributes="0"/>
                                       <Component id="checkHidratos" min="-2" max="-2" attributes="0"/>
                                       <Component id="checkVitaminas" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="checkGlucidos" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2185,7 +2185,7 @@
                                       <Component id="txtGlucidos" min="-2" pref="163" max="-2" attributes="0"/>
                                       <Component id="txtVitaminas" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                       <Component id="txtHidratos" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                                      <Component id="txtProteínas" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                      <Component id="txtProteinas" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
@@ -2256,7 +2256,7 @@
                       <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="376" max="32767" attributes="0"/>
-                              <Component id="lblProteínas" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProteinas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2350,8 +2350,8 @@
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="checkProteínas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtProteínas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="checkProteinas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtProteinas" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -2416,7 +2416,7 @@
                       <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="501" max="32767" attributes="0"/>
-                              <Component id="lblProteínas" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProteinas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2673,7 +2673,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkVitaminasActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="checkProte&#xed;nas">
+                <Component class="javax.swing.JCheckBox" name="checkProteinas">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
@@ -2688,7 +2688,7 @@
                     <Property name="actionCommand" type="java.lang.String" value="Hiidratos de carbono"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkProte&#xed;nasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkProteinasActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="checkMinerales">
@@ -2832,7 +2832,7 @@
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtVitaminasKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtProte&#xed;nas">
+                <Component class="javax.swing.JTextField" name="txtProteinas">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e3" green="e3" red="e3" type="rgb"/>
@@ -2850,7 +2850,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtProte&#xed;nasKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtProteinasKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblGlucidos">
@@ -2860,7 +2860,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblProte&#xed;nas">
+                <Component class="javax.swing.JLabel" name="lblProteinas">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
