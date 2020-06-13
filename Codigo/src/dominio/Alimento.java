@@ -55,7 +55,8 @@ public final class Alimento implements Serializable {
         }
     }
 
-    public void setListaNutrientesConProporcion(ArrayList<ComposicionAlimento> listaNutrientes) {
+    public void setListaNutrientesConProporcion(ArrayList<ComposicionAlimento> 
+            listaNutrientes) {
         if (listaNutrientes == null) {
             this.listaNutrientesConProporcion = new ArrayList<>();
         } else {
@@ -69,7 +70,8 @@ public final class Alimento implements Serializable {
 
     public void setFotoDelAlimento(ImageIcon fotoAlimento) {
         if (fotoAlimento == null) {
-            this.fotoDelAlimento = new ImageIcon(getClass().getResource("/Imagenes/fotoDelAlimentoEstandar.png"));
+            this.fotoDelAlimento = new ImageIcon(getClass().getResource
+        ("/Imagenes/fotoDelAlimentoEstandar.png"));
         } else {
             this.fotoDelAlimento = fotoAlimento;
         }
@@ -82,10 +84,10 @@ public final class Alimento implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null){
+        if (obj == null) {
             return false;
         }
-        if(this.getClass() != obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         Alimento otroAlimento = (Alimento) obj;
