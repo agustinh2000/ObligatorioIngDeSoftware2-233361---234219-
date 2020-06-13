@@ -8,7 +8,8 @@ public final class InformacionMensaje implements Serializable {
     private String destinatario;
     private String remitente;
 
-    public InformacionMensaje(String unRemitente, String unDestinatario, String unMensaje) {
+    public InformacionMensaje(String unRemitente, String unDestinatario, 
+            String unMensaje) {
         setRemitente(unRemitente);
         setDestinatario(unDestinatario);
         setMensaje(unMensaje);

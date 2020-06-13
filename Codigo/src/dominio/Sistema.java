@@ -40,7 +40,8 @@ public final class Sistema implements Serializable {
         setListaConversaciones(new ArrayList<>());
         setListaPlanesAlimentacion(new ArrayList<>());
         setPersonaLogueada(new Usuario("Nombre", "Apellido", "",
-                new ImageIcon(getClass().getResource("/Imagenes/fotoDeUsuarioStandard.png")),
+                new ImageIcon(getClass().
+                        getResource("/Imagenes/fotoDeUsuarioStandard.png")),
                 "", null, null, null));
 
     }
@@ -62,7 +63,8 @@ public final class Sistema implements Serializable {
         return this.listaConversaciones;
     }
 
-    public void setListaConversaciones(ArrayList<Conversacion> unaListaConversaciones) {
+    public void setListaConversaciones(ArrayList<Conversacion> 
+            unaListaConversaciones) {
         if (unaListaConversaciones == null) {
             this.listaConversaciones = new ArrayList<>();
         } else {
@@ -110,7 +112,8 @@ public final class Sistema implements Serializable {
         return this.listaPlanesAlimentacion;
     }
 
-    public void setListaPlanesAlimentacion(ArrayList<PlanAlimentacion> unaListaPlanesAlimentacion) {
+    public void setListaPlanesAlimentacion(ArrayList<PlanAlimentacion> 
+            unaListaPlanesAlimentacion) {
         if (unaListaPlanesAlimentacion == null) {
             this.listaPlanesAlimentacion = new ArrayList<>();
         } else {
@@ -168,6 +171,7 @@ public final class Sistema implements Serializable {
         return lstIngestas;
     }
 
+    //Metodo que serializa la informacion del sistema
     public void guardarDatosSistema() {
         try (FileOutputStream archivo = new FileOutputStream("Sistema.data");
                 BufferedOutputStream buffer = new BufferedOutputStream(archivo);
@@ -184,6 +188,7 @@ public final class Sistema implements Serializable {
         return agregarUsuarioALaLista(usuarioNuevo);
     }
 
+    //Metodo que agrega un usuario a lista de usuarios registrados
     public boolean agregarUsuarioALaLista(Usuario usuarioARegistrar) {
         boolean fueAgregadoUsuario = false;
         if (!getListaUsuarios().contains(usuarioARegistrar)) {
@@ -198,6 +203,7 @@ public final class Sistema implements Serializable {
         return agregarProfesionalALaLista(profesionalNuevo);
     }
 
+    //Metodo que agrega un profesional a lista de usuarios registrados
     public boolean agregarProfesionalALaLista(Profesional profesionalARegistrar) {
         boolean fueAgregadoProfesional = false;
         if (!getListaProfesionales().contains(profesionalARegistrar)) {
@@ -212,6 +218,8 @@ public final class Sistema implements Serializable {
         return agregarAlimentoALaLista(alimentoNuevo);
     }
 
+    
+    //Metodo que agrega un alimento a lista de alimentos registrados
     public boolean agregarAlimentoALaLista(Alimento alimentoAAgregar) {
         boolean fueAgregadoAlimento = false;
         if (!getListaAlimentos().contains(alimentoAAgregar)) {
@@ -221,6 +229,8 @@ public final class Sistema implements Serializable {
         return fueAgregadoAlimento;
     }
 
+    /*Metodo que dado un mensaje, profesional, e usuario inicia una conversacion
+    entre ellos */
     public boolean crearConversacion(Persona usuario, Persona profesional, String mensaje, boolean usuarioEsRemitente) {
         boolean fueAgregadaConversacion = false;
         InformacionMensaje info;
@@ -249,6 +259,8 @@ public final class Sistema implements Serializable {
         return fueAgregadaConversacion;
     }
 
+    /*Metodo que devuelve una lista con los profesionales que el usuario
+    ha tenido conversacion*/
     public String[] getListaNombresProfesionalesConversaciones(String nombreUsuarioConversacion) {
         String[] nombresProfesionales = new String[getListaConversaciones().size()];
         ArrayList<String> nombresIngresados = new ArrayList<>();
@@ -263,6 +275,8 @@ public final class Sistema implements Serializable {
         return nombresProfesionales;
     }
 
+    /*Dado un profesional, retorna una lista con los usuarios que le han
+    mandado consultas al profesional, y este no le ha responido*/
     public String[] getListaNombresUsuariosConversacionesPendientes(String profesional) {
         ArrayList<String> nombresIngresados = new ArrayList<>();
         for (int i = 0; i < getListaConversaciones().size(); i++) {
@@ -280,6 +294,8 @@ public final class Sistema implements Serializable {
         return nombreUsuarios;
     }
 
+    /*Metodo que dado un nombre de un profesional y un usuario, obtiene
+    el texto de la conversacion entre ellos*/
     public String getConversacion(String nombreCompletoProfesional, String nombreCompletoUsuario) {
         String retorno = "No hay conversación disponible.";
         for (int i = 0; i < getListaConversaciones().size(); i++) {
@@ -293,6 +309,8 @@ public final class Sistema implements Serializable {
         return retorno;
     }
 
+    /*Metodo que dado un mensaje un remitente y un destinatario, agrega
+    el mensaje a la conversacion existente entre ese remitente y ese destinatario*/
     public boolean agregarMensajeConversacion(String remitente, String destinatario, String mensaje, boolean intercambioRemitente, boolean consultaRespondida) {
         boolean pudeAgregarMensaje = false;
         for (int i = 0; i < getListaConversaciones().size(); i++) {

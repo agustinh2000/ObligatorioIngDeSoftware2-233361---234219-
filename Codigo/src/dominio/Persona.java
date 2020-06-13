@@ -10,7 +10,7 @@ public abstract class Persona implements Serializable {
     private String apellido;
     private String fechaNacimiento;
     private ImageIcon fotoDePerfil;
-    
+
     static final String NOMBRE_POR_DEFECTO = "Nombre no ingresado";
     static final String APELLIDO_POR_DEFECTO = "Apellido no ingresado";
 
@@ -56,7 +56,8 @@ public abstract class Persona implements Serializable {
 
     public void setFotoDePerfil(ImageIcon unaFotoDePerfil) {
         if (unaFotoDePerfil == null) {
-            this.fotoDePerfil = new ImageIcon(getClass().getResource("/Imagenes/fotoDeUsuarioStandard.png"));
+            this.fotoDePerfil = new ImageIcon(getClass().
+                    getResource("/Imagenes/fotoDeUsuarioStandard.png"));
         } else {
             this.fotoDePerfil = unaFotoDePerfil;
         }
@@ -64,7 +65,8 @@ public abstract class Persona implements Serializable {
 
     public String getNombreCompleto() {
         String retorno;
-        if (getNombre().equals(NOMBRE_POR_DEFECTO) && getApellido().equals(APELLIDO_POR_DEFECTO)) {
+        if (getNombre().equals(NOMBRE_POR_DEFECTO) && getApellido().
+                equals(APELLIDO_POR_DEFECTO)) {
             retorno = NOMBRE_POR_DEFECTO;
         } else if (getNombre().equals(NOMBRE_POR_DEFECTO)) {
             retorno = getApellido();
@@ -83,10 +85,10 @@ public abstract class Persona implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj == null){
+        if (obj == null) {
             return false;
         }
-        if(this.getClass() != obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         Persona otraPersona = (Persona) obj;

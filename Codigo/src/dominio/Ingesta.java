@@ -9,7 +9,8 @@ public final class Ingesta implements Serializable {
     private String fechaDeIngesta;
     private ArrayList<Alimento> listaAlimentosPorFecha;
 
-    public Ingesta(String unaFechaDeIngesta, ArrayList<Alimento> unaListaDeAlimentosPorFecha) {
+    public Ingesta(String unaFechaDeIngesta, ArrayList<Alimento> 
+            unaListaDeAlimentosPorFecha) {
         setFechaDeIngesta(unaFechaDeIngesta);
         setListaAlimentosPorFecha(unaListaDeAlimentosPorFecha);
     }
@@ -34,7 +35,8 @@ public final class Ingesta implements Serializable {
         }
     }
 
-    public void setListaAlimentosPorFecha(ArrayList<Alimento> unaListaDeAlimentos) {
+    public void setListaAlimentosPorFecha(ArrayList<Alimento> 
+            unaListaDeAlimentos) {
         if (unaListaDeAlimentos == null || unaListaDeAlimentos.isEmpty()) {
             this.listaAlimentosPorFecha = new ArrayList<>();
         } else {
@@ -61,7 +63,8 @@ public final class Ingesta implements Serializable {
         }
         Ingesta otraIngesta = (Ingesta) obj;
         boolean sonIguales = this.getFechaDeIngesta().equals(otraIngesta.getFechaDeIngesta());
-        sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals(otraIngesta.getListaAlimentosPorFecha());
+        sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals
+        (otraIngesta.getListaAlimentosPorFecha());
         return sonIguales;
     }
 
