@@ -40,7 +40,9 @@ public class SistemaTest {
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = null;
         ArrayList<Conversacion> listaConversaciones = null;
         Persona personaLogueada = null;
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
         assertEquals(sistemaATestear.getListaAlimentos().size(), 0);
     }
 
@@ -52,7 +54,9 @@ public class SistemaTest {
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = null;
         ArrayList<Conversacion> listaConversaciones = null;
         Persona personaLogueada = null;
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
         assertEquals(sistemaATestear.getListaPlanesAlimentacion().size(), 0);
     }
 
@@ -64,7 +68,9 @@ public class SistemaTest {
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = null;
         ArrayList<Conversacion> listaConversaciones = null;
         Persona personaLogueada = null;
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
         assertEquals(sistemaATestear.getListaConversaciones().size(), 0);
     }
 
@@ -76,8 +82,11 @@ public class SistemaTest {
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = null;
         ArrayList<Conversacion> listaConversaciones = null;
         Persona personaLogueada = null;
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
-        Persona personaLogueadaEsperada = new Usuario(null, null, null, null, null, null, null, null);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
+        Persona personaLogueadaEsperada = new Usuario(null, null, null, null,
+                null, null, null, null);
         assertEquals(sistemaATestear.getPersonaLogueada(), personaLogueadaEsperada);
     }
 
@@ -94,37 +103,47 @@ public class SistemaTest {
         ArrayList<Alimento> listaAlimentos = new ArrayList<>();
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         ArrayList<Conversacion> listaConversaciones = new ArrayList<>();
-        Persona personaLogueada = new Usuario(null, null, null, null, null, null, null, null);
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
+        Persona personaLogueada = new Usuario(null, null, null, null, null,
+                null, null, null);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
         assertEquals(sistemaATestear.getListaAlimentos().size(), 0);
     }
 
     @Test
     public void testAgregarMensajeConversacionListaVacia() {
         Sistema sistemaATestear = new Sistema();
-        boolean pudeAgregarMensaje = sistemaATestear.agregarMensajeConversacion(nombreMartin, "Lucia", "aa", false, false);
+        boolean pudeAgregarMensaje
+                = sistemaATestear.agregarMensajeConversacion(nombreMartin, "Lucia",
+                        "aa", false, false);
         assertFalse(pudeAgregarMensaje);
     }
 
     @Test
     public void testAgregarMensajeConversacionNull() {
         Sistema sistemaATestear = new Sistema();
-        boolean pudeAgregarMensaje = sistemaATestear.agregarMensajeConversacion("Luis", "Diaz", "Segundo mensaje", false, false);
+        boolean pudeAgregarMensaje
+                = sistemaATestear.agregarMensajeConversacion("Luis", "Diaz",
+                        "Segundo mensaje", false, false);
         assertFalse(pudeAgregarMensaje);
     }
 
     @Test
     public void testDevolverAlimentoNull() {
-        Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
+        Sistema sistemaATestear = new Sistema(null, null, null, null, null,
+                null);
         Alimento alimentoEsperado = new Alimento(null, null, null, null);
-        assertEquals(sistemaATestear.devolverAlimentoDadoNombre(null), alimentoEsperado);
+        assertEquals(sistemaATestear.devolverAlimentoDadoNombre(null),
+                alimentoEsperado);
     }
 
     @Test
     public void testDevolverAlimentoDatosVacios() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
         Alimento alimentoEsperado = new Alimento("", "", null, null);
-        assertEquals(sistemaATestear.devolverAlimentoDadoNombre(""), alimentoEsperado);
+        assertEquals(sistemaATestear.devolverAlimentoDadoNombre(""),
+                alimentoEsperado);
     }
 
     @Test
@@ -132,8 +151,10 @@ public class SistemaTest {
         ArrayList listaAlimentos = new ArrayList<>();
         Alimento alimentoEsperado = new Alimento("Papa", "Verdura", null, null);
         listaAlimentos.add(alimentoEsperado);
-        Sistema sistemaATestear = new Sistema(null, null, listaAlimentos, null, null, null);
-        assertEquals(sistemaATestear.devolverAlimentoDadoNombre("Papa"), alimentoEsperado);
+        Sistema sistemaATestear = new Sistema(null, null, listaAlimentos, null,
+                null, null);
+        assertEquals(sistemaATestear.devolverAlimentoDadoNombre("Papa"),
+                alimentoEsperado);
     }
 
     @Test
@@ -141,50 +162,61 @@ public class SistemaTest {
         ArrayList listaAlimentos = new ArrayList<>();
         Alimento alimentoEsperado = new Alimento("Papa", "Verdura", null, null);
         listaAlimentos.add(alimentoEsperado);
-        Sistema sistemaATestear = new Sistema(null, null, listaAlimentos, null, null, null);
-        assertNotEquals(sistemaATestear.devolverAlimentoDadoNombre("Luca"), alimentoEsperado);
+        Sistema sistemaATestear = new Sistema(null, null, listaAlimentos, null,
+                null, null);
+        assertNotEquals(sistemaATestear.devolverAlimentoDadoNombre("Luca"),
+                alimentoEsperado);
     }
 
     @Test
     public void testUsuarioDevolverPorNombreNull() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null, null, null);
+        Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null,
+                null, null);
         assertEquals(sistemaATestear.getUsuarioPorNombre(null), usuarioEsperado);
     }
 
     @Test
     public void testProfesionalDevolverPorNombreNull() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Profesional profesionalEsperado = new Profesional(null, null, null, null, null, null, null);
-        assertEquals(sistemaATestear.getProfesionalPorNombre(null), profesionalEsperado);
+        Profesional profesionalEsperado = new Profesional(null, null, null, null,
+                null, null, null);
+        assertEquals(sistemaATestear.getProfesionalPorNombre(null),
+                profesionalEsperado);
     }
 
     @Test
     public void testDevolverProfesionalPorNombreDatosVacios() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Profesional profesionalEsperado = new Profesional(null, null, null, null, null, null, null);
-        assertEquals(sistemaATestear.getProfesionalPorNombre(""), profesionalEsperado);
+        Profesional profesionalEsperado = new Profesional(null, null, null, null,
+                null, null, null);
+        assertEquals(sistemaATestear.getProfesionalPorNombre(""),
+                profesionalEsperado);
     }
 
     @Test
     public void testDevolverProfesionalPorNombreDatosErroneos() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Profesional profesionalEsperado = new Profesional(nombreMartin, null, null, null, null, null, null);
+        Profesional profesionalEsperado = new Profesional(nombreMartin, null,
+                null, null, null, null, null);
         sistemaATestear.agregarProfesionalALaLista(profesionalEsperado);
-        assertEquals(sistemaATestear.getProfesionalPorNombre(nombreMartin), profesionalEsperado);
+        assertEquals(sistemaATestear.getProfesionalPorNombre(nombreMartin),
+                profesionalEsperado);
     }
 
     @Test
     public void testDevolverUsuarioPorNombreDatosVacios() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null, null, null);
+        Usuario usuarioEsperado = new Usuario(null, null, null, null, null, null,
+                null, null);
         assertEquals(sistemaATestear.getUsuarioPorNombre(""), usuarioEsperado);
     }
 
     @Test
     public void testDevolverUsuarioPorNombreDatosErroneos() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario = new Usuario(nombreMartin, null, null, null, null, null, null, null);
+        Usuario usuario = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
         sistemaATestear.agregarUsuarioALaLista(usuario);
         assertEquals(sistemaATestear.getUsuarioPorNombre(nombreMartin), usuario);
     }
@@ -192,16 +224,20 @@ public class SistemaTest {
     @Test
     public void testAgregarPlanAlimentacionUsuarioNull() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario1 = new Usuario(null, null, null, null, null, null, null, null);
-        Profesional profesional1 = new Profesional(null, null, null, null, null, null, null);
+        Usuario usuario1 = new Usuario(null, null, null, null, null, null, null,
+                null);
+        Profesional profesional1 = new Profesional(null, null, null, null, null,
+                null, null);
         assertTrue(sistemaATestear.agregarPlanSolicitado(usuario1, profesional1));
     }
 
     @Test
     public void testAgregarPlanAlimentacionRepetidos() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario1 = new Usuario(null, null, null, null, null, null, null, null);
-        Profesional profesional1 = new Profesional(null, null, null, null, null, null, null);
+        Usuario usuario1 = new Usuario(null, null, null, null, null, null, null,
+                null);
+        Profesional profesional1 = new Profesional(null, null, null, null, null,
+                null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
         assertFalse(sistemaATestear.agregarPlanSolicitado(usuario1, profesional1));
     }
@@ -209,29 +245,39 @@ public class SistemaTest {
     @Test
     public void testPlanesPendientes() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null, null, null, null, null);
-        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos, null, null, null, null, null);
+        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null,
+                null, null, null, null);
+        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos,
+                null, null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(profesional1).length, 1);
+        assertEquals(sistemaATestear.
+                getListaUsuariosConPlanesPendientes(profesional1).length, 1);
     }
 
     @Test
     public void testPlanesPendientes2() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null, null, null, null, null);
-        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos, null, null, null, null, null);
-        Profesional profesional2 = new Profesional("Joaquin", "Bardanca", null, null, null, null, null);
+        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null,
+                null, null, null, null);
+        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos,
+                null, null, null, null, null);
+        Profesional profesional2 = new Profesional("Joaquin", "Bardanca", null,
+                null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(profesional2).length, 0);
+        assertEquals(sistemaATestear.
+                getListaUsuariosConPlanesPendientes(profesional2).length, 0);
     }
 
     @Test
     public void testPlanesPendientesNull() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null, null, null, null, null);
-        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos, null, null, null, null, null);
+        Usuario usuario1 = new Usuario(nombreMartin, apellidoGomez, null, null,
+                null, null, null, null);
+        Profesional profesional1 = new Profesional(nombreSandra, apellidoPazos,
+                null, null, null, null, null);
         sistemaATestear.agregarPlanSolicitado(usuario1, profesional1);
-        assertEquals(sistemaATestear.getListaUsuariosConPlanesPendientes(null).length, 0);
+        assertEquals(sistemaATestear.
+                getListaUsuariosConPlanesPendientes(null).length, 0);
     }
 
     @Test
@@ -241,12 +287,20 @@ public class SistemaTest {
         ArrayList<Alimento> listaAlimentos = new ArrayList<>();
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         ArrayList<Conversacion> listaConversaciones = new ArrayList<>();
-        Persona personaLogueada = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales, listaAlimentos, listaPlanesAlimentacion, listaConversaciones, personaLogueada);
-        Persona usuarioConversacion = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Persona profesionalConversacion = new Profesional("Luis", null, null, null, null, null, null);
-        sistemaATestear.crearConversacion(usuarioConversacion, profesionalConversacion, "Hola", true);
-        boolean agregoConversacionRepetida = sistemaATestear.crearConversacion(usuarioConversacion, profesionalConversacion, "Hola", true);
+        Persona personaLogueada = new Usuario(nombreMartin, null, null, null,
+                null, null, null, null);
+        Sistema sistemaATestear = new Sistema(listaUsuarios, listaProfesionales,
+                listaAlimentos, listaPlanesAlimentacion, listaConversaciones,
+                personaLogueada);
+        Persona usuarioConversacion = new Usuario(nombreMartin, null, null, null,
+                null, null, null, null);
+        Persona profesionalConversacion = new Profesional("Luis", null, null,
+                null, null, null, null);
+        sistemaATestear.crearConversacion(usuarioConversacion,
+                profesionalConversacion, "Hola", true);
+        boolean agregoConversacionRepetida
+                = sistemaATestear.crearConversacion(usuarioConversacion,
+                        profesionalConversacion, "Hola", true);
         assertFalse(agregoConversacionRepetida);
     }
 
@@ -256,8 +310,10 @@ public class SistemaTest {
         Ingesta ingesta1 = new Ingesta(fechaIngesta, null);
         listaIngestas.add(ingesta1);
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null, null, null);
-        boolean retorno = sistemaATestear.agregarIngestaAUsuario(listaIngestas, fechaIngestaDos, "Papa");
+        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        boolean retorno = sistemaATestear.agregarIngestaAUsuario(listaIngestas,
+                fechaIngestaDos, "Papa");
         assertTrue(retorno);
     }
 
@@ -269,10 +325,12 @@ public class SistemaTest {
         Ingesta ingesta1 = new Ingesta(fechaIngesta, listaAlimentos);
         listaIngestas.add(ingesta1);
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null, null, null);
+        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null,
+                null, null);
         sistemaATestear.agregarIngestaAUsuario(listaIngestas, fechaIngesta, "Papa");
         Usuario user = (Usuario) sistemaATestear.getUsuarioPorNombre(nombreMartin);
-        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(), fechaIngestaDos, "Papa");
+        boolean retorno = sistemaATestear.agregarIngestaAUsuario(
+                user.getAlimentosIngeridos(), fechaIngestaDos, "Papa");
         assertTrue(retorno);
     }
 
@@ -284,10 +342,12 @@ public class SistemaTest {
         Ingesta ingesta1 = new Ingesta(fechaIngesta, listaAlimentos);
         listaIngestas.add(ingesta1);
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null, null, null);
+        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null,
+                null, null, null);
         sistemaATestear.agregarIngestaAUsuario(listaIngestas, fechaIngesta, "Papa");
         Usuario user = (Usuario) sistemaATestear.getUsuarioPorNombre(nombreMartin);
-        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(), fechaIngesta, "Papa");
+        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(),
+                fechaIngesta, "Papa");
         assertTrue(retorno);
     }
 
@@ -299,139 +359,187 @@ public class SistemaTest {
         Ingesta ingesta1 = new Ingesta(null, listaAlimentos);
         listaIngestas.add(ingesta1);
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null, null, null);
+        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null,
+                null, null);
         sistemaATestear.agregarIngestaAUsuario(listaIngestas, null, "Papa");
         Usuario user = (Usuario) sistemaATestear.getUsuarioPorNombre(nombreMartin);
-        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(), null, "Papa");
+        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(),
+                null, "Papa");
         assertFalse(retorno);
     }
 
     @Test
     public void testAgregarIngestaAlimentoRepetidoFechaDistinta() {
         Sistema sistemaATestear = new Sistema(null, null, null, null, null, null);
-        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null, null, null);
+        sistemaATestear.crearUsuario(nombreMartin, null, null, null, null, null,
+                null, null);
         Usuario user = (Usuario) sistemaATestear.getUsuarioPorNombre(nombreMartin);
-        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(), fechaIngestaDos, "Papa");
+        boolean retorno = sistemaATestear.agregarIngestaAUsuario(user.getAlimentosIngeridos(),
+                fechaIngestaDos, "Papa");
         assertTrue(retorno);
     }
 
     @Test
     public void testDevolverPlanDadoNombreNull() {
         Sistema sistemaATestear = new Sistema();
-        Profesional unProfesional = new Profesional(null, null, null, null, null, null, null);
-        Usuario unUsuario = new Usuario(null, null, null, null, null, null, null, null);
+        Profesional unProfesional = new Profesional(null, null, null, null, null,
+                null, null);
+        Usuario unUsuario = new Usuario(null, null, null, null, null, null, null,
+                null);
         sistemaATestear.agregarPlanSolicitado(unUsuario, unProfesional);
-        sistemaATestear.atenderSolicitudDelPlan(null, unProfesional, unUsuario, nombrePlanPrueba);
-        PlanAlimentacion planResultado = sistemaATestear.devolverPlanDadoNombre(nombrePlanPrueba);
-        assertEquals(planResultado, new PlanAlimentacion(nombrePlanPrueba, unUsuario, unProfesional, true, null));
+        sistemaATestear.atenderSolicitudDelPlan(null, unProfesional, unUsuario,
+                nombrePlanPrueba);
+        PlanAlimentacion planResultado
+                = sistemaATestear.devolverPlanDadoNombre(nombrePlanPrueba);
+        assertEquals(planResultado, new PlanAlimentacion(nombrePlanPrueba,
+                unUsuario, unProfesional, true, null));
     }
 
     @Test
     public void testDevolverPlanDatosValidos() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion("Plan", user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion("Plan", user1, professional1,
+                false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
+        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion,
+                null, null);
         assertEquals(sistemaATestear.devolverPlanDadoNombre("Plan"), plan1);
     }
 
     @Test
     public void testDevolverPlanNoPertenece() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        assertEquals(sistemaATestear.devolverPlanDadoNombre("Plan").getNombreDelPlan(), plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null,
+                listaPlanesAlimentacion, null, null);
+        assertEquals(sistemaATestear.devolverPlanDadoNombre("Plan").getNombreDelPlan(),
+                plan1.getNombreDelPlan());
     }
 
     @Test
     public void testAtenderSolicitudPlan() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null,
+                null, null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional1,
-                user1, plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null,
+                listaPlanesAlimentacion, null, null);
+        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional1, user1, plan1.getNombreDelPlan());
         assertTrue(fueAtendido);
     }
 
     @Test
     public void testAtenderSolicitudPlanAtendidoTrue() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, true, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, true, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional1,
+        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion,
+                null, null);
+        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional1,
                 user1, nombrePlan);
         assertFalse(fueAtendido);
     }
 
     @Test
     public void testAtenderSolicitudPlanProfesionalDistinto() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        Profesional professional2 = new Profesional("Lautaro", null, null, null, null, null, null);
-        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional2,
-                user1, plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null,
+                listaPlanesAlimentacion, null, null);
+        Profesional professional2 = new Profesional("Lautaro", null, null, null,
+                null, null, null);
+        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional2, user1, plan1.getNombreDelPlan());
         assertFalse(fueAtendido);
     }
 
     @Test
     public void testAtenderSolicitudPlanUsuarioDistinto() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        Usuario user2 = new Usuario("Martina", null, null, null, null, null, null, null);
-        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional1,
-                user2, plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null,
+                listaPlanesAlimentacion, null, null);
+        Usuario user2 = new Usuario("Martina", null, null, null, null, null, null,
+                null);
+        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional1, user2, plan1.getNombreDelPlan());
         assertFalse(fueAtendido);
     }
 
     @Test
     public void testAtenderSolicitudPlanListaVacia() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1,
+                false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional1,
-                user1, plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion,
+                null, null);
+        boolean fueAtendido = sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional1, user1, plan1.getNombreDelPlan());
         assertFalse(fueAtendido);
     }
 
     @Test
     public void testListaPlanesAtendidosDatosCorrectos() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
-        Profesional professional1 = new Profesional("Ana", null, null, null, null, null, null);
-        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1, professional1, false, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
+        Profesional professional1 = new Profesional("Ana", null, null, null, null,
+                null, null);
+        PlanAlimentacion plan1 = new PlanAlimentacion(nombrePlan, user1,
+                professional1, false, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
         listaPlanesAlimentacion.add(plan1);
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
-        sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(), professional1,
-                user1, plan1.getNombreDelPlan());
-        boolean sonIguales = sistemaATestear.planesAtendidosDelUsuario(user1)[0].equals(plan1.getNombreDelPlan());
+        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion,
+                null, null);
+        sistemaATestear.atenderSolicitudDelPlan(plan1.getPlanDiaADia(),
+                professional1, user1, plan1.getNombreDelPlan());
+        boolean sonIguales
+                = sistemaATestear.planesAtendidosDelUsuario(user1)[0].equals(plan1.getNombreDelPlan());
         assertTrue(sonIguales);
     }
 
     @Test
     public void testListaPlanesAtendidosListaVacia() {
-        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null, null, null);
+        Usuario user1 = new Usuario(nombreMartin, null, null, null, null, null,
+                null, null);
         ArrayList<PlanAlimentacion> listaPlanesAlimentacion = new ArrayList<>();
-        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion, null, null);
+        Sistema sistemaATestear = new Sistema(null, null, null, listaPlanesAlimentacion,
+                null, null);
         assertEquals(sistemaATestear.planesAtendidosDelUsuario(user1).length, 0);
     }
 
@@ -556,7 +664,8 @@ public class SistemaTest {
         listaEsperada.add("Desayuno");
         listaEsperada.add("Almuerzo");
         listaEsperada.add("Cena");
-        assertEquals(sistemaATestear.devolverListaIngestasDeLaSemana(), listaEsperada);
+        assertEquals(sistemaATestear.devolverListaIngestasDeLaSemana(),
+                listaEsperada);
     }
 
     @Test
@@ -586,7 +695,8 @@ public class SistemaTest {
     public void testAgregarProfesionalALaLista() {
         Sistema miSistema = new Sistema();
         boolean resultadoEsperado = true;
-        Profesional unProfesional = new Profesional(null, null, null, null, null, null, null);
+        Profesional unProfesional = new Profesional(null, null, null, null, null,
+                null, null);
         boolean resultado = miSistema.agregarProfesionalALaLista(unProfesional);
         assertEquals(resultadoEsperado, resultado);
     }
@@ -595,7 +705,8 @@ public class SistemaTest {
     public void testAgregarProfesionalALaListaYaContenido() {
         Sistema miSistema = new Sistema();
         boolean resultadoEsperado = false;
-        Profesional unProfesional = new Profesional(null, null, null, null, null, null, null);
+        Profesional unProfesional = new Profesional(null, null, null, null, null,
+                null, null);
         miSistema.agregarProfesionalALaLista(unProfesional);
         boolean resultado = miSistema.agregarProfesionalALaLista(unProfesional);
         assertEquals(resultadoEsperado, resultado);
@@ -604,7 +715,8 @@ public class SistemaTest {
     @Test
     public void testAgregarAlimentoALaListaYaContenido() {
         Sistema miSistema = new Sistema();
-        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre, null, null);
+        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre,
+                null, null);
         miSistema.agregarAlimentoALaLista(alimento);
         boolean resultado = miSistema.agregarAlimentoALaLista(alimento);
         boolean resultadoEsperado = false;
@@ -614,7 +726,8 @@ public class SistemaTest {
     @Test
     public void testAgregarAlimentoALaLista() {
         Sistema miSistema = new Sistema();
-        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre, null, null);
+        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre,
+                null, null);
         boolean resultadoEsperado = true;
         boolean resultado = miSistema.agregarAlimentoALaLista(alimento);
         assertEquals(resultadoEsperado, resultado);
@@ -624,7 +737,8 @@ public class SistemaTest {
     public void testCrearAlimento() {
         Sistema miSistema = new Sistema();
         miSistema.crearAlimento(alimentoLentejas, alimentoLegumbre, null, null);
-        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre, null, null);
+        Alimento alimento = new Alimento(alimentoLentejas, alimentoLegumbre, null,
+                null);
         boolean resultadoEsperado = true;
         boolean resultado = miSistema.getListaAlimentos().contains(alimento);
         assertEquals(resultadoEsperado, resultado);
@@ -703,17 +817,18 @@ public class SistemaTest {
                 "1/5/1988", null, "", fechaGraduacion, paisGraduacionDos);
         miSistema.agregarProfesionalALaLista(profesionalA);
 
-        Profesional profesionalB = new Profesional(nombreMaria, "Diaz", fechaNacimiento,
-                null, "", fechaGraduacion, paisGraduacion);
+        Profesional profesionalB = new Profesional(nombreMaria, "Diaz",
+                fechaNacimiento, null, "", fechaGraduacion, paisGraduacion);
         miSistema.agregarProfesionalALaLista(profesionalB);
 
-        Profesional profesional = new Profesional("Jose", apellidoPerez, fechaNacimientoDos,
-                null, "", fechaGraduacion, paisGraduacionDos);
+        Profesional profesional = new Profesional("Jose", apellidoPerez,
+                fechaNacimientoDos, null, "", fechaGraduacion, paisGraduacionDos);
 
         ArrayList<Profesional> listaEsperada = new ArrayList<>();
         listaEsperada.add(profesionalA);
 
-        ArrayList<Profesional> listaRetorno = miSistema.profesionalesDelMismoPais(profesional);
+        ArrayList<Profesional> listaRetorno
+                = miSistema.profesionalesDelMismoPais(profesional);
 
         assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
     }
@@ -722,21 +837,24 @@ public class SistemaTest {
     public void testProfesionalesConElMismotitulo() {
         Sistema miSistema = new Sistema();
 
-        Profesional profesionalA = new Profesional(nombreMarcos, apellidoRodriguez,
-                "1/5/1988", null, titulo, fechaGraduacion, "Perú");
+        Profesional profesionalA = new Profesional(nombreMarcos,
+                apellidoRodriguez, "1/5/1988", null, titulo, fechaGraduacion,
+                "Perú");
         miSistema.agregarProfesionalALaLista(profesionalA);
 
-        Profesional profesionalB = new Profesional(nombreMaria, "Diaz", fechaNacimiento,
-                null, "medico", fechaGraduacion, paisGraduacion);
+        Profesional profesionalB = new Profesional(nombreMaria, "Diaz",
+                fechaNacimiento, null, "medico", fechaGraduacion, paisGraduacion);
         miSistema.agregarProfesionalALaLista(profesionalB);
 
-        Profesional profesional = new Profesional("Jose", apellidoPerez, fechaNacimientoDos,
-                null, titulo, fechaGraduacion, paisGraduacionDos);
+        Profesional profesional = new Profesional("Jose", apellidoPerez,
+                fechaNacimientoDos, null, titulo, fechaGraduacion,
+                paisGraduacionDos);
 
         ArrayList<Profesional> listaEsperada = new ArrayList<>();
         listaEsperada.add(profesionalA);
 
-        ArrayList<Profesional> listaRetorno = miSistema.profesionalesConElMismoTitulo(profesional);
+        ArrayList<Profesional> listaRetorno
+                = miSistema.profesionalesConElMismoTitulo(profesional);
 
         assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
     }
@@ -753,15 +871,32 @@ public class SistemaTest {
                 null, "medico", "7/8/2004", paisGraduacion);
         miSistema.agregarProfesionalALaLista(profesionalB);
 
-        Profesional profesional = new Profesional("Jose", apellidoPerez, fechaNacimientoDos,
-                null, titulo, fechaGraduacion, paisGraduacionDos);
+        Profesional profesional = new Profesional("Jose", apellidoPerez,
+                fechaNacimientoDos, null, titulo, fechaGraduacion,
+                paisGraduacionDos);
 
         ArrayList<Profesional> listaEsperada = new ArrayList<>();
         listaEsperada.add(profesionalA);
 
-        ArrayList<Profesional> listaRetorno = miSistema.profesionalesMismoAnioGraduacion(profesional);
+        ArrayList<Profesional> listaRetorno
+                = miSistema.profesionalesMismoAnioGraduacion(profesional);
 
         assertArrayEquals(listaEsperada.toArray(), listaRetorno.toArray());
     }
 
+    @Test
+    public void profesionalMasContactadoTest() {
+        Sistema miSistema = new Sistema();
+        Profesional profesional = new Profesional(nombreMarcos, apellidoRodriguez,
+                "1/5/1988", null, titulo, fechaGraduacion, "Perú");
+        Usuario usuario = new Usuario("Juan", apellidoPerez, null, null, null, null,
+                null, null);
+        miSistema.agregarProfesionalALaLista(profesional);
+        miSistema.agregarUsuarioALaLista(usuario);
+   
+        miSistema.agregarMensajeConversacion(nombreMarcos, "Juan", "Hola", true, true);
+        miSistema.crearConversacion(usuario, profesional, "Hola", true);
+        Persona ProfesionalObtenido  = miSistema.profesionalMasContactado();
+        assertEquals(profesional, ProfesionalObtenido);
+    }
 }
