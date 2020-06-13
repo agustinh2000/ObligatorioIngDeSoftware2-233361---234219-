@@ -438,10 +438,8 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
             errorFormatoFecha = true;
         }
         Calendar fechaHoy = new GregorianCalendar();
-        if(!errorFormatoFecha){
-            if(jdcFecha.getDate().after(fechaHoy.getTime())){
-                errorFormatoFecha=true;
-            }
+        if (!errorFormatoFecha && jdcFecha.getDate().after(fechaHoy.getTime())) {
+            errorFormatoFecha = true;
         }
         if (nombre.trim().equals("") || apellido.trim().equals("") || nacionalidad.equals(SELECCIONE) || errorFormatoFecha
                 || !esFormatoCorrecto(nombreSinEspacios) || !esFormatoCorrecto(apellidoSinEspacios)) {
@@ -671,11 +669,10 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
             this.listaNacionalidad.addItem(nacionalidaesEnSistema.get(i));
         }
     }
-    
-       private boolean esFormatoCorrecto(String cadena) {
+
+    private boolean esFormatoCorrecto(String cadena) {
         return !cadena.matches(".*[^A-Za-z].*");
     }
-
 
     private void mostrarErrores(String nombre, String apellido, String nacionalidad, boolean errorFecha) {
         if (nombre.equals("")) {
@@ -693,7 +690,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
             this.lblValidarNacionalidad1.setVisible(true);
             this.lblPaisVacio1.setVisible(true);
         }
-        if(errorFecha){
+        if (errorFecha) {
             this.lblValidarFecha.setIcon(new ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png")));
             this.lblValidarFecha.setVisible(true);
             this.lblFechaInvalida.setVisible(true);

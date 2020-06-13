@@ -231,12 +231,6 @@ public class VentanaEditarPreferencias extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
    private void cargarListaPreferencias() {
-        Sistema.Preferencias[] listaPreferencias = new Sistema.Preferencias[5];
-        listaPreferencias[0] = Sistema.Preferencias.CarnesBlancas;
-        listaPreferencias[1] = Sistema.Preferencias.CarnesRojas;
-        listaPreferencias[2] = Sistema.Preferencias.Frutas;
-        listaPreferencias[3] = Sistema.Preferencias.Harinas;
-        listaPreferencias[4] = Sistema.Preferencias.Verduras;
         this.rdBtnCarnesRojas.setText("Carnes Rojas");
         this.rdBtnCarnesBlancas.setText("Carnes Blancas");
         this.rdBtnFrutas.setText("Frutas");

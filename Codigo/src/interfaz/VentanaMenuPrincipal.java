@@ -49,8 +49,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
     
 
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/Imagen5.png"));
-        return retValue;
+        return Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/Imagen5.png"));
     }
 
     public Sistema getSistema() {
